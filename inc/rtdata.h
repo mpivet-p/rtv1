@@ -27,6 +27,13 @@ typedef struct	s_viewplane
 	double		width;
 }				t_viewplane;
 
+typedef struct	s_ray
+{
+	t_vector	origin;
+	t_vector	dir;
+	double		t;
+}				t_ray;
+
 typedef struct	s_camera
 {
 	t_vector	pos;

@@ -6,28 +6,26 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 01:19:43 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/07/29 02:42:40 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/07/30 06:57:38 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-double		get_a(t_vector dir)
-{
-	return (pow(dir.x, 2) + pow(dir.y, 2) + pow(dir.z, 2));
-}
+#include "rtv1.h"
+#include <math.h>
 
-double		get_b(t_vector dir, t_vector origin, t_vector circle)
+double	solve_sphere(t_ray ray, t_vector sphere, double radius)
 {
-	return (2 * (dir.x * (origin.x - circle.x)
-				+ dir.y * (origin.y - circle.y)
-				+ dir.z * (origin.z - circle.z)));
-}
+	double	a;
+	double	b;
+	double	c;
 
-c = ((O.x - Xc)^2 + (O.y - Yc)^2 + (O.z - Zc)^2) - r^2
-
-double		get_c(t_vector dir, t_vector origin, t_vector circle, double radius)
-{
-	return (pow(origin.x - circle.x, 2)
-			+ pow(origin.y - circle.y, 2)
-			+ pow(origin.z - circle.z, 2)
-			- pow(radius, 2));
+	a = pow(ray.dir.x, 2) + pow(ray.dir.y, 2) + pow(ray.dir.z, 2);
+	b = 2 * (ray.dir.x * (ray.origin.x - sphere.x)
+			+ ray.dir.y * (ray.origin.y - sphere.y)
+			+ ray.dir.z * (ray.origin.z - sphere.z));
+	c = pow(ray.origin.x - sphere.x, 2)
+			+ pow(ray.origin.y - sphere.y, 2)
+			+ pow(ray.origin.z - sphere.z, 2)
+			- pow(radius, 2);
+	return (ft_solve(a, b, c));
 }

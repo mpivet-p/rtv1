@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 03:55:16 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/07/29 08:07:03 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/07/30 06:57:15 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,13 @@ t_vector	vector_mult(t_vector a, int nbr);
 t_vector	add_vectors(t_vector a, t_vector b);
 t_vector	sub_vectors(t_vector a, t_vector b);
 t_vector	init_vector(double x, double y, double z);
+t_vector	dot_product(t_vector a, t_vector b);
 void		get_viewplane(t_viewplane *vp, t_camera cam);
-t_vector	get_dir(t_viewplane vp, t_camera cam, t_point indent, t_point coords);
-t_point		get_indent(t_viewplane vp);
 void		rt(t_fmlx *mlx);
+double	ft_solve(double a, double b, double c);
+double	solve_sphere(t_ray ray, t_vector sphere, double radius);
+t_vector	get_dir(t_viewplane vp, t_camera cam, t_ray ray, t_point coords);
+t_point		get_indent(t_viewplane vp, t_point coords);
+t_point		init_point(double x, double y, double z);
 
 #endif

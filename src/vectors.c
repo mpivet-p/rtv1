@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 07:48:06 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/07/29 07:48:14 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/07/30 00:06:38 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,4 @@ t_vector	sub_vectors(t_vector a, t_vector b)
 	ret.y = a.y + b.y;
 	ret.z = a.z + b.z;
 	return (ret);
-}
-
-t_vector	init_vector(double x, double y, double z)
-{
-	t_vector	vect;
-
-	vect.x = x;
-	vect.y = y;
-	vect.z = z;
-	return (vect);
 }

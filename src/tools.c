@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 04:49:56 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/07/29 08:18:28 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/07/30 06:56:22 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,34 @@ void	rtv_exit(t_fmlx *mlx)
 	if (mlx->mlx && mlx->win)
 		mlx_destroy_window(mlx->mlx, mlx->win);
 	exit(0);
+}
+
+t_vector	init_vector(double x, double y, double z)
+{
+	t_vector	vect;
+
+	vect.x = x;
+	vect.y = y;
+	vect.z = z;
+	return (vect);
+}
+
+t_point		init_point(double x, double y, double z)
+{
+	t_point	vect;
+
+	vect.x = x;
+	vect.y = y;
+	vect.z = z;
+	return (vect);
+}
+
+t_vector	dot_product(t_vector a, t_vector b)
+{
+	t_vector ret;
+
+	ret.x = a.x * b.x;
+	ret.y = a.y * b.y;
+	ret.z = a.z * b.z;
+	return (ret);
 }
