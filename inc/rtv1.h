@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 03:55:16 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/01 03:00:43 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/01 04:37:55 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ void			fill_pxl(char *image, int x, int y, int color);
 **	========================== \( )/ ========================
 */
 
-t_vector	vector_sub(t_vector a, int nbr);
-t_vector	vector_mult(t_vector a, int nbr);
+t_vector	vector_sub(t_vector a, double nbr);
+t_vector	vector_mult(t_vector a, double nbr);
 t_vector	add_vectors(t_vector a, t_vector b);
 t_vector	sub_vectors(t_vector a, t_vector b);
 t_vector	init_vector(double x, double y, double z);

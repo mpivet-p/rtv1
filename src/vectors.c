@@ -6,13 +6,13 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 07:48:06 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/07/30 00:06:38 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/01 04:37:36 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtdata.h"
 
-t_vector	vector_add(t_vector a, int nbr)
+t_vector	vector_add(t_vector a, double nbr)
 {
 	t_vector	ret;
 
@@ -22,7 +22,7 @@ t_vector	vector_add(t_vector a, int nbr)
 	return (ret);
 }
 
-t_vector	vector_sub(t_vector a, int nbr)
+t_vector	vector_sub(t_vector a, double nbr)
 {
 	t_vector	ret;
 
@@ -32,7 +32,7 @@ t_vector	vector_sub(t_vector a, int nbr)
 	return (ret);
 }
 
-t_vector	vector_mult(t_vector a, int nbr)
+t_vector	vector_mult(t_vector a, double nbr)
 {
 	t_vector	ret;
 

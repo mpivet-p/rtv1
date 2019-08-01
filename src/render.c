@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 03:50:05 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/01 03:56:22 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/01 06:34:06 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 
 void	rt_init(t_camera *cam, t_viewplane *vp)
 {
-	vp->height = SIMG_Y;
-	vp->width = SIMG_X ;
-	vp->dist = 1000;
+	vp->height = 0.5;
+	vp->width = 0.35;
+	vp->dist = 1;
 	cam->pos = init_vector(0, 0, 0);
 	cam->vecdir = init_vector(1, 0, 0);
 	cam->rightvec = init_vector(0, 1, 0);
@@ -46,12 +46,12 @@ int		rt_render(t_fmlx *mlx)
 		while (y < SIMG_Y)
 		{
 			ray.dir = get_dir(mlx->vp, mlx->cam, ray, get_indent(mlx->vp, init_point(x, y, 0)));
+			if (solve_sphere(ray, vector_sub(mlx->sphere, 0.25), 0.06) > 0.0)
+				fill_pxl(mlx->screen, x, y, RT_BLUE);
 			if (solve_sphere(ray, mlx->sphere, mlx->size) > 0.0)
+				fill_pxl(mlx->screen, x, y, RT_RED);
+			if (solve_sphere(ray, vector_sub(mlx->sphere, 0.4), 0.03) > 0.0)
 				fill_pxl(mlx->screen, x, y, RT_GREEN);
-//			if (solve_sphere(ray, init_vector(10, 10, 1.5), 0.05) > 0.0)
-//				fill_pxl(mlx->screen, x, y, RT_RED);
-//			if (solve_sphere(ray, init_vector(10, 10, 1.8), 0.05) > 0.0)
-//				fill_pxl(mlx->screen, x, y, RT_BLUE);
 			y++;
 		}
 		y = 0;
@@ -63,8 +63,9 @@ int		rt_render(t_fmlx *mlx)
 
 void	rt(t_fmlx *mlx)
 {
-	mlx->sphere = init_vector(1.1, 2.3, 1.4);
-	mlx->size = 0.05;
+	//mlx->sphere = init_vector(1.1, 2.3, 1.4);
+	mlx->sphere = init_vector(1, 0.65, 0.8);
+	mlx->size = 0.03;
 	rt_init(&(mlx->cam), &(mlx->vp));
 	get_viewplane(&(mlx->vp), mlx->cam);
 	rt_render(mlx);
