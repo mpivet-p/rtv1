@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 03:55:16 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/07/30 06:57:15 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/01 03:00:43 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,14 @@
 
 typedef struct	s_fmlx
 {
-	void	*mlx;
-	void	*win;
-	void	*img;
-	char	*screen;
+	void		*mlx;
+	void		*win;
+	void		*img;
+	char		*screen;
+	t_viewplane	vp;
+	t_camera	cam;
+	double		size;
+	t_vector sphere;
 }				t_fmlx;
 
 
@@ -61,5 +65,7 @@ double	solve_sphere(t_ray ray, t_vector sphere, double radius);
 t_vector	get_dir(t_viewplane vp, t_camera cam, t_ray ray, t_point coords);
 t_point		get_indent(t_viewplane vp, t_point coords);
 t_point		init_point(double x, double y, double z);
+void	rt_init(t_camera *cam, t_viewplane *vp);
+int		rt_render(t_fmlx *mlx);
 
 #endif
