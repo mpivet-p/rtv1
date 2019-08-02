@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 01:19:43 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/07/31 06:18:30 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/02 05:12:01 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ double	solve_sphere(t_ray ray, t_vector sphere, double radius)
 	double	b;
 	double	c;
 
-	a = pow(ray.dir.x, 2) + pow(ray.dir.y, 2) + pow(ray.dir.z, 2);
+	a = (ray.dir.x * ray.dir.x) + (ray.dir.y * ray.dir.y) + (ray.dir.z * ray.dir.z);
 	b = 2.0 * (ray.dir.x * (ray.origin.x - sphere.x)
 			+ ray.dir.y * (ray.origin.y - sphere.y)
 			+ ray.dir.z * (ray.origin.z - sphere.z));
 	c = pow(ray.origin.x - sphere.x, 2)
 			+ pow(ray.origin.y - sphere.y, 2)
 			+ pow(ray.origin.z - sphere.z, 2)
-			- pow(radius, 2);
+			- (radius * radius);
 	return (ft_solve(a, b, c));
 }

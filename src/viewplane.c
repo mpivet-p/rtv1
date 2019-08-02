@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/28 05:07:38 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/07/30 07:01:51 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/02 03:25:38 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void		get_viewplane(t_viewplane *vp, t_camera cam)
 	t_vector	z;
 
 	x = vector_mult(cam.vecdir, vp->dist);
-	y = vector_mult(cam.upvec, vp->height);
-	z = vector_mult(cam.rightvec, vp->width);
+	y = vector_mult(cam.upvec, vp->height / 2.0);
+	z = vector_mult(cam.rightvec, vp->width / 2.0);
 	vp->upleft = add_vectors(cam.pos, add_vectors(x, sub_vectors(y, z)));
 }
 

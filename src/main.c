@@ -6,11 +6,12 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/22 00:26:11 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/07/29 08:12:37 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/02 05:21:51 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
+#include <stdio.h>
 #include "rtv1.h"
 #include "rtdata.h"
 #include "libft.h"
@@ -45,6 +46,7 @@ int		main(int argc, char **argv)
 		ft_putstr_fd("usage: rtv1 <file>\n", 2);
 		return (1);
 	}
+	printf("resutlt :%f\n", ft_solve(2, -9, -5));
 	rtv();
 	return (0);
 }
