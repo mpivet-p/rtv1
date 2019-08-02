@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 03:50:05 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/01 06:34:06 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/02 03:09:08 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,18 @@ int		rt_render(t_fmlx *mlx)
 	x = 0;
 	y = 0;
 	ft_bzero(mlx->screen, SIMG_X * SIMG_Y * 4);
-//	printf("dist = %f size = %f cap.pos.x = %f cap.pos.y = %f cap.pos.z = %f\n", mlx->vp.dist, mlx->size, mlx->cam.pos.x, mlx->cam.pos.y, mlx->cam.pos.z);
-//	printf("sphere x: %f   y: %f    z: %f\n", mlx->sphere.x, mlx->sphere.y, mlx->sphere.z);
+	printf("dist = %f size = %f cap.pos.x = %f cap.pos.y = %f cap.pos.z = %f\n", mlx->vp.dist, mlx->size, mlx->cam.pos.x, mlx->cam.pos.y, mlx->cam.pos.z);
+	printf("sphere x: %f   y: %f    z: %f\n", mlx->sphere.x, mlx->sphere.y, mlx->sphere.z);
 	while (x < SIMG_X)
 	{
 		while (y < SIMG_Y)
 		{
 			ray.dir = get_dir(mlx->vp, mlx->cam, ray, get_indent(mlx->vp, init_point(x, y, 0)));
-			if (solve_sphere(ray, vector_sub(mlx->sphere, 0.25), 0.06) > 0.0)
+			if (solve_sphere(ray, sub_vectors(mlx->sphere, init_vector(0, 0.05, 0)), 0.06) > 0.0)
 				fill_pxl(mlx->screen, x, y, RT_BLUE);
 			if (solve_sphere(ray, mlx->sphere, mlx->size) > 0.0)
 				fill_pxl(mlx->screen, x, y, RT_RED);
-			if (solve_sphere(ray, vector_sub(mlx->sphere, 0.4), 0.03) > 0.0)
+			if (solve_sphere(ray, sub_vectors(mlx->sphere, init_vector(0, 0.1, 0)), 0.05) > 0.0)
 				fill_pxl(mlx->screen, x, y, RT_GREEN);
 			y++;
 		}
@@ -64,8 +64,8 @@ int		rt_render(t_fmlx *mlx)
 void	rt(t_fmlx *mlx)
 {
 	//mlx->sphere = init_vector(1.1, 2.3, 1.4);
-	mlx->sphere = init_vector(1, 0.65, 0.8);
-	mlx->size = 0.03;
+	mlx->sphere = init_vector(1, -0.2, 0.25);
+	mlx->size = 0.05;
 	rt_init(&(mlx->cam), &(mlx->vp));
 	get_viewplane(&(mlx->vp), mlx->cam);
 	rt_render(mlx);

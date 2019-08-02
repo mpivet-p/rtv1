@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 06:54:43 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/01 05:14:30 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/02 03:02:12 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ int		deal_key(int key, t_fmlx *mlx)
 	if (key == 121)
 		mlx->cam.pos.y -= 0.05;
 	if (key == 69)
-		mlx->vp.dist += 50;
+		mlx->vp.dist += 1;
 	if (key == 78)
-		mlx->vp.dist -= 50;
+		mlx->vp.dist -= 1;
 	if (key == 49)
 		mlx->size /= 2;
 	if (key == 91)
