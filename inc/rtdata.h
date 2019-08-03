@@ -49,4 +49,19 @@ typedef struct	s_camera
 	t_vector	rightvec;
 }				t_camera;
 
+typedef struct	s_cylinder
+{
+	t_vector	pos;
+	t_vector	dir;
+	double		radius;
+}				t_cylinder;
+
+typedef struct	s_cone
+{
+	t_vector	pos;
+	t_vector	dir;
+	double		radius;
+	double		height;
+}				t_cone;
+
 #endif

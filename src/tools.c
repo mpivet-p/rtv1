@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 04:49:56 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/07/30 06:56:22 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/03 08:41:45 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,7 @@ t_point		init_point(double x, double y, double z)
 	return (vect);
 }
 
-t_vector	dot_product(t_vector a, t_vector b)
+double		dot_product(t_vector a, t_vector b)
 {
-	t_vector ret;
-
-	ret.x = a.x * b.x;
-	ret.y = a.y * b.y;
-	ret.z = a.z * b.z;
-	return (ret);
+	return (a.x * b.x + a.y * b.y + a.z * b.z);
 }

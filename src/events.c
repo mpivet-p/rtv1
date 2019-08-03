@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 06:54:43 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/02 05:36:00 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/03 00:32:37 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ int		deal_key(int key, t_fmlx *mlx)
 	if (key == 84)
 		mlx->sphere.z -= 0.05;
 	if (key == 86)
-		mlx->sphere.y += 0.05;
+		mlx->sphere.x += 0.05;
 	if (key == 88)
-		mlx->sphere.y -= 0.05;
+		mlx->sphere.x -= 0.05;
 	get_viewplane(&(mlx->vp), mlx->cam);
 	rt_render(mlx);
 	return (key);
