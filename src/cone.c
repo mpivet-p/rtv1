@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/03 03:50:53 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/03 08:34:24 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/03 10:00:03 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,11 @@ double	solve_cone(t_ray ray, t_cone cone)
 
 	k = atan(cone.radius / cone.height);
 	base = sub_vectors(ray.origin, cone.pos);
-	a = dot_product(ray.dir, cone.dir)
-		- (1 + k * k) * pow(dot_product(ray.dir, cone.dir), 2);
-	b = dot_product(ray.dir, cone.dir)
-		- (1 + k * k)
+	a = dot_product(ray.dir, ray.dir) - (1 + k * k)
+		* pow(dot_product(ray.dir, cone.dir), 2);
+	b = 2 * (dot_product(ray.dir, base) - (1 + k * k)
 			* (dot_product(ray.dir, cone.dir)
-			* dot_product(base, cone.dir));
+			* dot_product(base, cone.dir)));
 	c = dot_product(base, base) - (1 + k * k)
 		* pow(dot_product(base, cone.dir), 2);
 	return (ft_solve(a, b, c));

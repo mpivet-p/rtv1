@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 03:50:05 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/03 08:35:54 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/03 10:45:34 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	rt_init(t_camera *cam, t_viewplane *vp)
 
 int		rt_render(t_fmlx *mlx)
 {
+	t_cylinder cyl;
 	t_cone	cone;
 	t_ray	ray;
 	int		x;
@@ -37,10 +38,15 @@ int		rt_render(t_fmlx *mlx)
 	ray.origin.x = mlx->cam.pos.x;
 	ray.origin.y = mlx->cam.pos.y;
 	ray.origin.z = mlx->cam.pos.z;
-	cone.radius = mlx->size;
-	cone.height = 1;
-	cone.pos = init_vector(0.7, 1, 0);
-	cone.dir = init_vector(0, 1, 0);
+	//CONE
+	cone.radius = 1;
+	cone.height = 3;
+	cone.pos = init_vector(0, 1, 0);
+	cone.dir = init_vector(0, 0, 1);
+	//CYLINDER
+	cyl.radius = 0.08;
+	cyl.pos = init_vector(-0.5, 1, 0);
+	cyl.dir = init_vector(0, 1, 1);
 	x = 0;
 	y = 0;
 	ft_bzero(mlx->screen, SIMG_X * SIMG_Y * 4);
@@ -51,14 +57,17 @@ int		rt_render(t_fmlx *mlx)
 			ray.dir = get_dir(mlx->vp, mlx->cam, ray, get_indent(mlx->vp, init_point(x, y, 0)));
 			if (solve_plane(ray, init_vector(0, 0, 1), init_point(0, 0, -0.5)) > 0.0)
 				fill_pxl(mlx->screen, x, y, 0x0589f5);
+			if (solve_cone(ray, cone) > 0.0)
+				fill_pxl(mlx->screen, x, y, RT_GREEN);
+//NOT WORKING
+//			if (solve_cylinder(ray, cyl) > 0.0)
+//				fill_pxl(mlx->screen, x, y, RT_PURPLE);
 			if (solve_sphere(ray, sub_vectors(mlx->sphere, init_vector(0.5, 0, 0)), mlx->size * 2) > 0.0)
 				fill_pxl(mlx->screen, x, y, 0xf54611);
 			if (solve_sphere(ray, mlx->sphere, mlx->size) > 0.0)
 				fill_pxl(mlx->screen, x, y, RT_YELLO);
 			if (solve_sphere(ray, sub_vectors(mlx->sphere, init_vector(0.2, 0, 0)), mlx->size) > 0.0)
 				fill_pxl(mlx->screen, x, y, 0xf5a511);
-	//		if (solve_cone(ray, cone) > 0.0)
-	//			fill_pxl(mlx->screen, x, y, RT_GREEN);
 			y++;
 		}
 		y = 0;
