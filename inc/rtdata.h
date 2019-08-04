@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rtdata.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/08/04 01:19:54 by mpivet-p          #+#    #+#             */
+/*   Updated: 2019/08/04 04:51:47 by mpivet-p         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef RTDATA_H
 # define RTDATA_H
 # define SWIN_X		1600
@@ -11,6 +23,81 @@
 # define RT_YELLO	0xFFFF00
 # define RT_CYAN	0x00FFFF
 # define RT_PURPLE	0xFF00FF
+
+/*
+** ============================================================================
+** FIGURES.....................................................................
+** ============================================================================
+*/
+
+typedef struct	s_sphere
+{
+	t_vector	pos;
+	double		radius;
+	double		color;
+}				t_sphere;
+
+typedef struct	s_plane
+{
+	t_vector	pos;
+	t_vector	dir;
+	double		color;
+}				t_plane;
+
+typedef struct	s_cylinder
+{
+	t_vector	pos;
+	t_vector	dir;
+	double		radius;
+	double		color;
+}				t_cylinder;
+
+typedef struct	s_cone
+{
+	t_vector	pos;
+	t_vector	dir;
+	double		radius;
+	double		height;
+	double		color;
+}				t_cone;
+
+typedef struct	s_light
+{
+	t_vector	pos;
+	double		brightness;
+	double		color;
+}				t_light;
+
+/*
+** ============================================================================
+** OBJECT LINKED LIST..........................................................
+** ============================================================================
+*/
+
+typedef struct	s_object
+{
+	int				type;
+	union
+	{
+		t_plane		plane;
+		t_sphere	sphere;
+		t_cylinder	cyl;
+		t_cone		cone;
+		t_light		light;
+	}				u_fig;
+	struct s_object	*next;
+}				t_object;
+
+/*
+** ============================================================================
+** MISC........................................................................
+** ============================================================================
+*/
+
+enum	e_objs
+{
+	RT_CYL, RT_CONE, RT_PLANE, RT_SPHERE, RT_LIGHT
+}
 
 typedef struct	s_vector
 {
@@ -36,9 +123,11 @@ typedef struct	s_viewplane
 
 typedef struct	s_ray
 {
+	t_object	*hit_by;
 	t_vector	origin;
 	t_vector	dir;
 	double		t;
+	int			color;
 }				t_ray;
 
 typedef struct	s_camera
@@ -48,20 +137,4 @@ typedef struct	s_camera
 	t_vector	upvec;
 	t_vector	rightvec;
 }				t_camera;
-
-typedef struct	s_cylinder
-{
-	t_vector	pos;
-	t_vector	dir;
-	double		radius;
-}				t_cylinder;
-
-typedef struct	s_cone
-{
-	t_vector	pos;
-	t_vector	dir;
-	double		radius;
-	double		height;
-}				t_cone;
-
 #endif
