@@ -6,13 +6,12 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 03:50:05 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/04 04:52:03 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/04 06:12:24 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
 #include <stdio.h>
-#include "rtdata.h"
 #include "rtv1.h"
 #include "libft.h"
 
@@ -29,8 +28,8 @@ void	rt_init(t_camera *cam, t_viewplane *vp)
 
 void	intersect(t_ray *ray, t_object *obj)
 {
-	static double	*figures[4](t_ray ray, t_object *obj) = {intersect_cylinder
-		, intersect_cone, intersect_plane, intersect_plane};
+	static double	(*figures[4])(t_ray ray, t_object *obj) = {intersect_cylinder
+		, intersect_cone, intersect_plane, intersect_sphere};
 	t_object		*ptr;
 	double 			ret;
 
@@ -42,6 +41,7 @@ void	intersect(t_ray *ray, t_object *obj)
 		{
 			ray->t = ret;
 			ray->hit_by = ptr;
+			ray->color = ptr->color;
 		}
 		ptr = ptr->next;
 	}
@@ -49,8 +49,9 @@ void	intersect(t_ray *ray, t_object *obj)
 
 void	init_ray(t_ray *ray, t_fmlx *mlx, int x, int y)
 {
-	ray->hit_by = -1;
+	ray->hit_by = NULL;
 	ray->t = 0.0;
+	ray->color = 0;
 	ray->dir = get_dir(mlx->vp, mlx->cam, *ray
 			, get_indent(mlx->vp, init_point(x, y, 0)));
 }
@@ -73,6 +74,8 @@ int		rt_render(t_fmlx *mlx)
 		{
 			init_ray(&ray, mlx, x, y);
 			intersect(&ray, mlx->obj);
+			if (ray.t > 0.0)
+				fill_pxl(mlx->screen, x, y, ray.color);
 			y++;
 		}
 		y = 0;
@@ -84,8 +87,7 @@ int		rt_render(t_fmlx *mlx)
 
 void	rt(t_fmlx *mlx)
 {
-	mlx->sphere = init_vector(0, 1, 0);
-	mlx->size = 0.1;
+	mlx->obj = list_test();
 	rt_init(&(mlx->cam), &(mlx->vp));
 	get_viewplane(&(mlx->vp), mlx->cam);
 	rt_render(mlx);

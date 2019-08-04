@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 01:19:43 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/04 03:29:38 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/04 05:12:16 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ double	intersect_sphere(t_ray ray, t_object *obj)
 	double		b;
 	double		c;
 
-	sphere = obj->sphere;
+	sphere = &(obj->u_fig.sphere);
 	base = sub_vectors(ray.origin, sphere->pos);
 	a = dot_product(ray.dir, ray.dir);
 	b = 2.0 * dot_product(ray.dir, base);

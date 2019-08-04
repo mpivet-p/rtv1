@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 03:55:16 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/04 04:24:14 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/04 05:24:57 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ void			rtv_exit(t_fmlx *mlx);
 ** ============================================================================
 */
 
-double			intersect_sphere(t_ray ray, t_vector sphere, double radius);
-double			intersect_plane(t_ray ray, t_vector vecdir, t_point plane);
-double			intersect_cylinder(t_ray ray, t_cylinder cyl);
-double			intersect_cone(t_ray ray, t_cone cone);
+double			intersect_sphere(t_ray ray, t_object *obj);
+double			intersect_plane(t_ray ray, t_object *obj);
+double			intersect_cylinder(t_ray ray, t_object *obj);
+double			intersect_cone(t_ray ray, t_object *obj);
 
 /*
 ** ============================================================================
@@ -82,5 +82,8 @@ void			get_viewplane(t_viewplane *vp, t_camera cam);
 void			rt_init(t_camera *cam, t_viewplane *vp);
 void			rt(t_fmlx *mlx);
 int				rt_render(t_fmlx *mlx);
+
+//TESTS
+t_object	*list_test(void);
 
 #endif

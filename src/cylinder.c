@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/03 04:59:07 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/04 03:37:34 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/04 05:14:02 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ double	intersect_cylinder(t_ray ray, t_object *obj)
 	double		b;
 	double		c;
 
-	cyl = &(obj->cyl);
+	cyl = &(obj->u_fig.cyl);
 	base = sub_vectors(ray.origin, cyl->pos);
 	a = dot_product(ray.dir, ray.dir)
 		- pow(dot_product(ray.dir, cyl->dir), 2);
