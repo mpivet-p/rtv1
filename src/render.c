@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 03:50:05 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/04 06:12:24 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/04 07:56:58 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	intersect(t_ray *ray, t_object *obj)
 	ptr = obj;
 	while (ptr != NULL)
 	{
-		if ((ret = figures[ptr->type](*ray, ptr)) > ray->t)
+		if (((ret = figures[ptr->type](*ray, ptr)) < ray->t || ray->t == 0) && ret > 0)
 		{
 			ray->t = ret;
 			ray->hit_by = ptr;
@@ -50,7 +50,7 @@ void	intersect(t_ray *ray, t_object *obj)
 void	init_ray(t_ray *ray, t_fmlx *mlx, int x, int y)
 {
 	ray->hit_by = NULL;
-	ray->t = 0.0;
+	ray->t = 0;
 	ray->color = 0;
 	ray->dir = get_dir(mlx->vp, mlx->cam, *ray
 			, get_indent(mlx->vp, init_point(x, y, 0)));
