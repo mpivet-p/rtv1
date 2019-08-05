@@ -6,15 +6,15 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 04:49:56 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/03 08:41:45 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/05 04:21:35 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <mlx.h>
 #include <stdio.h>
+#include <math.h>
 #include "rtv1.h"
-#include "rtdata.h"
 
 void	fill_pxl(char *image, int x, int y, int color)
 {
@@ -41,16 +41,6 @@ void	rtv_exit(t_fmlx *mlx)
 t_vector	init_vector(double x, double y, double z)
 {
 	t_vector	vect;
-
-	vect.x = x;
-	vect.y = y;
-	vect.z = z;
-	return (vect);
-}
-
-t_point		init_point(double x, double y, double z)
-{
-	t_point	vect;
 
 	vect.x = x;
 	vect.y = y;

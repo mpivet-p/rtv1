@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 03:50:05 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/04 07:56:58 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/05 05:30:17 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	rt_init(t_camera *cam, t_viewplane *vp)
 
 void	intersect(t_ray *ray, t_object *obj)
 {
-	static double	(*figures[4])(t_ray ray, t_object *obj) = {intersect_cylinder
-		, intersect_cone, intersect_plane, intersect_sphere};
+	static double	(*figures[4])(t_ray ray, t_object *obj)= {
+		intersect_cylinder, intersect_cone, intersect_plane, intersect_sphere};
 	t_object		*ptr;
 	double 			ret;
 
@@ -47,39 +47,36 @@ void	intersect(t_ray *ray, t_object *obj)
 	}
 }
 
-void	init_ray(t_ray *ray, t_fmlx *mlx, int x, int y)
+void	reset_ray(t_ray *ray, t_fmlx *mlx, int x, int y)
 {
 	ray->hit_by = NULL;
 	ray->t = 0;
 	ray->color = 0;
 	ray->dir = get_dir(mlx->vp, mlx->cam, *ray
-			, get_indent(mlx->vp, init_point(x, y, 0)));
+			, get_indent(mlx->vp, init_vector(x, y, 0)));
 }
 
 int		rt_render(t_fmlx *mlx)
 {
+	t_vector position;
 	t_ray	ray;
-	int		x;
-	int		y;
+	int		i;
 
-	ray.origin.x = mlx->cam.pos.x;
-	ray.origin.y = mlx->cam.pos.y;
-	ray.origin.z = mlx->cam.pos.z;
-	x = 0;
-	y = 0;
-	ft_bzero(mlx->screen, SIMG_X * SIMG_Y * 4);
-	while (x < SIMG_X)
+	i = 0;
+	ray = vector_mult(mlx->cam.pos, 1);
+	while (i < SIMG_X * SIMG_Y)
 	{
-		while (y < SIMG_Y)
+		reset_ray(&ray, mlx, i / SIMG_Y, i % SIMG_Y);
+		intersect(&ray, mlx->obj);
+		if (ray.t > 0.0)
 		{
-			init_ray(&ray, mlx, x, y);
-			intersect(&ray, mlx->obj);
-			if (ray.t > 0.0)
-				fill_pxl(mlx->screen, x, y, ray.color);
-			y++;
+			position = add_vectors(ray.origin, vector_mult(ray.dir, ray.t));
+			normal = get_normal(&ray, position);
+			fill_pxl(mlx->screen, i / SIMG_Y, i % SIMG_Y, ray.color);
 		}
-		y = 0;
-		x++;
+		else
+			fill_pxl(mlx->screen, i / SIMG_Y, i % SIMG_Y, 0);
+		i++;
 	}
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
 	return (0);
