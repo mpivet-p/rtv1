@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 03:55:16 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/05 05:21:49 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/05 07:33:24 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,9 @@ void			get_viewplane(t_viewplane *vp, t_camera cam);
 void			rt_init(t_camera *cam, t_viewplane *vp);
 void			rt(t_fmlx *mlx);
 int				rt_render(t_fmlx *mlx);
+double		norm_vector(t_vector vector);
+t_vector	normalize(t_vector vector);
+t_vector	get_normal(t_ray *ray, t_vector position);
 
 //TESTS
 t_object	*list_test(void);

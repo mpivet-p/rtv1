@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 03:50:05 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/05 05:30:17 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/05 07:44:58 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,15 @@ void	reset_ray(t_ray *ray, t_fmlx *mlx, int x, int y)
 
 int		rt_render(t_fmlx *mlx)
 {
+	t_vector position_lumiere;
 	t_vector position;
+	t_vector normal;
 	t_ray	ray;
 	int		i;
 
 	i = 0;
-	ray = vector_mult(mlx->cam.pos, 1);
+	position_lumiere = init_vector(0, 0, 1);
+	ray.origin = vector_mult(mlx->cam.pos, 1);
 	while (i < SIMG_X * SIMG_Y)
 	{
 		reset_ray(&ray, mlx, i / SIMG_Y, i % SIMG_Y);
@@ -72,6 +75,7 @@ int		rt_render(t_fmlx *mlx)
 		{
 			position = add_vectors(ray.origin, vector_mult(ray.dir, ray.t));
 			normal = get_normal(&ray, position);
+			ray.color = 10000 * dot_product(normalize(sub_vectors(position_lumiere, position)), normal) / (norm_vector(sub_vectors(position_lumiere, position)));
 			fill_pxl(mlx->screen, i / SIMG_Y, i % SIMG_Y, ray.color);
 		}
 		else

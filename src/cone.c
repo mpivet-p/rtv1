@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/03 03:50:53 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/05 06:54:28 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/05 07:45:12 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ double	intersect_cone(t_ray ray, t_object *obj)
 	return (ft_solve(a, b, c));
 }
 
-t_vector	normal_cone(t_ray *ray, t_vector vector)
+t_vector	normal_cone(t_ray *ray, t_vector position)
 {
 	t_vector	ret;
 	t_cone		*cone;
@@ -51,6 +51,6 @@ t_vector	normal_cone(t_ray *ray, t_vector vector)
 	k = atan(cone->radius / cone->height);
 	ret = vector_mult(cone->dir, cone->height * k * k);
 	ret = sub_vectors(position
-		, vector_sub(cone->pos, vector_mult(cone->dir, cone->height)), ret);
+		, sub_vectors(cone->pos, sub_vectors(vector_mult(cone->dir, cone->height), ret)));
 	return (normalize(ret));
 }

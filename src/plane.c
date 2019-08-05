@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/03 00:49:06 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/05 05:04:45 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/05 07:35:37 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ t_vector	normal_plane(t_ray *ray, t_vector position)
 
 
 	plane = &(ray->hit_by->u_fig.plane);
+	(void)position;
 	if (dot_product(ray->dir, plane->dir) < 0)
 		return (vector_mult(plane->dir, -1));
 	return (plane->dir);
