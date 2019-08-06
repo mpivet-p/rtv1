@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 03:55:16 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/06 04:22:30 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/06 12:45:11 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int				deal_key(int key, t_fmlx *mlx);
 ** ============================================================================
 */
 
+t_vector	reflect(t_vector incident, t_vector normal);
 void			fill_pxl(char *image, int x, int y, int color);
 void			rtv_exit(t_fmlx *mlx);
 int				mult_color(int color, double mult);

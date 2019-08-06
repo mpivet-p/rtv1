@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 04:49:56 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/06 08:39:00 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/06 12:52:11 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ int		mult_color(int color, double mult)
 	r = ((color & 0xFF0000) >> 16);
 	g = ((color & 0xFF00) >> 8);
 	b = (color & 0xFF);
-	color = init_color(((r * mult) > r) ? r : (r * mult)
-		, ((g * mult) > g) ? g : g * mult
-		, ((b * mult) > b) ? b : b * mult);
+	color = init_color(((r * mult) > 0xFF) ? 0xFF : (r * mult)
+		, ((g * mult) > 0xFF) ? 0xFF : g * mult
+		, ((b * mult) > 0xFF) ? 0xFF : b * mult);
 	return (color);
 }
