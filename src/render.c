@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 03:50:05 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/05 07:44:58 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/06 02:29:34 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,17 +56,33 @@ void	reset_ray(t_ray *ray, t_fmlx *mlx, int x, int y)
 			, get_indent(mlx->vp, init_vector(x, y, 0)));
 }
 
+int		mult_color(int color, double mult)
+{
+	int r;
+	int g;
+	int b;
+
+	r = ((color & 0xFF0000) >> 16) * mult;
+	g = ((color & 0xFF00) >> 8) * mult;
+	b = (color & 0xFF) * mult;
+	color = (r << 16) + (g << 8) + b;
+	return (color);
+}
+
 int		rt_render(t_fmlx *mlx)
 {
-	t_vector position_lumiere;
-	t_vector position;
-	t_vector normal;
-	t_ray	ray;
-	int		i;
+	t_vector	position_lumiere;
+	t_vector	lightvector;
+	t_vector	position;
+	double		angle;
+	t_ray		ray;
+	int			i;
 
 	i = 0;
+	angle = 0.0;
 	position_lumiere = init_vector(0, 0, 1);
 	ray.origin = vector_mult(mlx->cam.pos, 1);
+	lightvector = init_vector(0, 0, 0);
 	while (i < SIMG_X * SIMG_Y)
 	{
 		reset_ray(&ray, mlx, i / SIMG_Y, i % SIMG_Y);
@@ -74,8 +90,11 @@ int		rt_render(t_fmlx *mlx)
 		if (ray.t > 0.0)
 		{
 			position = add_vectors(ray.origin, vector_mult(ray.dir, ray.t));
-			normal = get_normal(&ray, position);
-			ray.color = 10000 * dot_product(normalize(sub_vectors(position_lumiere, position)), normal) / (norm_vector(sub_vectors(position_lumiere, position)));
+			lightvector = normalize(sub_vectors(position, position_lumiere));
+			angle = dot_product(get_normal(&ray, position), vector_mult(lightvector, -1));
+			ray.color = 0;
+			if (angle > 0)
+				ray.color = RT_WHITE;
 			fill_pxl(mlx->screen, i / SIMG_Y, i % SIMG_Y, ray.color);
 		}
 		else

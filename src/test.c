@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/04 01:53:29 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/05 07:52:13 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/06 02:31:18 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ t_object	*list_test(void)
 	ptr[0]->next = ptr[2];
 //	ptr[1]->next = ptr[2];
 //	ptr[2]->next = ptr[3];
-	ptr[2]->next = NULL;
+	ptr[2]->next = ptr[4];
 //	ptr[3]->next = ptr[4];
-//	ptr[4]->next = NULL;
+	ptr[4]->next = NULL;
 
   // Sphere 1
 	ptr[0]->type = RT_SPHERE;
@@ -55,7 +55,7 @@ t_object	*list_test(void)
 
   // Plane 1
 	ptr[2]->type = RT_PLANE;
-	ptr[2]->u_fig.plane.pos = init_vector(0, 0, -0.05);
+	ptr[2]->u_fig.plane.pos = init_vector(0, 0, -0.2);
 	ptr[2]->u_fig.plane.dir = normalize(init_vector(0, 0, 1));
 	ptr[2]->color = 0x0589f5;
 
@@ -69,8 +69,8 @@ t_object	*list_test(void)
 
 	// Cylinder 1
 	ptr[4]->type = RT_CYL;
-	ptr[4]->u_fig.cyl.pos = init_vector(0, 1, 0);
-	ptr[4]->u_fig.cyl.dir = normalize(init_vector(0, 1, 1));
+	ptr[4]->u_fig.cyl.pos = init_vector(0.5, 1, 0);
+	ptr[4]->u_fig.cyl.dir = normalize(init_vector(0, 0, 1));
 	ptr[4]->u_fig.cyl.radius = 0.1;
 	ptr[4]->color = RT_CYAN;
 	return (ptr[0]);
