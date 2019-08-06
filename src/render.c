@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 03:50:05 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/06 02:29:34 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/06 03:31:14 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,9 @@ int		rt_render(t_fmlx *mlx)
 			angle = dot_product(get_normal(&ray, position), vector_mult(lightvector, -1));
 			ray.color = 0;
 			if (angle > 0)
-				ray.color = RT_WHITE;
+			{
+				ray.color = mult_color(ray.hit_by->color, 1.0 * angle);
+			}
 			fill_pxl(mlx->screen, i / SIMG_Y, i % SIMG_Y, ray.color);
 		}
 		else
