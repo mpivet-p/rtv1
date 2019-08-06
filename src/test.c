@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/04 01:53:29 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/06 02:31:18 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/06 08:32:00 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,8 @@ t_object	*list_test(void)
 		i++;
 	}
 	//Next pointers
-	ptr[0]->next = ptr[2];
-//	ptr[1]->next = ptr[2];
-//	ptr[2]->next = ptr[3];
+	ptr[0]->next = ptr[1];
+	ptr[1]->next = ptr[2];
 	ptr[2]->next = ptr[4];
 //	ptr[3]->next = ptr[4];
 	ptr[4]->next = NULL;
@@ -44,12 +43,11 @@ t_object	*list_test(void)
 	ptr[0]->type = RT_SPHERE;
 	ptr[0]->u_fig.sphere.pos = init_vector(-0.2, 1, 0);
 	ptr[0]->u_fig.sphere.radius = 0.1;
-	ptr[0]->color = RT_YELLO;
 	ptr[0]->color = 0xf54611;
 
   // Sphere 2
 	ptr[1]->type = RT_SPHERE;
-	ptr[1]->u_fig.sphere.pos = init_vector(-0.2, 1.1, 0);
+	ptr[1]->u_fig.sphere.pos = init_vector(-0.2, 1.1, 0.2);
 	ptr[1]->u_fig.sphere.radius = 0.1;
 	ptr[1]->color = 0xf5a511;
 
@@ -60,12 +58,12 @@ t_object	*list_test(void)
 	ptr[2]->color = 0x0589f5;
 
   // Cone 1
-	ptr[3]->type = RT_CONE;
-	ptr[3]->u_fig.cone.pos = init_vector(0, 1, 0.2);
-	ptr[3]->u_fig.cone.dir = normalize(init_vector(0, 0, 1));
-	ptr[3]->u_fig.cone.height = 3;
-	ptr[3]->u_fig.cone.radius = 1;
-	ptr[3]->color = RT_GREEN;
+//	ptr[3]->type = RT_CONE;
+//	ptr[3]->u_fig.cone.pos = init_vector(0, 1, 0.2);
+//	ptr[3]->u_fig.cone.dir = normalize(init_vector(0, 0, 1));
+//	ptr[3]->u_fig.cone.height = 3;
+//	ptr[3]->u_fig.cone.radius = 1;
+//	ptr[3]->color = RT_GREEN;
 
 	// Cylinder 1
 	ptr[4]->type = RT_CYL;

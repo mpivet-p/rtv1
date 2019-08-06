@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 04:49:56 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/05 04:21:35 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/06 08:39:00 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,33 @@ t_vector	init_vector(double x, double y, double z)
 double		dot_product(t_vector a, t_vector b)
 {
 	return (a.x * b.x + a.y * b.y + a.z * b.z);
+}
+
+void	reset_ray(t_ray *ray, t_fmlx *mlx, int x, int y)
+{
+	ray->hit_by = NULL;
+	ray->t = 0;
+	ray->color = 0;
+	ray->dir = get_dir(mlx->vp, mlx->cam, *ray
+			, get_indent(mlx->vp, init_vector(x, y, 0)));
+}
+
+int		init_color(int r, int g, int b)
+{
+	return ((r << 16) + (g << 8) + b);
+}
+
+int		mult_color(int color, double mult)
+{
+	int r;
+	int g;
+	int b;
+
+	r = ((color & 0xFF0000) >> 16);
+	g = ((color & 0xFF00) >> 8);
+	b = (color & 0xFF);
+	color = init_color(((r * mult) > r) ? r : (r * mult)
+		, ((g * mult) > g) ? g : g * mult
+		, ((b * mult) > b) ? b : b * mult);
+	return (color);
 }
