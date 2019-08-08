@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 03:50:05 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/06 12:52:49 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/08 23:44:10 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,45 +36,6 @@ void	intersect(t_ray *ray, t_object *obj)
 	}
 }
 
-double	get_diffuse_color(t_ray *ray, t_vector *light_vector, t_vector *position)
-{
-	double		angle;
-
- 	angle = dot_product(get_normal(ray, *position), vector_mult(*light_vector, -1));
-	if (angle > 0)
-		return (angle);
-	return (0);
-}
-
-double	get_ambient_color(void)
-{
-	return (0.1);
-}
-
-double	get_specular_color(t_ray *ray, t_vector *light_vector, t_vector *position)
-{
-	t_vector	reflect_dir;
-	double	spec;
-
-	reflect_dir = reflect(vector_mult(*light_vector, -1), get_normal(ray, *position));
-	spec = pow(ft_max(dot_product(ray->dir, reflect_dir), 0.0), 32);
-	return (0.5 * spec * 1);
-}
-
-void	get_color(t_ray *ray, t_vector *light_pos)
-{
-	t_vector	position;
-	t_vector	light_vector;
-	double		coeff;
-
- 	position = add_vectors(ray->origin, vector_mult(ray->dir, ray->t));
- 	light_vector = normalize(sub_vectors(position, *light_pos));
-	coeff = get_ambient_color()
-		+ get_diffuse_color(ray, &light_vector, &position)
-		;//+ get_specular_color(ray, &light_vector, &position);
-	ray->color = mult_color(ray->hit_by->color, coeff);
-}
-
 int		rt_render(t_fmlx *mlx)
 {
 	t_vector	light_pos;
@@ -89,7 +50,9 @@ int		rt_render(t_fmlx *mlx)
 		reset_ray(&ray, mlx, i / SIMG_Y, i % SIMG_Y);
 		intersect(&ray, mlx->obj);
 		if (ray.t > 0.0)
+		{
 			get_color(&ray, &light_pos);
+		}
 		fill_pxl(mlx->screen, i / SIMG_Y, i % SIMG_Y, ray.color);
 		i++;
 	}

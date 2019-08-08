@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 03:55:16 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/06 12:45:11 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/09 00:21:11 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,17 @@ t_vector normal_sphere(t_ray *ray, t_vector position);
 t_vector normal_plane(t_ray *ray, t_vector position);
 t_vector normal_cylinder(t_ray *ray, t_vector position);
 t_vector normal_cone(t_ray *ray, t_vector position);
+
+/*
+** ============================================================================
+**	COLOR TOOLS................................................................
+** ============================================================================
+*/
+
+double	get_diffuse_color(t_ray *ray, t_vector *light_vec, t_vector *position);
+double	get_ambient_color(void);
+double	get_specular_color(t_ray *ray, t_vector *light_vec, t_vector *position);
+void	get_color(t_ray *ray, t_vector *light_pos);
 
 /*
 ** ============================================================================
