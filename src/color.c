@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/08 23:35:01 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/09 00:43:00 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/09 01:54:39 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,18 @@ void	get_color(t_ray *ray, t_vector *light_pos)
 	ray->color = mult_color(ray->hit_by->color, coeff);							//multiplication de la lumiere
 }
 
-double	is_shadow(t_ray *ray)
+double	is_lighted(t_vector light_vec, t_object *obj)
+{
+	t_ray	ray;
+
+	ray.t = 0;
+	ray.hit_by = NULL;
+	ray.color = 0;
+	ray.dir = vector_mult(light_vec, -1);
+	intersect(&ray, obj);
+	if (ray.t > 0)
+	{
+		//IF DIST > LIGHT   ==> disp color   ELSE DISP SHADOW
+	}
+	return (0);
+}

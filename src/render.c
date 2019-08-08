@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 03:50:05 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/08 23:44:10 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/09 01:39:32 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ void	intersect(t_ray *ray, t_object *obj)
 	ptr = obj;
 	while (ptr != NULL)
 	{
-		if (((ret = figures[ptr->type](*ray, ptr)) < ray->t || ray->t == 0) && ret > 0)
+		if (ptr->type != RT_LIGHT && 
+				((ret = figures[ptr->type](*ray, ptr)) < ray->t
+				 || ray->t == 0) && ret > 0)
 		{
 			ray->t = ret;
 			ray->hit_by = ptr;
