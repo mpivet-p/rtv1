@@ -6,11 +6,12 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/08 23:35:01 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/10 03:07:05 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/10 03:54:00 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
+#include <stdio.h>
 #include "rtv1.h"
 #include "libft.h"
 
@@ -49,14 +50,18 @@ double	is_lighted(t_vector *pos, t_vector *light_vec, t_vector *light_pos, t_obj
 	ray.t = 0;
 	ray.hit_by = NULL;
 	ray.color = 0;
-	ray.dir = normalize(vector_mult(*light_vec, -1));
+	ray.dir = vector_mult(*light_vec, -1);
 	ray.origin = *pos;
 	intersect(&ray, obj);
 	if (ray.t > 0)
 	{
 		nearest = ray_to_point(&ray);
 		if (get_dist(pos, light_pos) > get_dist(pos, &nearest))
+		{
+			if (ray.hit_by->type == RT_SPHERE)
+				printf("%f %f\n", get_dist(pos, light_pos), get_dist(pos, &nearest));
 			return (0);
+		}
 		return (1);
 	}
 	return (1);
