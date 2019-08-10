@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 18:44:21 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/06 11:19:41 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/11 01:08:48 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef	struct	s_list
 	struct s_list	*next;
 }				t_list;
 
-double			ft_clamp(double value, double high, double low);
+double			ft_clamp(double value, double low, double high);
 double			ft_max(double value, double low);
 char			**tabdup(char **table, char ***new_tab, int addlines);
 char			**ft_splitwhitespaces(char const *s);

@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/08 23:35:01 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/10 03:54:00 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/11 01:31:18 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ double	get_specular_color(t_ray *ray, t_vector *light_vec, t_vector *position) /
 double	is_lighted(t_vector *pos, t_vector *light_vec, t_vector *light_pos, t_object *obj)
 {
 	t_vector	nearest;
+	double		biais;
 	t_ray		ray;
 
 	ray.t = 0;
@@ -52,16 +53,17 @@ double	is_lighted(t_vector *pos, t_vector *light_vec, t_vector *light_pos, t_obj
 	ray.color = 0;
 	ray.dir = vector_mult(*light_vec, -1);
 	ray.origin = *pos;
+	biais = 0;
 	intersect(&ray, obj);
-	if (ray.t > 0)
+	if (ray.hit_by != NULL)
+	{
+		biais = ft_clamp(0.05 * (1.0 - dot_product(get_normal(&ray, *light_pos), *light_vec)), 0, 0.01);
+	}
+	if (ray.t > biais)
 	{
 		nearest = ray_to_point(&ray);
 		if (get_dist(pos, light_pos) > get_dist(pos, &nearest))
-		{
-			if (ray.hit_by->type == RT_SPHERE)
-				printf("%f %f\n", get_dist(pos, light_pos), get_dist(pos, &nearest));
 			return (0);
-		}
 		return (1);
 	}
 	return (1);
