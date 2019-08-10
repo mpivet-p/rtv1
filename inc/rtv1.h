@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 03:55:16 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/09 00:21:11 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/10 02:16:11 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,12 @@ int				deal_key(int key, t_fmlx *mlx);
 ** ============================================================================
 */
 
-t_vector	reflect(t_vector incident, t_vector normal);
+t_vector		reflect(t_vector incident, t_vector normal);
 void			fill_pxl(char *image, int x, int y, int color);
 void			rtv_exit(t_fmlx *mlx);
 int				mult_color(int color, double mult);
+double			get_dist(t_vector *a, t_vector *b);
+t_vector		ray_to_point(t_ray *ray);
 
 /*
 ** ============================================================================
@@ -52,6 +54,7 @@ int				mult_color(int color, double mult);
 ** ============================================================================
 */
 
+void			intersect(t_ray *ray, t_object *obj);
 double			intersect_sphere(t_ray ray, t_object *obj);
 double			intersect_plane(t_ray ray, t_object *obj);
 double			intersect_cylinder(t_ray ray, t_object *obj);
@@ -77,7 +80,7 @@ t_vector normal_cone(t_ray *ray, t_vector position);
 double	get_diffuse_color(t_ray *ray, t_vector *light_vec, t_vector *position);
 double	get_ambient_color(void);
 double	get_specular_color(t_ray *ray, t_vector *light_vec, t_vector *position);
-void	get_color(t_ray *ray, t_vector *light_pos);
+void	get_color(t_ray *ray, t_vector *light_pos, t_object *obj);
 
 /*
 ** ============================================================================

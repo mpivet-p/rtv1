@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 03:50:05 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/09 01:39:32 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/10 02:15:51 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int		rt_render(t_fmlx *mlx)
 		intersect(&ray, mlx->obj);
 		if (ray.t > 0.0)
 		{
-			get_color(&ray, &light_pos);
+			get_color(&ray, &light_pos, mlx->obj);
 		}
 		fill_pxl(mlx->screen, i / SIMG_Y, i % SIMG_Y, ray.color);
 		i++;
