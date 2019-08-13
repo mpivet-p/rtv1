@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/05 04:21:18 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/05 07:43:30 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/13 02:46:34 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,5 @@ t_vector	get_normal(t_ray *ray, t_vector position)
 	static t_vector	(*normals[4])(t_ray *ray, t_vector position) = {
 		normal_cylinder, normal_cone, normal_plane, normal_sphere};
 
-	return (normals[ray->hit_by->type](ray, position));
+	return (normalize(normals[ray->hit_by->type](ray, position)));
 }

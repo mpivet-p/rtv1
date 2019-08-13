@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/08 23:35:01 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/11 01:31:18 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/13 03:43:17 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ double	get_specular_color(t_ray *ray, t_vector *light_vec, t_vector *position) /
 	return (0.5 * spec * 1);
 }
 
-double	is_lighted(t_vector *pos, t_vector *light_vec, t_vector *light_pos, t_object *obj)
+double	is_lighted(t_vector *pos, t_vector *light_vec, t_vector *light_pos, t_object *obj, t_object *ignore, int x, int y)
 {
 	t_vector	nearest;
 	double		biais;
@@ -51,14 +51,18 @@ double	is_lighted(t_vector *pos, t_vector *light_vec, t_vector *light_pos, t_obj
 	ray.t = 0;
 	ray.hit_by = NULL;
 	ray.color = 0;
-	ray.dir = vector_mult(*light_vec, -1);
-	ray.origin = *pos;
+	ray.dir = normalize(vector_mult(*light_vec, -1));
+	ray.origin = vector_add(*pos, 0.0000001);
 	biais = 0;
-	intersect(&ray, obj);
+	intersect(&ray, obj, ignore);
 	if (ray.hit_by != NULL)
 	{
-		biais = ft_clamp(0.05 * (1.0 - dot_product(get_normal(&ray, *light_pos), *light_vec)), 0, 0.01);
+		biais = 0.001;
 	}
+	(void)x;
+	(void)y;
+//	if (x == 721 && y > 650 && y < 660)
+//		printf("x %i   y %i    %f   (%f, %f, %f) %i\n", x, y, ray.t, ray.dir.x, ray.dir.y, ray.dir.z, ray.hit_by->type);
 	if (ray.t > biais)
 	{
 		nearest = ray_to_point(&ray);
@@ -69,7 +73,7 @@ double	is_lighted(t_vector *pos, t_vector *light_vec, t_vector *light_pos, t_obj
 	return (1);
 }
 
-void	get_color(t_ray *ray, t_vector *light_pos, t_object *obj)
+void	get_color(t_ray *ray, t_vector *light_pos, t_object *obj, int x, int y)
 {
 	t_vector	position;
 	t_vector	light_vec;
@@ -79,7 +83,12 @@ void	get_color(t_ray *ray, t_vector *light_pos, t_object *obj)
 	light_vec = normalize(sub_vectors(position, *light_pos));					//Vecteur directeur (unitaire) du rayon qui va vers la lumiere nrm(position - pos_light)
 	coeff = get_ambient_color()													//Addition des multiplicateurs de lumieres
 		+ (get_diffuse_color(ray, &light_vec, &position)
-				* is_lighted(&position, &light_vec, light_pos, obj));
+				* is_lighted(&position, &light_vec, light_pos, obj, ray->hit_by, x, y));
 	//+ get_specular_color(ray, &light_vec, &position);
 	ray->color = mult_color(ray->hit_by->color, coeff);							//multiplication de la lumiere
+//	if (x == 721 && y > 650 && y < 660)
+//	{
+//		printf("x %i   y %i    %x %x %x\n", x, y, (ray->color >> 16) & 0xFF, (ray->color >> 8) & 0xFF, (ray->color) & 0xFF);
+//		ray->color = RT_WHITE;
+//	}
 }

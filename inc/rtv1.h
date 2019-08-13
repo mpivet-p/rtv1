@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 03:55:16 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/10 02:16:11 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/13 03:43:33 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct	s_fmlx
 ** ============================================================================
 */
 
-int				mouse_roll(int button, int x, int y, t_fmlx *mlx);
+int				mouse_press(int button, int x, int y, t_fmlx *mlx);
 int				mouse_move(int x, int y, t_fmlx *mlx);
 int				deal_key(int key, t_fmlx *mlx);
 
@@ -54,7 +54,7 @@ t_vector		ray_to_point(t_ray *ray);
 ** ============================================================================
 */
 
-void			intersect(t_ray *ray, t_object *obj);
+void			intersect(t_ray *ray, t_object *obj, t_object *ignore);
 double			intersect_sphere(t_ray ray, t_object *obj);
 double			intersect_plane(t_ray ray, t_object *obj);
 double			intersect_cylinder(t_ray ray, t_object *obj);
@@ -80,7 +80,7 @@ t_vector normal_cone(t_ray *ray, t_vector position);
 double	get_diffuse_color(t_ray *ray, t_vector *light_vec, t_vector *position);
 double	get_ambient_color(void);
 double	get_specular_color(t_ray *ray, t_vector *light_vec, t_vector *position);
-void	get_color(t_ray *ray, t_vector *light_pos, t_object *obj);
+void	get_color(t_ray *ray, t_vector *light_pos, t_object *obj, int x, int y);
 
 /*
 ** ============================================================================
@@ -90,6 +90,7 @@ void	get_color(t_ray *ray, t_vector *light_pos, t_object *obj);
 
 t_vector		init_vector(double x, double y, double z);
 t_vector		vector_mult(t_vector a, double nbr);
+t_vector		vector_add(t_vector a, double nbr);
 t_vector		add_vectors(t_vector a, t_vector b);
 t_vector		sub_vectors(t_vector a, t_vector b);
 t_vector		vector_sub(t_vector a, double nbr);

@@ -6,11 +6,12 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 06:54:43 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/04 04:58:19 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/12 23:49:30 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include <mlx.h>
 #include "rtv1.h"
 
 int		deal_key(int key, t_fmlx *mlx)
@@ -38,11 +39,12 @@ int		deal_key(int key, t_fmlx *mlx)
 	return (key);
 }
 
-int		mouse_roll(int button, int x, int y, t_fmlx *mlx)
+int		mouse_press(int button, int x, int y, t_fmlx *mlx)
 {
-	(void)x;
-	(void)y;
 	(void)mlx;
+	printf("x = %i }{ y = %i\n", x, y);
+	fill_pxl(mlx->screen, x, y, 0xFFFFFF);
+	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
 	return (button);
 }
 
