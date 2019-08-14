@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/08 23:35:01 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/14 03:33:38 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/14 04:20:12 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,12 @@ double	get_ambient_color(void)
 
 double	get_specular_color(t_ray *ray, t_vector *light_vec, t_vector *position)
 {
-	t_vector	reflect_dir;
-	double	spec;
+	t_vector	vec;
+	double		spec;
 
-	reflect_dir = reflect(vector_mult(*light_vec, -1)
-			, get_normal(ray, *position));
-	spec = pow(ft_max(dot_product(ray->dir, reflect_dir), 0.0), 32);
-	printf("%f\n", spec * 0.5);
-	return (0.5 * spec);
+	vec = bisector(vector_mult(ray->dir, -1), *light_vec);
+	spec = ft_max(0, dot_product(get_normal(ray, *position), vec));
+	return (0.5 * pow(spec, 32));
 }
 
 double	is_lighted(t_vector *pos, t_vector *light_vec, t_vector *light_pos, t_object *obj)

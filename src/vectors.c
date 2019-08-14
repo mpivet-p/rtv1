@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 07:48:06 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/02 01:43:18 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/14 03:52:16 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,16 @@ t_vector	vector_mult(t_vector a, double nbr)
 	ret.x = a.x * nbr;
 	ret.y = a.y * nbr;
 	ret.z = a.z * nbr;
+	return (ret);
+}
+
+t_vector	vector_div(t_vector a, double nbr)
+{
+	t_vector	ret;
+
+	ret.x = a.x / nbr;
+	ret.y = a.y / nbr;
+	ret.z = a.z / nbr;
 	return (ret);
 }
 

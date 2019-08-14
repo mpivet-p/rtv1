@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 03:55:16 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/14 01:05:29 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/14 03:52:46 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ t_vector		vector_add(t_vector a, double nbr);
 t_vector		add_vectors(t_vector a, t_vector b);
 t_vector		sub_vectors(t_vector a, t_vector b);
 t_vector		vector_sub(t_vector a, double nbr);
+t_vector		bisector(t_vector a, t_vector b);
+t_vector		vector_div(t_vector a, double nbr);
 double			dot_product(t_vector a, t_vector b);
 
 /*
