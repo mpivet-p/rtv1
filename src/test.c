@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/04 01:53:29 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/10 03:59:34 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/14 01:41:16 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,6 @@ t_object	*list_test(void)
 	ptr[4]->u_fig.cyl.pos = init_vector(0.5, 1, 0);
 	ptr[4]->u_fig.cyl.dir = normalize(init_vector(0, 0, 1));
 	ptr[4]->u_fig.cyl.radius = 0.1;
-	ptr[4]->color = RT_CYAN;
+	ptr[4]->color = 0x2ca338;
 	return (ptr[0]);
 }

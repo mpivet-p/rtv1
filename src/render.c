@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 03:50:05 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/13 03:47:34 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/14 01:06:51 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "rtv1.h"
 #include "libft.h"
 
-void	intersect(t_ray *ray, t_object *obj, t_object *ignore)
+void	intersect(t_ray *ray, t_object *obj)
 {
 	static double	(*figures[4])(t_ray ray, t_object *obj)= {
 		intersect_cylinder, intersect_cone, intersect_plane, intersect_sphere};
@@ -25,8 +25,8 @@ void	intersect(t_ray *ray, t_object *obj, t_object *ignore)
 	ret = 0;
 	while (obj != NULL)
 	{
-		if (obj->type != RT_LIGHT && obj != ignore &&
-				((ret = figures[obj->type](*ray, obj)) < ray->t
+		if (obj->type != RT_LIGHT
+				&& ((ret = figures[obj->type](*ray, obj)) < ray->t
 				 || ray->t == 0) && ret > 0)
 		{
 			ray->t = ret;
@@ -48,10 +48,10 @@ int		rt_render(t_fmlx *mlx)
 	while (i < SIMG_X * SIMG_Y)
 	{
 		reset_ray(&ray, mlx, i / SIMG_Y, i % SIMG_Y);
-		intersect(&ray, mlx->obj, NULL);
+		intersect(&ray, mlx->obj);
 		if (ray.t > 0.0)
 		{
-			get_color(&ray, &light_pos, mlx->obj, i / SIMG_Y, i % SIMG_Y);
+			get_color(&ray, &light_pos, mlx->obj);
 		}
 		fill_pxl(mlx->screen, i / SIMG_Y, i % SIMG_Y, ray.color);
 		i++;

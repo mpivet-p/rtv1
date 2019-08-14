@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 03:55:16 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/13 03:43:33 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/14 01:05:29 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ t_vector		ray_to_point(t_ray *ray);
 ** ============================================================================
 */
 
-void			intersect(t_ray *ray, t_object *obj, t_object *ignore);
+void			intersect(t_ray *ray, t_object *obj);
 double			intersect_sphere(t_ray ray, t_object *obj);
 double			intersect_plane(t_ray ray, t_object *obj);
 double			intersect_cylinder(t_ray ray, t_object *obj);
@@ -80,7 +80,7 @@ t_vector normal_cone(t_ray *ray, t_vector position);
 double	get_diffuse_color(t_ray *ray, t_vector *light_vec, t_vector *position);
 double	get_ambient_color(void);
 double	get_specular_color(t_ray *ray, t_vector *light_vec, t_vector *position);
-void	get_color(t_ray *ray, t_vector *light_pos, t_object *obj, int x, int y);
+void	get_color(t_ray *ray, t_vector *light_pos, t_object *obj);
 
 /*
 ** ============================================================================
@@ -115,6 +115,8 @@ t_vector		normalize(t_vector vector);
 t_vector		get_normal(t_ray *ray, t_vector position);
 void			rt_init(t_camera *cam, t_viewplane *vp);
 void			reset_ray(t_ray *ray, t_fmlx *mlx, int x, int y);
+//TMP
+void			disp_vec(t_vector *vec);
 
 //TESTS
 t_object	*list_test(void);
