@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/08 23:35:01 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/14 04:20:12 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/15 04:22:52 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,33 +15,28 @@
 #include "rtv1.h"
 #include "libft.h"
 
-double	get_diffuse_color(t_ray *ray, t_vector *light_vec, t_vector *position)
+double	diffuse_light(t_ray *ray, t_light *light, t_vector *position)
 {
 	double		angle;
 
 	angle = dot_product(
-			get_normal(ray, *position), vector_mult(*light_vec, -1));
+			get_normal(ray, *position), vector_mult(light->dir, -1));
 	if (angle > 0)
 		return (angle);
 	return (0);
 }
 
-double	get_ambient_color(void)
-{
-	return (0.1);
-}
-
-double	get_specular_color(t_ray *ray, t_vector *light_vec, t_vector *position)
+double	specular_light(t_ray *ray, t_light *light, t_vector *position)
 {
 	t_vector	vec;
 	double		spec;
 
-	vec = bisector(vector_mult(ray->dir, -1), *light_vec);
+	vec = bisector(vector_mult(ray->dir, -1), light->dir);
 	spec = ft_max(0, dot_product(get_normal(ray, *position), vec));
 	return (0.5 * pow(spec, 32));
 }
 
-double	is_lighted(t_vector *pos, t_vector *light_vec, t_vector *light_pos, t_object *obj)
+double	is_lighted(t_vector *pos, t_light *light, t_object *obj)
 {
 	t_vector	nearest;
 	t_ray		ray;
@@ -49,30 +44,46 @@ double	is_lighted(t_vector *pos, t_vector *light_vec, t_vector *light_pos, t_obj
 	ray.t = 0;
 	ray.hit_by = NULL;
 	ray.color = 0;
-	ray.dir = normalize(vector_mult(*light_vec, -1));
+	ray.dir = normalize(vector_mult(light->dir, -1));
 	ray.origin = *pos;
-	intersect(&ray, obj);
+	get_intersection(&ray, obj);
 	if (ray.t > 0)
 	{
 		nearest = ray_to_point(&ray);
-		if (get_dist(pos, light_pos) > get_dist(pos, &nearest))
+		if (get_dist(pos, &light->pos) > get_dist(pos, &nearest))
 			return (0);
 		return (1);
 	}
 	return (1);
 }
 
-void	get_color(t_ray *ray, t_vector *light_pos, t_object *obj)
+int		get_light_obj(t_light *light, t_vector *position, t_object *obj)
+{
+	while (obj)
+	{
+		if (obj->type == RT_LIGHT)
+		{
+			light->pos = obj->u_fig.light.pos;
+			light->dir = normalize(sub_vectors(*position, light->pos));
+			return (0);
+		}
+		obj = obj->next;
+	}
+	return (1);
+}
+t_vector	get_color(t_ray *ray, t_object *obj)
 {
 	t_vector	position;
-	t_vector	light_vec;
+	t_vector	color;
+	t_light		light;
 	double		coeff;
 
+ 	coeff = AMBIENT_STRENGTH;
 	position = add_vectors(ray->origin, vector_mult(ray->dir, ray->t));
 	position = add_vectors(position, vector_mult(get_normal(ray, position), 0.0000001));
-	light_vec = normalize(sub_vectors(position, *light_pos));
- 	coeff = get_ambient_color();
-	if (is_lighted(&position, &light_vec, light_pos, obj) == 1)
-		coeff += (get_diffuse_color(ray, &light_vec, &position) + get_specular_color(ray, &light_vec, &position));
-	ray->color = mult_color(ray->hit_by->color, coeff);
+	if (get_light_obj(&light, &position, obj) == 0 && is_lighted(&position, &light, obj) == 1)
+		coeff += diffuse_light(ray, &light, &position) + specular_light(ray, &light, &position);
+	printf("%f\n", coeff);
+	color = mult_color(ray->hit_by->color, init_vector(coeff, coeff, coeff));
+	return (color);
 }

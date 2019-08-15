@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/04 01:19:54 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/04 05:28:35 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/15 02:42:41 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 # define SWIN_Y		900
 # define SIMG_X		1600
 # define SIMG_Y		900
+# define AMBIENT_STRENGTH 0.075
 # define RT_WHITE	0xFFFFFF
-# define RT_RED		0xFF0000
-# define RT_GREEN	0x00FF00
-# define RT_BLUE	0x0000FF
-# define RT_YELLO	0xFFFF00
-# define RT_CYAN	0x00FFFF
-# define RT_PURPLE	0xFF00FF
+# define RT_RED		0xF54611
+# define RT_GREEN	0x2CA338
+# define RT_BLUE	0x0589F5
+# define RT_YELLO	0xF5A511
+# define RT_PURPLE	0xC017E6
 
 typedef struct	s_vector
 {
@@ -67,7 +67,7 @@ typedef struct	s_cone
 typedef struct	s_light
 {
 	t_vector	pos;
-	double		brightness;
+	t_vector	dir;
 }				t_light;
 
 /*

@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 03:55:16 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/14 03:52:46 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/15 03:32:09 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,8 @@ int				deal_key(int key, t_fmlx *mlx);
 */
 
 t_vector		reflect(t_vector incident, t_vector normal);
-void			fill_pxl(char *image, int x, int y, int color);
+void			fill_img(char *image, int i, t_vector color);
 void			rtv_exit(t_fmlx *mlx);
-int				mult_color(int color, double mult);
 double			get_dist(t_vector *a, t_vector *b);
 t_vector		ray_to_point(t_ray *ray);
 
@@ -54,7 +53,7 @@ t_vector		ray_to_point(t_ray *ray);
 ** ============================================================================
 */
 
-void			intersect(t_ray *ray, t_object *obj);
+void			get_intersection(t_ray *ray, t_object *obj);
 double			intersect_sphere(t_ray ray, t_object *obj);
 double			intersect_plane(t_ray ray, t_object *obj);
 double			intersect_cylinder(t_ray ray, t_object *obj);
@@ -66,10 +65,10 @@ double			intersect_cone(t_ray ray, t_object *obj);
 ** ============================================================================
 */
 
-t_vector normal_sphere(t_ray *ray, t_vector position);
-t_vector normal_plane(t_ray *ray, t_vector position);
-t_vector normal_cylinder(t_ray *ray, t_vector position);
-t_vector normal_cone(t_ray *ray, t_vector position);
+t_vector 		normal_sphere(t_ray *ray, t_vector position);
+t_vector 		normal_plane(t_ray *ray, t_vector position);
+t_vector 		normal_cylinder(t_ray *ray, t_vector position);
+t_vector 		normal_cone(t_ray *ray, t_vector position);
 
 /*
 ** ============================================================================
@@ -77,10 +76,7 @@ t_vector normal_cone(t_ray *ray, t_vector position);
 ** ============================================================================
 */
 
-double	get_diffuse_color(t_ray *ray, t_vector *light_vec, t_vector *position);
-double	get_ambient_color(void);
-double	get_specular_color(t_ray *ray, t_vector *light_vec, t_vector *position);
-void	get_color(t_ray *ray, t_vector *light_pos, t_object *obj);
+t_vector		get_color(t_ray *ray, t_object *obj);
 
 /*
 ** ============================================================================
@@ -117,6 +113,7 @@ t_vector		normalize(t_vector vector);
 t_vector		get_normal(t_ray *ray, t_vector position);
 void			rt_init(t_camera *cam, t_viewplane *vp);
 void			reset_ray(t_ray *ray, t_fmlx *mlx, int x, int y);
+t_vector		mult_color(int color, t_vector mult);
 //TMP
 void			disp_vec(t_vector *vec);
 

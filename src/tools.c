@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 04:49:56 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/06 12:52:11 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/15 03:30:55 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,16 @@
 #include <stdio.h>
 #include <math.h>
 #include "rtv1.h"
+#include "libft.h"
 
-void	fill_pxl(char *image, int x, int y, int color)
+void	fill_img(char *image, int i, t_vector color)
 {
-	int i;
-
-	i = (((SIMG_X * y) + x) * 4);
-	if (x >= 0 && y >= 0 && x < SIMG_X && y < SIMG_Y)
+	if (i < SIMG_X * SIMG_Y)
 	{
-		image[i + 2] = (color >> 16) & 0xFF;
-		image[i + 1] = (color >> 8) & 0xFF;
-		image[i + 0] = color & 0xFF;
+		i *= 4;
+		image[i + 2] = color.x;
+		image[i + 1] = color.y;
+		image[i + 0] = color.z;
 	}
 }
 
@@ -67,17 +66,12 @@ int		init_color(int r, int g, int b)
 	return ((r << 16) + (g << 8) + b);
 }
 
-int		mult_color(int color, double mult)
+t_vector	mult_color(int color, t_vector mult)
 {
-	int r;
-	int g;
-	int b;
+	t_vector	ret;
 
-	r = ((color & 0xFF0000) >> 16);
-	g = ((color & 0xFF00) >> 8);
-	b = (color & 0xFF);
-	color = init_color(((r * mult) > 0xFF) ? 0xFF : (r * mult)
-		, ((g * mult) > 0xFF) ? 0xFF : g * mult
-		, ((b * mult) > 0xFF) ? 0xFF : b * mult);
-	return (color);
+	ret.x = ft_max(0xFF, ((color & 0xFF0000) >> 16) * mult.x);
+	ret.y = ft_max(0xFF, ((color & 0xFF00) >> 8) * mult.y);
+	ret.z = ft_max(0xFF, (color & 0xFF) * mult.z);
+	return (ret);
 }
