@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 04:49:56 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/15 03:30:55 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/15 04:38:11 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,24 @@
 #include "rtv1.h"
 #include "libft.h"
 
-void	fill_img(char *image, int i, t_vector color)
+//void	fill_img(char *image, int i, t_vector color)
+//{
+//	if (i < SIMG_X * SIMG_Y)
+//	{
+//		i *= 4;
+//		image[i + 2] = color.x;
+//		image[i + 1] = color.y;
+//		image[i + 0] = color.z;
+//	}
+//}
+
+void	fill_img(char *image, int x, int y, t_vector color)
 {
-	if (i < SIMG_X * SIMG_Y)
+	int i;
+
+	i = (((SIMG_X * y) + x) * 4);
+	if (x >= 0 && y >= 0 && x < SIMG_X && y < SIMG_Y)
 	{
-		i *= 4;
 		image[i + 2] = color.x;
 		image[i + 1] = color.y;
 		image[i + 0] = color.z;

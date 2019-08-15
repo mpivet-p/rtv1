@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 06:54:43 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/15 03:27:21 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/15 04:37:18 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,9 @@ int		deal_key(int key, t_fmlx *mlx)
 
 int		mouse_press(int button, int x, int y, t_fmlx *mlx)
 {
-	fill_img(mlx->screen, x * y, init_vector(0xFF, 0xFF, 0xFF));
+	(void)x;
+	(void)y;
+//	fill_img(mlx->screen, x * y, init_vector(0xFF, 0xFF, 0xFF));
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
 	return (button);
 }

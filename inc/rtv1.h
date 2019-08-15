@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 03:55:16 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/15 03:32:09 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/15 04:35:41 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int				deal_key(int key, t_fmlx *mlx);
 */
 
 t_vector		reflect(t_vector incident, t_vector normal);
-void			fill_img(char *image, int i, t_vector color);
+void			fill_img(char *image, int x, int y, t_vector color);
 void			rtv_exit(t_fmlx *mlx);
 double			get_dist(t_vector *a, t_vector *b);
 t_vector		ray_to_point(t_ray *ray);

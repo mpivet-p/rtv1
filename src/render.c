@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 03:50:05 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/15 04:10:04 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/15 04:35:27 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int		rt_render(t_fmlx *mlx)
 	int			i;
 
 	i = 0;
+	ray.origin = init_vector(0, 0, 0);
 	while (i < SIMG_X * SIMG_Y)
 	{
 		reset_ray(&ray, mlx, i / SIMG_Y, i % SIMG_Y);
@@ -51,7 +52,7 @@ int		rt_render(t_fmlx *mlx)
 		{
 			color = get_color(&ray, mlx->obj);
 		}
-		fill_img(mlx->screen, i, color);
+		fill_img(mlx->screen, i / SIMG_Y, i % SIMG_Y, color);
 		i++;
 	}
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
