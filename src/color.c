@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/08 23:35:01 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/15 04:26:06 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/16 06:34:41 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ double	specular_light(t_ray *ray, t_light *light, t_vector *position)
 	t_vector	vec;
 	double		spec;
 
-	vec = bisector(vector_mult(ray->dir, -1), light->dir);
+	vec = bisector(vector_mult(light->dir, -1), ray->dir);
 	spec = ft_max(0, dot_product(get_normal(ray, *position), vec));
-	return (0.5 * pow(spec, 32));
+	return (1.2 * pow(spec, 64));
 }
 
 double	is_lighted(t_vector *pos, t_light *light, t_object *obj)
@@ -82,7 +82,7 @@ t_vector	get_color(t_ray *ray, t_object *obj)
 	position = add_vectors(ray->origin, vector_mult(ray->dir, ray->t));
 	position = add_vectors(position, vector_mult(get_normal(ray, position), 0.0000001));
 	if (get_light_obj(&light, &position, obj) == 0 && is_lighted(&position, &light, obj) == 1)
-		coeff += diffuse_light(ray, &light, &position);// + specular_light(ray, &light, &position);
+		coeff += diffuse_light(ray, &light, &position) + specular_light(ray, &light, &position);
 	color = mult_color(ray->hit_by->color, init_vector(coeff, coeff, coeff));
 	return (color);
 }

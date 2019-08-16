@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/04 01:53:29 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/15 02:47:53 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/16 05:25:28 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ t_object	*list_test(void)
   // Light 1
 	ptr[3]->type = RT_LIGHT;
 	ptr[3]->u_fig.light.pos = init_vector(-1.2, 0.8, 1);
+//	ptr[3]->u_fig.light.pos = init_vector(0, 0, 0);
 	ptr[3]->color = RT_GREEN;
 
 //  // Cone 1
