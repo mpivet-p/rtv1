@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 03:50:05 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/15 04:35:27 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/16 04:30:35 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int		rt_render(t_fmlx *mlx)
 	ray.origin = init_vector(0, 0, 0);
 	while (i < SIMG_X * SIMG_Y)
 	{
+		color = init_vector(0, 0, 0);
 		reset_ray(&ray, mlx, i / SIMG_Y, i % SIMG_Y);
 		get_intersection(&ray, mlx->obj);
 		if (ray.t > 0.0)
