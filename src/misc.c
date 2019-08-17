@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 04:13:20 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/15 02:59:54 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/17 05:18:53 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ t_vector	ray_to_point(t_ray *ray)
 
 void	disp_vec(t_vector *vec)
 {
-	printf("(%f, %f, %f)", vec->x, vec->y, vec->z);
+	printf("(%f, %f, %f)\n", vec->x, vec->y, vec->z);
 }
 
 t_vector	bisector(t_vector a, t_vector b)
