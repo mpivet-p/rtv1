@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/04 01:53:29 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/17 05:44:46 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/17 07:37:03 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@
 
 t_object	*list_test(void)
 {
-	t_object	*ptr[5];
+	t_object	*ptr[7];
 	int			i;
 
 	i = 0;
-	while (i < 5)
+	while (i < 7)
 	{
 		if (!(ptr[i] = (t_object*)malloc(sizeof(t_object) * 1)))
 		{
@@ -37,7 +37,9 @@ t_object	*list_test(void)
 	ptr[1]->next = ptr[2];
 	ptr[2]->next = ptr[3];
 	ptr[3]->next = ptr[4];
-	ptr[4]->next = NULL;
+	ptr[4]->next = ptr[5];
+	ptr[5]->next = ptr[6];
+	ptr[6]->next = NULL;
 
   // Sphere 1
 	ptr[0]->type = RT_SPHERE;
@@ -60,8 +62,14 @@ t_object	*list_test(void)
   // Light 1
 	ptr[3]->type = RT_LIGHT;
 	ptr[3]->u_fig.light.pos = init_vector(-1.2, 0.8, 1);
-//	ptr[3]->u_fig.light.pos = init_vector(0, 0, 0);
-	ptr[3]->color = RT_GREEN;
+
+  // Light 2
+	ptr[5]->type = RT_LIGHT;
+	ptr[5]->u_fig.light.pos = init_vector(0.3, 0.4, 2);
+
+  // Light 3
+	ptr[6]->type = RT_LIGHT;
+	ptr[6]->u_fig.light.pos = init_vector(-0.2, 1.1, 0.6);
 
 //  // Cone 1
 //	ptr[3]->type = RT_CONE;

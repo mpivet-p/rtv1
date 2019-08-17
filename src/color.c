@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/08 23:35:01 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/17 06:05:00 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/17 07:37:19 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ double	diffuse_light(t_ray *ray, t_light *light, t_vector *position)
 	angle = dot_product(
 			get_normal(ray, *position), vector_mult(light->dir, -1));
 	if (angle > 0)
-		return (angle);
+		return (angle / 3);
 	return (0);
 }
 
@@ -30,7 +30,6 @@ double	specular_light(t_ray *ray, t_light *light, t_vector *position)
 {
 	t_vector	vec;
 	double		spec;
-
 
 	vec = normalize(add_vectors(light->dir, normalize(ray->dir)));
 	spec = ft_max(0, dot_product(get_normal(ray, *position), vec));
@@ -58,21 +57,22 @@ double	is_lighted(t_vector *pos, t_light *light, t_object *obj)
 	return (1);
 }
 
-int		get_light_obj(t_light *light, t_vector *position, t_object *obj)
+int		get_next_light(t_light *light, t_vector *position, t_object **obj)
 {
-	while (obj)
+	while (*obj)
 	{
-		if (obj->type == RT_LIGHT)
+		if ((*obj)->type == RT_LIGHT)
 		{
-			light->pos = obj->u_fig.light.pos;
+			light->pos = (*obj)->u_fig.light.pos;
 			light->dir = normalize(sub_vectors(*position, light->pos));
+			*obj = (*obj)->next;
 			return (0);
 		}
-		obj = obj->next;
+		*obj = (*obj)->next;
 	}
 	return (1);
 }
-t_vector	get_color(t_ray *ray, t_object *obj)
+t_vector	get_color(t_ray *ray, t_object *obj, t_object *obj_lights)
 {
 	t_vector	position;
 	t_vector	color;
@@ -82,8 +82,11 @@ t_vector	get_color(t_ray *ray, t_object *obj)
  	coeff = AMBIENT_STRENGTH;
 	position = add_vectors(ray->origin, vector_mult(ray->dir, ray->t));
 	position = add_vectors(position, vector_mult(get_normal(ray, position), 0.0000001));
-	if (get_light_obj(&light, &position, obj) == 0 && is_lighted(&position, &light, obj) == 1)
-		coeff += diffuse_light(ray, &light, &position) + specular_light(ray, &light, &position);
+	while (obj_lights != NULL)
+	{
+		if (get_next_light(&light, &position, &obj_lights) == 0 && is_lighted(&position, &light, obj) == 1)
+			coeff += diffuse_light(ray, &light, &position) + specular_light(ray, &light, &position);
+	}
 	color = mult_color(ray->hit_by->color, init_vector(coeff, coeff, coeff));
 	return (color);
 }

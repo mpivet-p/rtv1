@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 04:49:56 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/15 04:38:11 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/17 07:32:15 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,13 @@ int		init_color(int r, int g, int b)
 t_vector	mult_color(int color, t_vector mult)
 {
 	t_vector	ret;
+	t_vector	col;
 
-	ret.x = ft_max(0xFF, ((color & 0xFF0000) >> 16) * mult.x);
-	ret.y = ft_max(0xFF, ((color & 0xFF00) >> 8) * mult.y);
-	ret.z = ft_max(0xFF, (color & 0xFF) * mult.z);
+	col.x = (color & 0xFF0000) >> 16;
+	col.y = (color & 0xFF00) >> 8;
+	col.z = color & 0xFF;
+	ret.x = ft_max(col.x, col.x * mult.x);
+	ret.y = ft_max(col.y, col.y * mult.y);
+	ret.z = ft_max(col.z, col.z * mult.z);
 	return (ret);
 }
