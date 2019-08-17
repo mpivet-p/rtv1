@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/08 23:35:01 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/17 05:44:30 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/17 06:05:00 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ double	specular_light(t_ray *ray, t_light *light, t_vector *position)
 
 
 	vec = normalize(add_vectors(light->dir, normalize(ray->dir)));
-	spec = dot_product(get_normal(ray, *position), vec);
-	return (3 * pow((spec > 0) ? 0: spec, 100));
+	spec = ft_max(0, dot_product(get_normal(ray, *position), vec));
+	return (0.45 * pow(spec, 64));
 }
 
 double	is_lighted(t_vector *pos, t_light *light, t_object *obj)

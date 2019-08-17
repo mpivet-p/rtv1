@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/04 01:19:54 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/15 02:42:41 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/17 06:21:45 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ typedef struct	s_light
 typedef struct	s_object
 {
 	double			color;
+	char			name[16];
 	int				type;
 	union
 	{
