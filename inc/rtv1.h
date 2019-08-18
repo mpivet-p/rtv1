@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 03:55:16 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/17 07:01:42 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/18 05:48:12 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,9 @@ t_vector 		normal_cone(t_ray *ray, t_vector position);
 */
 
 t_vector		get_color(t_ray *ray, t_object *obj, t_object *obj_lights);
+void	rot_x(t_vector *vec, double theta);
+void	rot_y(t_vector *vec, double theta);
+void	rot_z(t_vector *vec, double theta);
 
 /*
 ** ============================================================================

@@ -6,7 +6,7 @@
 #    By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/22 02:45:47 by mpivet-p          #+#    #+#              #
-#    Updated: 2019/08/08 23:36:37 by mpivet-p         ###   ########.fr        #
+#    Updated: 2019/08/18 05:26:21 by mpivet-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ OBJ_PATH= obj/
 
 INC_NAME= fractol.h
 SRC_NAME= main.c events.c tools.c vectors.c viewplane.c render.c sphere.c\
-		  solve.c plane.c cylinder.c cone.c test.c normal.c misc.c color.c
+		  solve.c plane.c cylinder.c cone.c test.c normal.c misc.c color.c\
+		  rotations.c
 OBJ_NAME= $(SRC_NAME:.c=.o)
 
 INC= -I inc/ -I libft/inc/ -I mlx/
