@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 04:49:56 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/17 07:32:15 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/20 01:28:53 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	fill_img(char *image, int x, int y, t_vector color)
 	{
 		image[i + 2] = color.x;
 		image[i + 1] = color.y;
-		image[i + 0] = color.z;
+		image[i] = color.z;
 	}
 }
 
@@ -45,6 +45,8 @@ void	rtv_exit(t_fmlx *mlx)
 {
 	if (mlx->mlx && mlx->img)
 		mlx_destroy_image(mlx->mlx, mlx->img);
+	if (mlx->mlx && mlx->ui)
+		mlx_destroy_image(mlx->mlx, mlx->ui);
 	if (mlx->mlx && mlx->win)
 		mlx_destroy_window(mlx->mlx, mlx->win);
 	exit(0);

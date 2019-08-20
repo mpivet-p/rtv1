@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/22 00:26:11 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/12 23:34:24 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/20 01:34:11 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,16 @@ void	rtv(void)
 	if (!(ptr.screen = mlx_get_data_addr(ptr.img, &(tools[0]),
 					&(tools[1]), &(tools[2]))))
 		rtv_exit(&ptr);
+	if (!(ptr.ui = mlx_new_image(ptr.mlx, SUI_X, SUI_Y)))
+		rtv_exit(&ptr);
+	if (!(ptr.ui_img = mlx_get_data_addr(ptr.ui, &(tools[0]),
+					&(tools[1]), &(tools[2]))))
+		rtv_exit(&ptr);
 	mlx_hook(ptr.win, 2, 0, deal_key, &ptr);
 	mlx_hook(ptr.win, 4, 0, mouse_press, &ptr);
-//	mlx_hook(ptr.win, 6, 0, mouse_move, &ptr);
+	init_ui(&ptr);
 	rt(&ptr);
+	disp_ui(&ptr);
 	mlx_loop(ptr.mlx);
 }
 

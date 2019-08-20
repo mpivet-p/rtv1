@@ -6,16 +6,18 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/04 01:19:54 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/17 06:21:45 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/20 00:45:15 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RTDATA_H
 # define RTDATA_H
 # define SWIN_X		1600
-# define SWIN_Y		900
+# define SWIN_Y		940
 # define SIMG_X		1600
 # define SIMG_Y		900
+# define SUI_X		1600
+# define SUI_Y		40
 # define AMBIENT_STRENGTH 0.075
 # define RT_WHITE	0xFFFFFF
 # define RT_RED		0xF54611
