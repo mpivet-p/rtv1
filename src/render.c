@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 03:50:05 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/18 23:31:40 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/20 05:02:08 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int		rt_render(t_fmlx *mlx)
 void	rt(t_fmlx *mlx)
 {
 	mlx->obj = list_test();
+	mlx->current = mlx->obj;
 	rt_init(&(mlx->cam), &(mlx->vp));
 	get_viewplane(&(mlx->vp), mlx->cam);
 	rt_render(mlx);

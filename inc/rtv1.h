@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 03:55:16 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/20 01:15:03 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/20 04:45:03 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct	s_fmlx
 	t_viewplane	vp;
 	t_camera	cam;
 	t_object	*obj;
+	t_object	*current;
 }				t_fmlx;
 
 /*

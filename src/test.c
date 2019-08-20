@@ -6,12 +6,13 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/04 01:53:29 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/18 05:53:11 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/20 05:02:40 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "rtv1.h"
+#include "libft.h"
 
 /*
 ** REMOVE THIS FILE BEFORE FINAL PUSH
@@ -44,24 +45,28 @@ t_object	*list_test(void)
 //	ptr[7]->next = NULL;
 
   // Sphere 1
+	ft_strcat(ptr[0]->name, "premiere sphere");
 	ptr[0]->type = RT_SPHERE;
 	ptr[0]->u_fig.sphere.pos = init_vector(-0.2, 1, 0);
 	ptr[0]->u_fig.sphere.radius = 0.1;
 	ptr[0]->color = RT_RED;
 
   // Sphere 2
+	ft_strcat(ptr[1]->name, "la deuxieme");
 	ptr[1]->type = RT_SPHERE;
 	ptr[1]->u_fig.sphere.pos = init_vector(-0.2, 1.1, 0.2);
 	ptr[1]->u_fig.sphere.radius = 0.1;
 	ptr[1]->color = RT_YELLO;
 
   // Plane 1
+	ft_strcat(ptr[2]->name, "le plan");
 	ptr[2]->type = RT_PLANE;
 	ptr[2]->u_fig.plane.pos = init_vector(0, 0, -0.2);
 	ptr[2]->u_fig.plane.dir = normalize(init_vector(0, 0, 1));
 	ptr[2]->color = RT_BLUE;
 
   // Cone 1
+	ft_strcat(ptr[3]->name, "cone1");
 	ptr[3]->type = RT_CONE;
 	ptr[3]->u_fig.cone.pos = init_vector(0, 1, 0.2);
 	ptr[3]->u_fig.cone.dir = normalize(init_vector(0, 0, 1));
@@ -70,6 +75,7 @@ t_object	*list_test(void)
 	ptr[3]->color = RT_GREEN;
 
 	// Cylinder 1
+	ft_strcat(ptr[4]->name, "tube");
 	ptr[4]->type = RT_CYL;
 	ptr[4]->u_fig.cyl.pos = init_vector(0.5, 1, 0);
 	ptr[4]->u_fig.cyl.dir = normalize(init_vector(0, 0, 1));
@@ -78,6 +84,7 @@ t_object	*list_test(void)
 	ptr[4]->color = RT_PURPLE;
 
   // Light 1
+	ft_strcat(ptr[5]->name, "luuuummiiieeerrre");
 	ptr[5]->type = RT_LIGHT;
 	ptr[5]->u_fig.light.pos = init_vector(-0.5, 0.8, 0.2);
 

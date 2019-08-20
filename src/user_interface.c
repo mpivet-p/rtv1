@@ -6,13 +6,14 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 00:47:57 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/20 02:00:07 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/20 05:32:45 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "rtv1.h"
+#include "libft.h"
 #include <mlx.h>
 #include <stdio.h>
-#include "rtv1.h"
 
 void	init_ui(t_fmlx *mlx)
 {
@@ -30,8 +31,29 @@ void	init_ui(t_fmlx *mlx)
 
 void	disp_ui(t_fmlx *mlx)
 {
+	char	*shapes[5] = {"cylinder", "cone", "plane", "sphere", "light"};
+	char	name[27];
+	char	infos[100];
+
+	ft_bzero(name, 27);
+	ft_bzero(infos, 100);
+	ft_strcat(infos, "{ pos(");
+	//itoa
+	ft_strcat(infos, ", ");
+	//itoa
+	ft_strcat(infos, ", ");
+	ft_strcat(infos, ") dir(");
+	//itoa
+	ft_strcat(infos, ", ");
+	//itoa
+	ft_strcat(infos, ", ");
+	//itoa
+	ft_strcat(infos, ") }");
+	ft_strcat(name, shapes[mlx->current->type]);
+	ft_strcat(name, ": ");
+	ft_strcat(name, mlx->current->name);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->ui, 0, SIMG_Y);
-	mlx_string_put(mlx->mlx, mlx->win, 45, SIMG_Y + 9, 0, "cylinder: 0123456789ABCDEF");
-	mlx_string_put(mlx->mlx, mlx->win, 312, SIMG_Y + 9, 0x303030, "{ pos(0, -2, 1)");
-	mlx_string_put(mlx->mlx, mlx->win, 475, SIMG_Y + 9, 0x303030, "dir(0, 0, 1) }");
+	mlx_string_put(mlx->mlx, mlx->win, 45, SIMG_Y + 9, 0, name);
+	mlx_string_put(mlx->mlx, mlx->win, 312, SIMG_Y + 9, 0x303030, "");
+	mlx_string_put(mlx->mlx, mlx->win, 475, SIMG_Y + 9, 0x303030, "}");
 }
