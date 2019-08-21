@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/04 01:19:54 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/20 04:47:44 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/21 04:07:12 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ typedef struct	s_object
 		t_light		light;
 	}				u_fig;
 	struct s_object	*next;
+	struct s_object	*prev;
 }				t_object;
 
 /*
