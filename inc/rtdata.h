@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/04 01:19:54 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/21 04:07:12 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/21 07:15:58 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,21 @@
 # define RT_BLUE	0x0589F5
 # define RT_YELLO	0xF5A511
 # define RT_PURPLE	0xC017E6
+# define KEY_UP		126
+# define KEY_DOWN	125
+# define KEY_RIGHT	124
+# define KEY_LEFT	123
+# define KEY_Z		126
+# define KEY_S		125
+# define KEY_A		124
+# define KEY_D		123
+# define KEY_ESC	53
+# define KEY_SPA	49
+# define KEY_SPA	49
+# define KEY_PGUP	116
+# define KEY_PGDWN	121
+# define KEY_LESS	69
+# define KEY_PLUS	78
 
 typedef struct	s_vector
 {
@@ -72,25 +87,36 @@ typedef struct	s_light
 	t_vector	dir;
 }				t_light;
 
+typedef struct	s_camera
+{
+	t_vector	pos;
+	t_vector	vecdir;
+	t_vector	upvec;
+	t_vector	rightvec;
+}				t_camera;
+
 /*
 ** ============================================================================
 ** OBJECT LINKED LIST..........................................................
 ** ============================================================================
 */
 
+typedef union	u_fig
+{
+	t_plane		plane;
+	t_sphere	sphere;
+	t_cylinder	cyl;
+	t_cone		cone;
+	t_light		light;
+	t_camera	cam;
+}				t_fig;
+
 typedef struct	s_object
 {
 	double			color;
 	char			name[17];
 	int				type;
-	union
-	{
-		t_plane		plane;
-		t_sphere	sphere;
-		t_cylinder	cyl;
-		t_cone		cone;
-		t_light		light;
-	}				u_fig;
+	t_fig			u_fig;
 	struct s_object	*next;
 	struct s_object	*prev;
 }				t_object;
@@ -101,9 +127,10 @@ typedef struct	s_object
 ** ============================================================================
 */
 
+
 enum	e_objs
 {
-	RT_CYL, RT_CONE, RT_PLANE, RT_SPHERE, RT_LIGHT
+	RT_CYL, RT_CONE, RT_PLANE, RT_SPHERE, RT_LIGHT, RT_CAM, RT_NUM
 };
 
 typedef struct	s_point
@@ -129,12 +156,4 @@ typedef struct	s_ray
 	double		t;
 	int			color;
 }				t_ray;
-
-typedef struct	s_camera
-{
-	t_vector	pos;
-	t_vector	vecdir;
-	t_vector	upvec;
-	t_vector	rightvec;
-}				t_camera;
 #endif
