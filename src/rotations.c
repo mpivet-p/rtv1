@@ -6,14 +6,15 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/18 05:09:13 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/18 05:49:32 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/22 04:52:46 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
+#include <string.h>
 #include "rtv1.h"
 
-void	rot_x(t_vector *vec, double theta)
+static void	rot_x(t_vector *vec, double theta)
 {
 	double	save;
 
@@ -24,7 +25,7 @@ void	rot_x(t_vector *vec, double theta)
 	*vec = normalize(*vec);
 }
 
-void	rot_y(t_vector *vec, double theta)
+static void	rot_y(t_vector *vec, double theta)
 {
 	double	save;
 
@@ -35,7 +36,7 @@ void	rot_y(t_vector *vec, double theta)
 	*vec = normalize(*vec);
 }
 
-void	rot_z(t_vector *vec, double theta)
+static void	rot_z(t_vector *vec, double theta)
 {
 	double	save;
 
@@ -44,4 +45,42 @@ void	rot_z(t_vector *vec, double theta)
 	vec->x = vec->x * cos(theta) - vec->y * sin(theta);
 	vec->y = save * sin(theta) + vec->y * cos(theta);
 	*vec = normalize(*vec);
+}
+
+void		object_translate(t_vector *pos, int key, int modif)
+{
+	if (pos != NULL)
+	{
+		if (key == KEY_UP)
+			pos->z += 0.1 * modif;
+		else if (key == KEY_DOWN)
+			pos->z -= 0.1 * modif;
+		else if (key == KEY_RIGHT)
+			pos->x += 0.1 * modif;
+		else if (key == KEY_LEFT)
+			pos->x -= 0.1 * modif;
+		else if (key == KEY_PLUS)
+			pos->y += 0.1 * modif;
+		else if (key == KEY_LESS)
+			pos->y -= 0.1 * modif;
+	}
+}
+
+void		object_rotate(t_vector *pos, int key, int modif)
+{
+	if (pos != NULL)
+	{
+		if (key == KEY_W)
+			rot_x(pos, 5 * modif);
+		else if (key == KEY_S)
+			rot_x(pos, -5 * modif);
+		else if (key == KEY_D)
+			rot_y(pos, 5 * modif);
+		else if (key == KEY_A)
+			rot_y(pos, -5 * modif);
+		else if (key == KEY_Q)
+			rot_z(pos, 5 * modif);
+		else if (key == KEY_E)
+			rot_z(pos, -5 * modif);
+	}
 }

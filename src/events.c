@@ -6,41 +6,13 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 06:54:43 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/21 07:39:15 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/22 05:23:46 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <mlx.h>
 #include "rtv1.h"
-
-t_object	*get_lastlink(t_object *obj)
-{
-	while (obj && obj->next)
-	{
-		obj = obj->next;
-	}
-	return (obj);
-}
-
-void	object_translate(t_vector *pos, int key)
-{
-	if (pos != NULL)
-	{
-		if (key == KEY_UP)
-			pos->z += 0.1;
-		else if (key == KEY_DOWN)
-			pos->z -= 0.1;
-		else if (key == KEY_RIGHT)
-			pos->x += 0.1;
-		else if (key == KEY_LEFT)
-			pos->x -= 0.1;
-		else if (key == KEY_PLUS)
-			pos->y += 0.1;
-		else if (key == KEY_LESS)
-			pos->y -= 0.1;
-	}
-}
+#include <mlx.h>
+#include <string.h>
 
 t_vector	*get_vec(t_object *obj, int v)
 {
@@ -64,11 +36,13 @@ int		deal_key(int key, t_fmlx *mlx)
 	if (key == KEY_ESC)
 		rtv_exit(mlx);
 	else if ((key >= KEY_LEFT && key <= KEY_UP) || key == KEY_PLUS || key == KEY_LESS)
-		object_translate(get_vec(mlx->current, 'p'), key);
+		object_translate(get_vec(mlx->current, 'p'), key, mlx->intensity);
+	else if ((key >= KEY_Q && key <= KEY_E) || (key >= KEY_A && key <= KEY_D))
+		object_rotate(get_vec(mlx->current, 'd'), key, mlx->intensity);
 	else if (key == KEY_PGUP || key == KEY_PGDWN)
 	{
 		if (key == KEY_PGUP)
-			mlx->current = (mlx->current->prev) ? mlx->current->prev : get_lastlink(mlx->obj);
+			mlx->current = get_prevlink(mlx);
 		if (key == KEY_PGDWN)
 			mlx->current = (mlx->current->next) ? mlx->current->next : mlx->obj;
 		disp_ui(mlx);

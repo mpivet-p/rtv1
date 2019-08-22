@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 03:55:16 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/20 04:45:03 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/22 05:26:05 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct	s_fmlx
 	char		*screen;
 	void		*ui;
 	char		*ui_img;
+	int			intensity;
 	t_viewplane	vp;
 	t_camera	cam;
 	t_object	*obj;
@@ -80,9 +81,6 @@ t_vector 		normal_cone(t_ray *ray, t_vector position);
 */
 
 t_vector		get_color(t_ray *ray, t_object *obj, t_object *obj_lights);
-void	rot_x(t_vector *vec, double theta);
-void	rot_y(t_vector *vec, double theta);
-void	rot_z(t_vector *vec, double theta);
 
 /*
 ** ============================================================================
@@ -122,6 +120,10 @@ void			reset_ray(t_ray *ray, t_fmlx *mlx, int x, int y);
 t_vector		mult_color(int color, t_vector mult);
 void			init_ui(t_fmlx *mlx);
 void			disp_ui(t_fmlx *mlx);
+void			object_translate(t_vector *pos, int key, int modif);
+void			object_rotate(t_vector *pos, int key, int modif);
+t_object		*get_prevlink(t_fmlx *mlx);
+void			rt_delist(t_fmlx *mlx);
 //TMP
 void			disp_vec(t_vector *vec);
 

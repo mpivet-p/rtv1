@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/22 00:26:11 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/20 01:34:11 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/08/22 01:37:41 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	rtv(void)
 		rtv_exit(&ptr);
 	mlx_hook(ptr.win, 2, 0, deal_key, &ptr);
 	mlx_hook(ptr.win, 4, 0, mouse_press, &ptr);
+	ptr.intensity = 1;
 	init_ui(&ptr);
 	rt(&ptr);
 	disp_ui(&ptr);
