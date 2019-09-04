@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/18 05:09:13 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/22 04:52:46 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/09/04 02:26:27 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ static void	rot_x(t_vector *vec, double theta)
 	theta = theta * 3.141592653 / 180.0;
 	vec->y = vec->y * cos(theta) - vec->z * sin(theta);
 	vec->z = save * sin(theta) + vec->z * cos(theta);
-	*vec = normalize(*vec);
 }
 
 static void	rot_y(t_vector *vec, double theta)
@@ -33,7 +32,6 @@ static void	rot_y(t_vector *vec, double theta)
 	theta = theta * 3.141592653 / 180.0;
 	vec->x = vec->x * cos(theta) + vec->z * sin(theta);
 	vec->z = vec->z * cos(theta) - vec->x * sin(theta);
-	*vec = normalize(*vec);
 }
 
 static void	rot_z(t_vector *vec, double theta)
@@ -44,7 +42,17 @@ static void	rot_z(t_vector *vec, double theta)
 	theta = theta * 3.141592653 / 180.0;
 	vec->x = vec->x * cos(theta) - vec->y * sin(theta);
 	vec->y = save * sin(theta) + vec->y * cos(theta);
-	*vec = normalize(*vec);
+}
+
+t_vector	do_rot(t_vector vec, t_vector rot)
+{
+	t_vector	newvec;
+
+	newvec = vec;
+	rot_x(&newvec, rot.x);
+	rot_y(&newvec, rot.y);
+	rot_z(&newvec, rot.z);
+	return (newvec);
 }
 
 void		object_translate(t_vector *pos, int key, int modif)
@@ -82,5 +90,6 @@ void		object_rotate(t_vector *pos, int key, int modif)
 			rot_z(pos, 5 * modif);
 		else if (key == KEY_E)
 			rot_z(pos, -5 * modif);
+		*pos = normalize(*pos);
 	}
 }

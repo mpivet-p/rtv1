@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/04 01:53:29 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/22 05:24:01 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/09/04 04:00:07 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_object	*list_test(void)
 	int			i;
 
 	i = 0;
-	while (i < 8)
+	while (i < 6)
 	{
 		if (!(ptr[i] = (t_object*)malloc(sizeof(t_object) * 1)))
 		{
@@ -60,7 +60,7 @@ t_object	*list_test(void)
 	ft_bzero(ptr[0]->name, 17);
 	ft_strcat(ptr[0]->name, "premiere sphere");
 	ptr[0]->type = RT_SPHERE;
-	ptr[0]->u_fig.sphere.pos = init_vector(-0.2, 1, 0);
+	ptr[0]->u_fig.sphere.pos = init_vector(-0.2, 0, 0);
 	ptr[0]->u_fig.sphere.radius = 0.1;
 	ptr[0]->color = RT_RED;
 
@@ -68,7 +68,7 @@ t_object	*list_test(void)
 	ft_bzero(ptr[1]->name, 17);
 	ft_strcat(ptr[1]->name, "la deuxieme");
 	ptr[1]->type = RT_SPHERE;
-	ptr[1]->u_fig.sphere.pos = init_vector(-0.2, 1.1, 0.2);
+	ptr[1]->u_fig.sphere.pos = init_vector(-0.2, 0.1, 0.2);
 	ptr[1]->u_fig.sphere.radius = 0.1;
 	ptr[1]->color = RT_YELLO;
 
@@ -94,7 +94,7 @@ t_object	*list_test(void)
 	ft_bzero(ptr[4]->name, 17);
 	ft_strcat(ptr[4]->name, "tube");
 	ptr[4]->type = RT_CYL;
-	ptr[4]->u_fig.cyl.pos = init_vector(0.5, 1, 0);
+	ptr[4]->u_fig.cyl.pos = init_vector(0.5, 0, 0);
 	ptr[4]->u_fig.cyl.dir = normalize(init_vector(0, 0, 1));
 	ptr[4]->u_fig.cyl.radius = 0.1;
 	ptr[4]->color = RT_PURPLE;
@@ -103,7 +103,7 @@ t_object	*list_test(void)
 	ft_bzero(ptr[5]->name, 17);
 	ft_strcat(ptr[5]->name, "luuuummiiieeerrre");
 	ptr[5]->type = RT_LIGHT;
-	ptr[5]->u_fig.light.pos = init_vector(-0.5, 0.8, 0.2);
+	ptr[5]->u_fig.light.pos = init_vector(-0.5, -0.2, 0.2);
 
 //  // Light 2
 //	ptr[6]->type = RT_LIGHT;

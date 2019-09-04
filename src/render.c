@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 03:50:05 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/22 05:21:52 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/09/04 04:57:38 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,15 @@ void	get_intersection(t_ray *ray, t_object *obj)
 {
 	static double	(*figures[4])(t_ray ray, t_object *obj)= {
 		intersect_cylinder, intersect_cone, intersect_plane, intersect_sphere};
+	t_ray			newray;
 	double 			ret;
 
 	ret = 0;
+	newray = *ray;
 	while (obj != NULL)
 	{
+		newray.origin = sub_vectors(ray->origin, get_vec(obj, 'p'));
+		newray.dir = do_rots(ray->dir, get_vec(obj, 'd'))
 		if (obj->type != RT_LIGHT
 				&& ((ret = figures[obj->type](*ray, obj)) < ray->t
 				 || ray->t == 0) && ret > 0)
@@ -43,7 +47,7 @@ int		rt_render(t_fmlx *mlx)
 	int			i;
 
 	i = 0;
-	ray.origin = mlx->cam.pos;
+	ray.origin = init_vector(0, -1, 0);
 	while (i < SIMG_X * SIMG_Y)
 	{
 		ft_bzero(&color, sizeof(color));
@@ -51,9 +55,7 @@ int		rt_render(t_fmlx *mlx)
 		ray.dir = normalize(ray.dir);
 		get_intersection(&ray, mlx->obj);
 		if (ray.t > 0.0)
-		{
 			color = get_color(&ray, mlx->obj, mlx->obj);
-		}
 		fill_img(mlx->screen, i / SIMG_Y, i % SIMG_Y, color);
 		i++;
 	}
