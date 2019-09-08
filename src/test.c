@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/04 01:53:29 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/09/04 04:00:07 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/09/08 03:23:28 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,17 @@ t_object	*list_test(void)
 	//Next pointers
 	ptr[0]->next = ptr[1];
 	ptr[1]->next = ptr[2];
-	ptr[2]->next = ptr[3];
-	ptr[3]->next = ptr[4];
-	ptr[4]->next = ptr[5];
-	ptr[5]->next = NULL;
-	ptr[0]->prev = NULL;
-	ptr[1]->prev = ptr[0];
-	ptr[2]->prev = ptr[1];
-	ptr[3]->prev = ptr[2];
-	ptr[4]->prev = ptr[3];
-	ptr[5]->prev = ptr[4];
+	ptr[2]->next = NULL;
+//	ptr[2]->next = ptr[3];
+//	ptr[3]->next = ptr[4];
+//	ptr[4]->next = ptr[5];
+//	ptr[5]->next = NULL;
+//	ptr[0]->prev = NULL;
+//	ptr[1]->prev = ptr[0];
+//	ptr[2]->prev = ptr[1];
+//	ptr[3]->prev = ptr[2];
+//	ptr[4]->prev = ptr[3];
+//	ptr[5]->prev = ptr[4];
 //	ptr[5]->next = ptr[6];
 //	ptr[6]->next = ptr[7];
 //	ptr[7]->next = NULL;
@@ -77,7 +78,7 @@ t_object	*list_test(void)
 	ft_strcat(ptr[2]->name, "le plan");
 	ptr[2]->type = RT_PLANE;
 	ptr[2]->u_fig.plane.pos = init_vector(0, 0, -0.2);
-	ptr[2]->u_fig.plane.dir = normalize(init_vector(0, 0, 1));
+	ptr[2]->u_fig.plane.dir = init_vector(90, 0, 0);
 	ptr[2]->color = RT_BLUE;
 
   // Cone 1

@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/18 05:09:13 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/09/04 02:26:27 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/09/08 00:02:16 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,17 @@ static void	rot_z(t_vector *vec, double theta)
 	vec->y = save * sin(theta) + vec->y * cos(theta);
 }
 
-t_vector	do_rot(t_vector vec, t_vector rot)
+t_vector	do_rot(t_vector vec, t_vector *rot)
 {
 	t_vector	newvec;
 
 	newvec = vec;
-	rot_x(&newvec, rot.x);
-	rot_y(&newvec, rot.y);
-	rot_z(&newvec, rot.z);
+	if (rot != NULL)
+	{
+		rot_x(&newvec, rot->x);
+		rot_y(&newvec, rot->y);
+		rot_z(&newvec, rot->z);
+	}
 	return (newvec);
 }
 

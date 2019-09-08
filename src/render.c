@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 03:50:05 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/09/04 04:57:38 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/09/08 00:03:04 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,23 @@ void	get_intersection(t_ray *ray, t_object *obj)
 	static double	(*figures[4])(t_ray ray, t_object *obj)= {
 		intersect_cylinder, intersect_cone, intersect_plane, intersect_sphere};
 	t_ray			newray;
+	t_vector		*tmp;
 	double 			ret;
 
 	ret = 0;
 	newray = *ray;
 	while (obj != NULL)
 	{
-		newray.origin = sub_vectors(ray->origin, get_vec(obj, 'p'));
-		newray.dir = do_rots(ray->dir, get_vec(obj, 'd'))
+		if (obj->type != RT_LIGHT)
+		{
+			tmp = get_vec(obj, 'p');
+			newray.origin = sub_vectors(ray->origin, *tmp);
+			tmp = get_vec(obj, 'd');
+			newray.dir = do_rot(ray->dir, tmp);
+		}
 		if (obj->type != RT_LIGHT
-				&& ((ret = figures[obj->type](*ray, obj)) < ray->t
-				 || ray->t == 0) && ret > 0)
+				&& ((ret = figures[obj->type](newray, obj)) < ray->t
+					|| ray->t == 0) && ret > 0)
 		{
 			ray->t = ret;
 			ray->hit_by = obj;
