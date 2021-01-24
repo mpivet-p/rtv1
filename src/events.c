@@ -14,6 +14,8 @@
 #include <mlx.h>
 #include <string.h>
 
+#include <stdio.h>
+
 t_vector	*get_vec(t_object *obj, int v)
 {
 	if (obj->type == RT_CYL)
@@ -54,6 +56,8 @@ int		deal_key(int key, t_fmlx *mlx)
 		mlx->vp.dist *= 0.7;
 	else
 		return (key);
+	mlx_string_put(mlx->mlx, mlx->win, 1450, SIMG_Y + 2, 0xFF00FF, "Rendering...");
+	mlx_string_put(mlx->mlx, mlx->win, 1450, 2, 0xFF00FF, "Rendering...");
 	get_viewplane(&(mlx->vp), mlx->cam);
 	rt_render(mlx);
 	return (key);
