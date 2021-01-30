@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/04 01:19:54 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/22 01:42:52 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/01/30 13:45:33 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,24 +27,25 @@
 # define RT_PURPLE	0xC017E6
 
 # ifdef __linux__
+#  define IF_SHIFT 10
+
 #  define KEY_UP	65362
 #  define KEY_DOWN	65364
 #  define KEY_LEFT	65361
 #  define KEY_RIGHT	65363
-
 #  define KEY_W		119
 #  define KEY_A		97
 #  define KEY_S		115
 #  define KEY_D		100
 #  define KEY_Q		113
 #  define KEY_E		101
-
 #  define KEY_ESC	65307
 #  define KEY_PGUP	65365
 #  define KEY_PGDWN	65366
 #  define KEY_LESS	45
 #  define KEY_PLUS	61
 # else
+#  define IF_SHIFT 0
 #  define KEY_UP	126
 #  define KEY_DOWN	125
 #  define KEY_RIGHT	124

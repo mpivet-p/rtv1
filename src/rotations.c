@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/18 05:09:13 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/09/08 00:02:16 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/01/30 16:31:25 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static void	rot_x(t_vector *vec, double theta)
 	theta = theta * 3.141592653 / 180.0;
 	vec->y = vec->y * cos(theta) - vec->z * sin(theta);
 	vec->z = save * sin(theta) + vec->z * cos(theta);
+	*vec = normalize(*vec);
 }
 
 static void	rot_y(t_vector *vec, double theta)
@@ -32,6 +33,7 @@ static void	rot_y(t_vector *vec, double theta)
 	theta = theta * 3.141592653 / 180.0;
 	vec->x = vec->x * cos(theta) + vec->z * sin(theta);
 	vec->z = vec->z * cos(theta) - save * sin(theta);
+	*vec = normalize(*vec);
 }
 
 static void	rot_z(t_vector *vec, double theta)
@@ -42,6 +44,7 @@ static void	rot_z(t_vector *vec, double theta)
 	theta = theta * 3.141592653 / 180.0;
 	vec->x = vec->x * cos(theta) - vec->y * sin(theta);
 	vec->y = save * sin(theta) + vec->y * cos(theta);
+	*vec = normalize(*vec);
 }
 
 t_vector	do_rot(t_vector vec, t_vector *rot)

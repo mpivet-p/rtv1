@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/08 23:35:01 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/09/04 00:58:53 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/01/30 15:53:53 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,6 @@ t_vector	get_color(t_ray *ray, t_object *obj, t_object *obj_lights)
 	t_vector	color;
 	double		coeff;
 
-	(void)obj;
-	(void)obj_lights;
  	coeff = AMBIENT_STRENGTH;
 	position = add_vectors(ray->origin, vector_mult(ray->dir, ray->t));
 	position = add_vectors(position, vector_mult(get_normal(ray, position), 0.0000001));

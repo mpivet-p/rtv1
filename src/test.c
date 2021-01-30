@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/04 01:53:29 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/09/08 03:23:28 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/01/30 15:43:36 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ t_object	*list_test(void)
 		i++;
 	}
 	//Next pointers
-	ptr[0]->next = ptr[1];
-	ptr[1]->next = ptr[2];
-	ptr[2]->next = ptr[3];
-	ptr[3]->next = ptr[4];
-	ptr[4]->next = ptr[5];
+	ptr[0]->next = ptr[3];
+//	ptr[1]->next = ptr[3];
+//	ptr[2]->next = ptr[3];
+	ptr[3]->next = ptr[5];
+//	ptr[4]->next = ptr[5];
 //	ptr[5]->next = NULL;
 //	ptr[0]->prev = NULL;
 //	ptr[1]->prev = ptr[0];
