@@ -24,7 +24,7 @@ SRC_NAME= main.c events.c tools.c vectors.c viewplane.c render.c sphere.c\
 		  rotations.c user_interface.c vecops.c ray.c list.c
 OBJ_NAME= $(SRC_NAME:.c=.o)
 
-INC= -I inc/ -I libft/inc/ -I mlx/
+INC= -I inc/ -I libft/inc/ -I mlx_linux/
 SRC= $(addprefix $(SRC_PATH), $(SRC_NAME))
 OBJ= $(addprefix $(OBJ_PATH), $(OBJ_NAME))
 LIBS= -L libft/ -lft -L /usr/local/lib/ -lmlx -lm
@@ -48,16 +48,10 @@ local: $(OBJ)
 	@gcc $(CFLAGS) -o $(NAME) $(OBJ) $(INC) -L libft/ -lft -L mlx/ -lmlx -lm $(MLX)
 	@echo "$(RED)[rtv1] : $(DEF)Compilation                  $(GRN)[OK]$(DEF)"
 
-multi:
-	mv src/main.c src/maintmp.c
-	mv src/multithreading.c src/main.c
-	@make fclean
+linux: $(OBJ)
 	@make -C libft
-	@make $(OBJ)
-	@gcc $(CFLAGS) -o $(NAME) $(OBJ) $(INC) $(LIBS) -lpthread $(MLX)
+	@gcc $(CFLAGS) -o $(NAME) $(OBJ) $(INC) -L libft/ -lft -L mlx_linux/ -lmlx -lm -lbsd -lX11 -lXext
 	@echo "$(RED)[rtv1] : $(DEF)Compilation                  $(GRN)[OK]$(DEF)"
-	mv src/main.c src/multithreading.c
-	mv src/maintmp.c src/main.c
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@mkdir $(OBJ_PATH) 2> /dev/null || true

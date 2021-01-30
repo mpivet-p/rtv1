@@ -12,6 +12,7 @@
 
 #include "rtv1.h"
 #include <strings.h>
+#include <stdlib.h>
 
 void	reset_ray(t_ray *ray, t_fmlx *mlx, int x, int y)
 {

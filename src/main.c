@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
-#include <stdio.h>
+#include "mlx.h"
 #include "rtv1.h"
 #include "rtdata.h"
 #include "libft.h"
@@ -36,8 +35,8 @@ void	rtv(void)
 	if (!(ptr.ui_img = mlx_get_data_addr(ptr.ui, &(tools[0]),
 					&(tools[1]), &(tools[2]))))
 		rtv_exit(&ptr);
-	mlx_hook(ptr.win, 2, 0, deal_key, &ptr);
-	mlx_hook(ptr.win, 4, 0, mouse_press, &ptr);
+	mlx_hook(ptr.win, 2, (1L << 0), deal_key, &ptr);
+	mlx_hook(ptr.win, 4, (1L << 1), mouse_press, &ptr);
 	ptr.intensity = 1;
 	init_ui(&ptr);
 	rt(&ptr);

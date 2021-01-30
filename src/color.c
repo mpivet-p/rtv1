@@ -73,25 +73,23 @@ int		get_next_light(t_light *light, t_vector *position, t_object **obj)
 }
 t_vector	get_color(t_ray *ray, t_object *obj, t_object *obj_lights)
 {
-//	t_vector	position;
-//	t_vector	normal;
-//	t_light		light;
+	t_vector	position;
+	t_vector	normal;
+	t_light		light;
 	t_vector	color;
 	double		coeff;
 
 	(void)obj;
 	(void)obj_lights;
-// 	coeff = AMBIENT_STRENGTH;
-//	position = add_vectors(ray->origin, vector_mult(ray->dir, ray->t));
-//	position = add_vectors(position, vector_mult(get_normal(ray, position), 0.0000001));
-//	normal = get_normal(ray, position);
-//	while (obj_lights != NULL)
-//	{
-//		if (get_next_light(&light, &position, &obj_lights) == 0 && is_lighted(&position, &light, obj) == 1)
-//			coeff += diffuse_light(&light, &normal) + specular_light(ray, &light, &normal);
-//	}
-//	color = mult_color(0xFFFFFF, normal);
-	coeff = 1;
+ 	coeff = AMBIENT_STRENGTH;
+	position = add_vectors(ray->origin, vector_mult(ray->dir, ray->t));
+	position = add_vectors(position, vector_mult(get_normal(ray, position), 0.0000001));
+	normal = get_normal(ray, position);
+	while (obj_lights != NULL)
+	{
+		if (get_next_light(&light, &position, &obj_lights) == 0 && is_lighted(&position, &light, obj) == 1)
+			coeff += diffuse_light(&light, &normal) + specular_light(ray, &light, &normal);
+	}
 	color = mult_color(ray->hit_by->color, init_vector(coeff, coeff, coeff));
 	return (color);
 }

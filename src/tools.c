@@ -16,11 +16,15 @@
 #include "rtv1.h"
 #include "libft.h"
 
+#include <stdio.h>
+
 void	fill_img(char *image, int x, int y, t_vector color)
 {
 	int i;
 
+	// i = ((1600 * (c % 900) + (c / 900)) * 4)
 	i = (((SIMG_X * y) + x) * 4);
+	dprintf(2, "%d\n", i * 900);
 	if (x >= 0 && y >= 0 && x < SIMG_X && y < SIMG_Y)
 	{
 		image[i + 2] = color.x;

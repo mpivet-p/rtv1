@@ -53,15 +53,18 @@ int		rt_render(t_fmlx *mlx)
 	int			i;
 
 	i = 0;
+	mlx_string_put(mlx->mlx, mlx->win, SIMG_X - 75, SIMG_Y - 45, 0xFF000
+	, "Rendering...");
 	ray.origin = init_vector(0, -1, 0);
 	while (i < SIMG_X * SIMG_Y)
 	{
-		ft_bzero(&color, sizeof(color));
 		reset_ray(&ray, mlx, i / SIMG_Y, i % SIMG_Y);
 		ray.dir = normalize(ray.dir);
 		get_intersection(&ray, mlx->obj);
 		if (ray.t > 0.0)
 			color = get_color(&ray, mlx->obj, mlx->obj);
+		else
+			ft_bzero(&color, sizeof(color));
 		fill_img(mlx->screen, i / SIMG_Y, i % SIMG_Y, color);
 		i++;
 	}

@@ -31,7 +31,7 @@ static void	rot_y(t_vector *vec, double theta)
 	save = vec->x;
 	theta = theta * 3.141592653 / 180.0;
 	vec->x = vec->x * cos(theta) + vec->z * sin(theta);
-	vec->z = vec->z * cos(theta) - vec->x * sin(theta);
+	vec->z = vec->z * cos(theta) - save * sin(theta);
 }
 
 static void	rot_z(t_vector *vec, double theta)
