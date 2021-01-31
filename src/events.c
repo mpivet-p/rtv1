@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 06:54:43 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/22 05:23:46 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/01/31 14:39:21 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,11 @@ int		deal_key(int key, t_fmlx *mlx)
 {
 	if (key == KEY_ESC)
 		rtv_exit(mlx);
-	else if ((key >= KEY_LEFT && key <= KEY_UP) || key == KEY_PLUS || key == KEY_LESS)
+	else if (key == KEY_LEFT || key == KEY_RIGHT || key == KEY_DOWN
+	  || key == KEY_UP || key == KEY_PLUS || key == KEY_LESS)
+	{
 		object_translate(get_vec(mlx->current, 'p'), key, mlx->intensity);
+	}
 	else if ((key >= KEY_Q && key <= KEY_E) || (key >= KEY_A && key <= KEY_D))
 		object_rotate(get_vec(mlx->current, 'd'), key, mlx->intensity);
 	else if (key == KEY_PGUP || key == KEY_PGDWN)

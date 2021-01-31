@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 00:47:57 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/22 04:39:39 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/01/30 13:46:07 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ void	disp_ui(t_fmlx *mlx)
 	ft_strcat(name, ": ");
 	ft_strcat(name, mlx->current->name);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->ui, 0, SIMG_Y);
-	mlx_string_put(mlx->mlx, mlx->win, 45, SIMG_Y + 9, 0, name);
-	mlx_string_put(mlx->mlx, mlx->win, 650, SIMG_Y, 0
+	mlx_string_put(mlx->mlx, mlx->win, 45, SIMG_Y + 10 + IF_SHIFT, 0, name);
+	mlx_string_put(mlx->mlx, mlx->win, 650, SIMG_Y + IF_SHIFT, 0
 			, "                  ^                              w");
-	mlx_string_put(mlx->mlx, mlx->win, 650, SIMG_Y + 9, 0
+	mlx_string_put(mlx->mlx, mlx->win, 650, SIMG_Y + 10 + IF_SHIFT, 0
 			, "translations: + <   > -           rotations: q a   d e");
-	mlx_string_put(mlx->mlx, mlx->win, 650, SIMG_Y + 20, 0
+	mlx_string_put(mlx->mlx, mlx->win, 650, SIMG_Y + 20 + IF_SHIFT, 0
 			, "                  v                              s");
 }

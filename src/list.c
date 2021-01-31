@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 04:58:55 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/22 05:29:05 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2019/09/04 04:00:28 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,9 @@ void		rt_delist(t_fmlx *mlx)
 	next = obj;
 	while (next)
 	{
-		printf("%s %p\n", obj->name, obj);
 		next = obj->next;
 		ft_bzero(obj, sizeof(obj));
 		free(obj);
-		printf("%p\n", obj);
 		obj = next;
 	}
-	while (1)
-		;
 }
