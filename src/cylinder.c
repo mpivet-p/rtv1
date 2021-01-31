@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/03 04:59:07 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/18 23:49:30 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/01/31 16:20:32 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,10 @@ t_vector	normal_cylinder(t_ray *ray, t_vector position)
 {
 	t_cylinder	*cyl;
 	t_vector	ret;
-	t_vector	base;
 	double		m;
 
 	cyl = &(ray->hit_by->u_fig.cyl);
-	base = sub_vectors(ray->origin, cyl->pos);
-	m = dot_product(ray->dir, cyl->dir) * ray->t + dot_product(base, cyl->dir);
+	m = dot_product(ray->dir, cyl->dir) * ray->t + dot_product(cyl->pos, cyl->dir);
 	ret = sub_vectors(position, sub_vectors(cyl->pos, vector_mult(cyl->dir, m)));
 	return (normalize(ret));
 }

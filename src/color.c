@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/08 23:35:01 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/18 23:43:20 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/01/31 16:49:21 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ double	specular_light(t_ray *ray, t_light *light, t_vector *normal)
 	t_vector	vec;
 	double		spec;
 
-	vec = normalize(add_vectors(light->dir, normalize(ray->dir)));
+	vec = normalize(add_vectors(light->dir, ray->dir));
 	spec = ft_max(0, dot_product(*normal, vec));
-	return (0.45 * pow(spec, 64));
+	return (pow(spec, 24));
 }
 
 double	is_lighted(t_vector *pos, t_light *light, t_object *obj)
@@ -81,14 +81,10 @@ t_vector	get_color(t_ray *ray, t_object *obj, t_object *obj_lights)
 
  	coeff = AMBIENT_STRENGTH;
 	position = add_vectors(ray->origin, vector_mult(ray->dir, ray->t));
-	position = add_vectors(position, vector_mult(get_normal(ray, position), 0.0000001));
+	position = add_vectors(position, vector_mult(get_normal(ray, position), 0.00000000001));
 	normal = get_normal(ray, position);
-	while (obj_lights != NULL)
-	{
-		if (get_next_light(&light, &position, &obj_lights) == 0 && is_lighted(&position, &light, obj) == 1)
-			coeff += diffuse_light(&light, &normal) + specular_light(ray, &light, &normal);
-	}
-//	color = mult_color(0xFFFFFF, normal);
-	color = mult_color(ray->hit_by->color, init_vector(coeff, coeff, coeff));
+	if (get_next_light(&light, &position, &obj_lights) == 0 && is_lighted(&position, &light, obj) == 1)
+		coeff += diffuse_light(&light, &normal) + specular_light(ray, &light, &normal);
+	color = mult_color(ray->hit_by->color, coeff);
 	return (color);
 }

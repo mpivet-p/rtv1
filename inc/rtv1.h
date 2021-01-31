@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 03:55:16 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/22 05:26:05 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/01/31 15:54:48 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ t_vector		normalize(t_vector vector);
 t_vector		get_normal(t_ray *ray, t_vector position);
 void			rt_init(t_camera *cam, t_viewplane *vp);
 void			reset_ray(t_ray *ray, t_fmlx *mlx, int x, int y);
-t_vector		mult_color(int color, t_vector mult);
+t_vector		mult_color(int color, double mult);
 void			init_ui(t_fmlx *mlx);
 void			disp_ui(t_fmlx *mlx);
 void			object_translate(t_vector *pos, int key, int modif);

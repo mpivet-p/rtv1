@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 04:49:56 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/22 05:19:45 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/01/31 16:43:44 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	rt_init(t_camera *cam, t_viewplane *vp)
 	cam->upvec = init_vector(0, 0, 1);
 }
 
-t_vector	mult_color(int color, t_vector mult)
+t_vector	mult_color(int color, double mult)
 {
 	t_vector	ret;
 	t_vector	col;
@@ -60,8 +60,8 @@ t_vector	mult_color(int color, t_vector mult)
 	col.x = (color & 0xFF0000) >> 16;
 	col.y = (color & 0xFF00) >> 8;
 	col.z = color & 0xFF;
-	ret.x = ft_max(col.x, col.x * mult.x);
-	ret.y = ft_max(col.y, col.y * mult.y);
-	ret.z = ft_max(col.z, col.z * mult.z);
+	ret.x = ft_max(0xFF, col.x * mult);
+	ret.y = ft_max(0xFF, col.y * mult);
+	ret.z = ft_max(0xFF, col.z * mult);
 	return (ret);
 }
