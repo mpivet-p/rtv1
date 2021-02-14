@@ -1,0 +1,6 @@
+light: NAME
+{
+	color : WHITE
+	pos(1,4141441,-333)
+	dir(8,1223,0)
+}

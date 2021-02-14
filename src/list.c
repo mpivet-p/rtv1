@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: wahasni <wahasni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 04:58:55 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/09/04 04:00:28 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/02/14 15:56:54 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "libft.h"
 #include <strings.h>
 #include <stdlib.h>
-//DELETE
 #include <stdio.h>
 
 t_object	*get_prevlink(t_fmlx *mlx)
@@ -45,4 +44,38 @@ void		rt_delist(t_fmlx *mlx)
 		free(obj);
 		obj = next;
 	}
+//	while (1)
+//		;
+}
+
+void		ft_list_add_last(t_object **save, t_object *elem)
+{
+	t_object	*list;
+
+	list = *save;
+	while (list->next)
+		list = list->next;
+	list->next = elem;
+	elem->prev = list;
+}
+
+t_object	*ft_create_list(void)
+{
+	t_object *list;
+
+	if (!(list = (t_object*)malloc(sizeof(t_object))))
+		return (NULL);
+	list->next = NULL;
+	list->prev = NULL;
+	return (list);
+}
+
+t_object	*ft_get_head_ref(t_object *obj)
+{
+	t_object	*head_ref;
+
+	head_ref = (t_object *)obj;
+	while (head_ref->prev)
+		head_ref = head_ref->prev;
+	return (head_ref);
 }

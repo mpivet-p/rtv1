@@ -6,7 +6,7 @@
 #    By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/22 02:45:47 by mpivet-p          #+#    #+#              #
-#    Updated: 2019/08/22 05:23:02 by mpivet-p         ###   ########.fr        #
+#    Updated: 2021/02/14 15:33:23 by mpivet-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,9 @@ OBJ_PATH= obj/
 INC_NAME= fractol.h
 SRC_NAME= main.c events.c tools.c vectors.c viewplane.c render.c sphere.c\
 		  solve.c plane.c cylinder.c cone.c test.c normal.c misc.c color.c\
-		  rotations.c user_interface.c vecops.c ray.c list.c
+		  rotations.c user_interface.c vecops.c ray.c list.c parser.c\
+		  parser_objs.c parse_light.c parse_cyl.c parse_cone.c parse_sphere.c\
+		  parse_plane.c parse_assign.c parse_utils.c free.c
 OBJ_NAME= $(SRC_NAME:.c=.o)
 
 INC= -I inc/ -I libft/inc/ -I mlx_linux/

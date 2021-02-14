@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 03:55:16 by mpivet-p          #+#    #+#             */
-/*   Updated: 2021/01/31 15:54:48 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/02/14 15:35:25 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,46 @@ typedef struct	s_fmlx
 	t_object	*obj;
 	t_object	*current;
 }				t_fmlx;
+
+/*
+** ============================================================================
+**	UTILS.....................................................................
+** ============================================================================
+*/
+
+int				ft_error(char *error);
+int				free_line(char *line, int i);
+char			ft_last_word(char *str);
+int				ft_count_word(char *str, char c);
+
+/*
+** ============================================================================
+**	PARSING.....................................................................
+** ============================================================================
+*/
+
+int				parser(t_fmlx *rtv, char *file);
+int				ft_parse_objs(t_object *obj, int fd, int type, char *name);
+int				ft_parse_bracket(int fd, int i);
+int				ft_parse_color(t_object *obj, int fd);
+int				ft_parse_data(t_object *obj, int fd);
+int				ft_parse_cyl(t_object *obj, int fd);
+int				ft_parse_cone(t_object *obj, int fd);
+int				ft_parse_plane(t_object *obj, int fd);
+int				ft_parse_sphere(t_object *obj, int fd);
+int				ft_parse_light(t_object *obj, int fd);
+void			ft_assign_dir(t_object *obj, char *str);
+void			ft_assign_dir2(t_object *obj, char *str);
+void			ft_assign_pos(t_object *obj, char *str);
+void			ft_assign_pos2(t_object *obj, char *str);
+int				ft_parse_name(t_object *obj,  char *line);
+void			free_split(char **tab);
+void			ft_delete_list(t_object** head_ref);
+int				free_last_node(t_object *head);
+t_object		*ft_get_head_ref(t_object *obj);
+void			ft_list_add_last(t_object **save, t_object *elem);
+t_object		*ft_create_list(void);
+void			ft_print_data(t_object *bip); // A supp
 
 /*
 ** ============================================================================
