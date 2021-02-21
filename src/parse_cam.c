@@ -6,7 +6,7 @@
 /*   By: wahasni <wahasni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 15:48:07 by wahasni           #+#    #+#             */
-/*   Updated: 2019/09/08 05:15:12 by wahasni          ###   ########.fr       */
+/*   Updated: 2021/02/21 15:08:58 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void		ft_parse_cam(t_object *obj, int fd, int type, char *name)
 	if (ft_parse_color(obj, fd))
 		ft_error("Bad color");
 	if (ft_get_data(obj, fd))
-		ft_error("Bad data");
+		ft_error("Bad data (1)");
 	if (ft_parse_bracket(fd, 1))
 		ft_error("Not a bracket2");
 }

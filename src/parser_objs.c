@@ -6,7 +6,7 @@
 /*   By: wahasni <wahasni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 13:23:34 by wahasni           #+#    #+#             */
-/*   Updated: 2019/09/12 02:12:10 by wahasni          ###   ########.fr       */
+/*   Updated: 2021/02/21 15:30:12 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,12 @@ int		ft_parse_name(t_object *obj, char *line)
 
 int		ft_parse_data(t_object *obj, int fd)
 {
-	if (obj->type == RT_CYL)
-		return (ft_parse_cyl(obj, fd));
-	else if (obj->type == RT_CONE)
-		return (ft_parse_cone(obj, fd));
-	else if (obj->type == RT_PLANE)
-		return (ft_parse_plane(obj, fd));
-	else if (obj->type == RT_SPHERE)
-		return (ft_parse_sphere(obj, fd));
-	else if (obj->type == RT_LIGHT)
-		return (ft_parse_light(obj, fd));
-	else
-		return (1);
+	static int	(*parse_obj[RT_NUM])(t_object *obj, int fd) = {ft_parse_cyl
+		, ft_parse_cone, ft_parse_plane, ft_parse_sphere, ft_parse_light};
+
+	if (obj->type != RT_CAM && obj->type < RT_NUM)
+		return(parse_obj[obj->type](obj, fd));
+	return (1);
 }
 
 int		ft_parse_color(t_object *obj, int fd)
@@ -102,7 +96,7 @@ int		ft_parse_objs(t_object *obj, int fd, int type, char *name)
 	if (ft_parse_color(obj, fd))
 		return (ft_error("Bad color"));
 	if (ft_parse_data(obj, fd))
-		return (ft_error("Bad data"));
+		return (ft_error("Bad data in objs"));
 	if (ft_parse_bracket(fd, 1))
 		return (ft_error("Not a last bracket"));
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: wahasni <wahasni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 15:50:17 by wahasni           #+#    #+#             */
-/*   Updated: 2021/02/14 16:32:22 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/02/21 17:05:27 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,26 @@
 #include "rtdata.h"
 #include "libft.h"
 
+#include <stdio.h>
+
 int	ft_parse_light(t_object *obj, int fd)
 {
 	char	*line;
-	int		i;
+	int		ret;
 
-	i = 0;
-	while (i < 2 && get_next_line(fd, &line) > 0)
+	ret = 1;
+	if (get_next_line(fd, &line) < 0)
+		return (1);
+	if (ft_strnequ(line, "\tpos(", 5))
 	{
-		if (ft_count_word(line, ',') == 2 && ft_last_word(line) == ')')
-		{
-			if (!i && ft_strnequ(line, "\tpos(", 5))
-				ft_assign_pos(obj, &line[5]);
-			else
-				return (free_line(line, 1));
-		}
-		ft_strdel(&line);
-		i++;
+		ft_assign_pos(obj, &line[5]);
+		ret = 0;
 	}
-	return (0);
+	ft_strdel(&line);
+	//Test lecture 1 ligne en plus ( "}" en theorie)
+//	get_next_line(fd, &line);
+//	printf("line = %s\n", line);
+//	ft_strdel(&line);
+
+	return (ret);
 }
