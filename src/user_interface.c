@@ -31,8 +31,8 @@ void	init_ui(t_fmlx *mlx)
 
 void	disp_ui(t_fmlx *mlx)
 {
-	char	*shapes[5] = {"cylinder", "cone", "plane", "sphere", "light"};
-	char	name[50];
+	static char	*shapes[5] = {"cylinder", "cone", "plane", "sphere", "light"};
+	char		name[50];
 
 	ft_bzero(name, 50);
 	ft_strcat(name, shapes[mlx->current->type]);

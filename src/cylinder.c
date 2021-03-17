@@ -13,7 +13,7 @@
 #include <math.h>
 #include "rtv1.h"
 
-double	intersect_cylinder(t_ray ray, t_object *obj)
+double		intersect_cylinder(t_ray ray, t_object *obj)
 {
 	t_cylinder	*cyl;
 	t_vector	base;
@@ -41,7 +41,9 @@ t_vector	normal_cylinder(t_ray *ray, t_vector position)
 	double		m;
 
 	cyl = &(ray->hit_by->u_fig.cyl);
-	m = dot_product(ray->dir, cyl->dir) * ray->t + dot_product(cyl->pos, cyl->dir);
-	ret = sub_vectors(position, sub_vectors(cyl->pos, vector_mult(cyl->dir, m)));
+	m = dot_product(ray->dir, cyl->dir) * ray->t + dot_product(
+		cyl->pos, cyl->dir);
+	ret = sub_vectors(position, sub_vectors(cyl->pos, vector_mult(
+		cyl->dir, m)));
 	return (normalize(ret));
 }

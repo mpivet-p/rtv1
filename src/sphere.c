@@ -13,9 +13,9 @@
 #include <math.h>
 #include "rtv1.h"
 
-double	intersect_sphere(t_ray ray, t_object *obj)
+double		intersect_sphere(t_ray ray, t_object *obj)
 {
-	t_sphere *sphere;
+	t_sphere	*sphere;
 	t_vector	base;
 	double		a;
 	double		b;
@@ -29,7 +29,7 @@ double	intersect_sphere(t_ray ray, t_object *obj)
 	return (ft_solve(a, b, c));
 }
 
-t_vector normal_sphere(t_ray *ray, t_vector position)
+t_vector	normal_sphere(t_ray *ray, t_vector position)
 {
 	t_sphere	*sphere;
 	t_vector	ret;

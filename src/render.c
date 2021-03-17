@@ -18,16 +18,16 @@
 
 void	get_intersection(t_ray *ray, t_object *obj)
 {
-	static double	(*figures[4])(t_ray ray, t_object *obj)= {
+	static double	(*figures[4])(t_ray ray, t_object *obj) = {
 		intersect_cylinder, intersect_cone, intersect_plane, intersect_sphere};
-	double 			ret;
+	double			ret;
 
 	ret = 0;
 	while (obj != NULL)
 	{
 		if (obj->type != RT_LIGHT
 				&& ((ret = figures[obj->type](*ray, obj)) < ray->t
-				 || ray->t == 0) && ret > 0)
+					|| ray->t == 0) && ret > 0)
 		{
 			ray->t = ret;
 			ray->hit_by = obj;

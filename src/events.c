@@ -31,12 +31,12 @@ t_vector	*get_vec(t_object *obj, int v)
 	return (NULL);
 }
 
-int		deal_key(int key, t_fmlx *mlx)
+int			deal_key(int key, t_fmlx *mlx)
 {
 	if (key == KEY_ESC)
 		rtv_exit(mlx);
 	else if (key == KEY_LEFT || key == KEY_RIGHT || key == KEY_DOWN
-	  || key == KEY_UP || key == KEY_PLUS || key == KEY_LESS)
+		|| key == KEY_UP || key == KEY_PLUS || key == KEY_LESS)
 	{
 		object_translate(get_vec(mlx->current, 'p'), key, mlx->intensity);
 	}
@@ -52,9 +52,7 @@ int		deal_key(int key, t_fmlx *mlx)
 		return (0);
 	}
 	else if (key == KEY_PLUS)
-		mlx->vp.dist *= 1.3;
-	else if (key == KEY_LESS)
-		mlx->vp.dist *= 0.7;
+		mlx->vp.dist *= (key == KEY_PLUS) ? 1.3 : 0.7;
 	else
 		return (key);
 	get_viewplane(&(mlx->vp), mlx->cam);
@@ -62,7 +60,7 @@ int		deal_key(int key, t_fmlx *mlx)
 	return (key);
 }
 
-int		mouse_press(int button, int x, int y, t_fmlx *mlx)
+int			mouse_press(int button, int x, int y, t_fmlx *mlx)
 {
 	(void)x;
 	(void)y;
@@ -70,7 +68,7 @@ int		mouse_press(int button, int x, int y, t_fmlx *mlx)
 	return (button);
 }
 
-int		mouse_move(int x, int y, t_fmlx *mlx)
+int			mouse_move(int x, int y, t_fmlx *mlx)
 {
 	(void)x;
 	(void)y;

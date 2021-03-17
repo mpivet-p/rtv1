@@ -12,10 +12,10 @@
 
 double	ft_atod(const char *str)
 {
-	int i;
-	int sign;
-	double result;
-	double power;
+	double	result;
+	double	power;
+	int		sign;
+	int		i;
 
 	i = 0;
 	power = 1;

@@ -151,7 +151,6 @@ typedef struct	s_object
 ** ============================================================================
 */
 
-
 enum	e_objs
 {
 	RT_CYL, RT_CONE, RT_PLANE, RT_SPHERE, RT_LIGHT, RT_CAM, RT_NUM

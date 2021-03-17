@@ -13,7 +13,7 @@
 #include "rtv1.h"
 #include <stddef.h>
 
-void	reset_ray(t_ray *ray, t_fmlx *mlx, int x, int y)
+void		reset_ray(t_ray *ray, t_fmlx *mlx, int x, int y)
 {
 	ray->hit_by = NULL;
 	ray->t = 0;

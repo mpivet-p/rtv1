@@ -20,7 +20,8 @@ OBJ_PATH= obj/
 
 INC_NAME= fractol.h
 SRC_NAME= main.c events.c tools.c vectors.c viewplane.c render.c sphere.c\
-		  solve.c plane.c cylinder.c cone.c test.c normal.c misc.c color.c\
+		  solve.c plane.c cylinder.c cone.c normal.c misc.c color.c\
+		  test.c\
 		  rotations.c user_interface.c vecops.c ray.c list.c parser.c\
 		  parser_objs.c parse_light.c parse_cyl.c parse_cone.c parse_sphere.c\
 		  parse_plane.c parse_assign.c parse_utils.c free.c

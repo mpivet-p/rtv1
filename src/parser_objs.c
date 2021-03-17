@@ -91,9 +91,6 @@ int		ft_parse_bracket(int fd, int i)
 
 int		ft_parse_objs(t_object *obj, int fd, int type, char *name)
 {
-	int	i;
-
-	i = 0;
 	obj->type = type;
 	if (ft_parse_name(obj, name))
 		return (ft_error("False name"));

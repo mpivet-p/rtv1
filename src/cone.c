@@ -19,26 +19,25 @@
 ** then we get send a, b and c to the solving function to get `t` value
 */
 
-double	intersect_cone(t_ray ray, t_object *obj)
+double		intersect_cone(t_ray ray, t_object *obj)
 {
 	t_cone		*cone;
 	t_vector	base;
-	double		a;
-	double		b;
+	double		vars[2];
 	double		c;
 	double		k;
 
 	cone = &(obj->u_fig.cone);
 	k = atan(cone->radius / cone->height);
 	base = sub_vectors(ray.origin, cone->pos);
-	a = dot_product(ray.dir, ray.dir) - (1 + k * k)
+	vars[0] = dot_product(ray.dir, ray.dir) - (1 + k * k)
 		* pow(dot_product(ray.dir, cone->dir), 2);
-	b = 2 * (dot_product(ray.dir, base) - (1 + k * k)
+	vars[1] = 2 * (dot_product(ray.dir, base) - (1 + k * k)
 			* (dot_product(ray.dir, cone->dir)
 			* dot_product(base, cone->dir)));
 	c = dot_product(base, base) - (1 + k * k)
 		* pow(dot_product(base, cone->dir), 2);
-	return (ft_solve(a, b, c));
+	return (ft_solve(vars[0], vars[1], c));
 }
 
 t_vector	normal_cone(t_ray *ray, t_vector position)

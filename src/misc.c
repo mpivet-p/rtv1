@@ -13,9 +13,6 @@
 #include <math.h>
 #include "rtv1.h"
 
-//TMP
-#include <stdio.h>
-
 t_vector	reflect(t_vector incident, t_vector normal)
 {
 	t_vector ret;
@@ -25,7 +22,7 @@ t_vector	reflect(t_vector incident, t_vector normal)
 	return (ret);
 }
 
-double	get_dist(t_vector *a, t_vector *b)
+double		get_dist(t_vector *a, t_vector *b)
 {
 	double	ret;
 
@@ -35,8 +32,8 @@ double	get_dist(t_vector *a, t_vector *b)
 
 t_vector	bisector(t_vector a, t_vector b)
 {
-	t_vector ret;
-	double norm;
+	t_vector	ret;
+	double		norm;
 
 	norm = sqrt(dot_product(a, a) + dot_product(b, b));
 	ret = vector_div(add_vectors(a, b), norm);

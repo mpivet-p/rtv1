@@ -35,6 +35,7 @@ void	rtv(t_fmlx *ptr)
 	if (!(ptr->ui_img = mlx_get_data_addr(ptr->ui, &(tools[0]),
 					&(tools[1]), &(tools[2]))))
 		rtv_exit(ptr);
+	mlx_hook(ptr->win, 17, 1L << 1, &rtv_exit, ptr);
 	mlx_hook(ptr->win, 2, 1L << 0, deal_key, ptr);
 	mlx_hook(ptr->win, 4, 1L << 1, mouse_press, ptr);
 	ptr->intensity = 1;

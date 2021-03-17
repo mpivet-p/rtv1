@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRACTOL_H
-# define FRACTOL_H
-#include "rtdata.h"
+#ifndef RTV1_H
+# define RTV1_H
+# include "rtdata.h"
 
 typedef struct	s_fmlx
 {
@@ -60,14 +60,13 @@ void			ft_assign_dir(t_object *obj, char *str);
 void			ft_assign_dir2(t_object *obj, char *str);
 void			ft_assign_pos(t_object *obj, char *str);
 void			ft_assign_pos2(t_object *obj, char *str);
-int				ft_parse_name(t_object *obj,  char *line);
+int				ft_parse_name(t_object *obj, char *line);
 void			free_split(char **tab);
-void			ft_delete_list(t_object** head_ref);
+void			ft_delete_list(t_object **head_ref);
 int				free_last_node(t_object *head);
 t_object		*ft_get_head_ref(t_object *obj);
 void			ft_list_add_last(t_object **save, t_object *elem);
 t_object		*ft_create_list(void);
-void			ft_print_data(t_object *bip); // A supp
 
 /*
 ** ============================================================================
@@ -87,7 +86,7 @@ int				deal_key(int key, t_fmlx *mlx);
 
 t_vector		reflect(t_vector incident, t_vector normal);
 void			fill_img(char *image, int x, int y, t_vector color);
-void			rtv_exit(t_fmlx *mlx);
+int				rtv_exit(t_fmlx *mlx);
 double			get_dist(t_vector *a, t_vector *b);
 t_vector		ray_to_point(t_ray *ray);
 
@@ -109,10 +108,10 @@ double			intersect_cone(t_ray ray, t_object *obj);
 ** ============================================================================
 */
 
-t_vector 		normal_sphere(t_ray *ray, t_vector position);
-t_vector 		normal_plane(t_ray *ray, t_vector position);
-t_vector 		normal_cylinder(t_ray *ray, t_vector position);
-t_vector 		normal_cone(t_ray *ray, t_vector position);
+t_vector		normal_sphere(t_ray *ray, t_vector position);
+t_vector		normal_plane(t_ray *ray, t_vector position);
+t_vector		normal_cylinder(t_ray *ray, t_vector position);
+t_vector		normal_cone(t_ray *ray, t_vector position);
 
 /*
 ** ============================================================================
@@ -144,7 +143,8 @@ double			dot_product(t_vector a, t_vector b);
 ** ============================================================================
 */
 
-t_vector		get_dir(t_viewplane vp, t_camera cam, t_ray ray, t_vector coords);
+t_vector		get_dir(
+	t_viewplane vp, t_camera cam, t_ray ray, t_vector coords);
 t_vector		get_indent(t_viewplane vp, t_vector coords);
 t_vector		init_vector(double x, double y, double z);
 double			ft_solve(double a, double b, double c);
@@ -164,10 +164,9 @@ void			object_translate(t_vector *pos, int key, int modif);
 void			object_rotate(t_vector *pos, int key, int modif);
 t_object		*get_prevlink(t_fmlx *mlx);
 void			rt_delist(t_fmlx *mlx);
-//TMP
-void			disp_vec(t_vector *vec);
 
-//TESTS
-t_object	*list_test(void);
+//A SUPPR
+void			disp_vec(t_vector *vec);
+void			ft_print_data(t_object *bip);
 
 #endif

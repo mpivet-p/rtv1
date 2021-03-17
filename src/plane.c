@@ -12,7 +12,7 @@
 
 #include "rtv1.h"
 
-double	intersect_plane(t_ray ray, t_object *obj)
+double		intersect_plane(t_ray ray, t_object *obj)
 {
 	t_plane		*plane;
 	t_vector	base;
