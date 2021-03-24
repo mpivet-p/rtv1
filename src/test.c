@@ -41,13 +41,14 @@ t_object	*list_test(void)
 		i++;
 	}
 	//Next pointers
-	ptr[0]->next = ptr[1];
-	ptr[1]->next = ptr[2];
-	ptr[2]->next = ptr[4];
-//	ptr[3]->next = ptr[4];
+	ptr[0]->next = ptr[2];
+//	ptr[1]->next = ptr[2];
+	ptr[2]->next = ptr[3];
+	ptr[3]->next = ptr[4];
 	ptr[4]->next = ptr[5];
-	ptr[1]->prev = ptr[0];
-	ptr[2]->prev = ptr[1];
+	ptr[0]->prev = ptr[5];
+//	ptr[1]->prev = ptr[0];
+	ptr[2]->prev = ptr[0];
 	ptr[3]->prev = ptr[2];
 	ptr[4]->prev = ptr[3];
 	ptr[5]->prev = ptr[4];
@@ -62,12 +63,12 @@ t_object	*list_test(void)
 	ptr[0]->u_fig.sphere.radius = 0.1;
 	ptr[0]->color = RT_RED;
 
-  // Sphere 2
-	ft_strcat(ptr[1]->name, "la deuxieme");
-	ptr[1]->type = RT_SPHERE;
-	ptr[1]->u_fig.sphere.pos = init_vector(-0.2, 1.1, 0.2);
-	ptr[1]->u_fig.sphere.radius = 0.1;
-	ptr[1]->color = RT_YELLO;
+//  // Sphere 2
+//	ft_strcat(ptr[1]->name, "la deuxieme");
+//	ptr[1]->type = RT_SPHERE;
+//	ptr[1]->u_fig.sphere.pos = init_vector(-0.2, 1.1, 0.2);
+//	ptr[1]->u_fig.sphere.radius = 0.1;
+//	ptr[1]->color = RT_YELLO;
 
   // Plane 1
 	ft_strcat(ptr[2]->name, "le plan");

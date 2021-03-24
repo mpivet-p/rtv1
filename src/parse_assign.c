@@ -35,12 +35,6 @@ void	ft_assign_dir(t_object *obj, char *str)
 		obj->u_fig.plane.dir.y = ft_atod(tab[1]);
 		obj->u_fig.plane.dir.z = ft_atod(tab[2]);
 	}
-	else if (obj->type == RT_LIGHT)
-	{
-		obj->u_fig.light.dir.x = ft_atod(tab[0]);
-		obj->u_fig.light.dir.y = ft_atod(tab[1]);
-		obj->u_fig.light.dir.z = ft_atod(tab[2]);
-	}
 	free_split(tab);
 }
 

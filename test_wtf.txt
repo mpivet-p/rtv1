@@ -4,9 +4,3 @@ light: lumiiierrrree
 	pos(-0.5, 0.8, 0.2)
 	dir(8,1223,0)
 }
-plane: premier plan
-{
-	color : BLUE
-	pos(0, 0, -0.2)
-	dir(0, 0, 1)
-}

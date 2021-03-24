@@ -168,5 +168,6 @@ void			rt_delist(t_fmlx *mlx);
 //A SUPPR
 void			disp_vec(t_vector *vec);
 void			ft_print_data(t_object *bip);
+t_object		*list_test(void);
 
 #endif

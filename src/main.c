@@ -59,6 +59,7 @@ int		main(int argc, char **argv)
 		ft_delete_list(&(ptr.obj));
 		return (1);
 	}
+//	ptr.obj = list_test();
 	ft_print_data(ptr.obj);
 	rtv(&ptr);
 	return (0);

@@ -50,6 +50,7 @@ int		free_last_node(t_object *head)
 
 int		free_line(char *line, int i)
 {
-	ft_strdel(&line);
+	if (line)
+		ft_strdel(&line);
 	return (i);
 }

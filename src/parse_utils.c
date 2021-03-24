@@ -31,12 +31,6 @@ int		ft_count_word(char *str, char c)
 	return (w);
 }
 
-/*
-**	printf("BEFORE : %d\n", obj->type);
-**	printf("Maillon %d : color : %lf pos[x] : %lf type : %d\n", i, obj->color,
-**	obj->u_fig.plane.pos.x, obj->type);
-*/
-
 void	ft_print_data(t_object *bip)
 {
 	t_object	*obj;
@@ -44,8 +38,10 @@ void	ft_print_data(t_object *bip)
 
 	i = 1;
 	obj = bip;
+	printf("BEFORE : %d\n", obj->type);
 	while (obj)
 	{
+		printf("Maillon %d : color : %lf  x : %lf  y : %lf  z : %lftype : %d\n", i, obj->color, obj->u_fig.plane.pos.x, obj->u_fig.plane.pos.y, obj->u_fig.plane.pos.z, obj->type);
 		i++;
 		obj = obj->next;
 	}

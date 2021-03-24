@@ -26,6 +26,8 @@ int	ft_parse_light(t_object *obj, int fd)
 		{
 			if (!i && ft_strnequ(line, "\tpos(", 5))
 				ft_assign_pos(obj, &line[5]);
+			else if (i == 1 && ft_strnequ(line, "\tdir(", 5))
+				ft_assign_dir(obj, &line[5]);
 			else
 				return (free_line(line, 1));
 		}

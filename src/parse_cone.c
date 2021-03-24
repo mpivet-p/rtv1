@@ -60,7 +60,9 @@ int			ft_parse_cone(t_object *obj, int fd)
 	i = 0;
 	while (i < 4 && get_next_line(fd, &line) > 0)
 	{
-		if (ft_count_word(line, ',') == 2 && ft_last_word(line) == ')')
+		if ((ft_count_word(line, ',') == 2 || ft_strnequ(line, "\tradius(", 8)
+			|| ft_strnequ(line, "\theight(", 8))
+			&& ft_last_word(line) == ')')
 		{
 			if (ft_assign_what(obj, line, i))
 				return (free_line(line, 1));
