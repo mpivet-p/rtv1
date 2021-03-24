@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/22 00:26:11 by mpivet-p          #+#    #+#             */
-/*   Updated: 2021/02/21 17:19:55 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/03/24 14:30:45 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ int		main(int argc, char **argv)
 		ft_delete_list(&(ptr.obj));
 		return (1);
 	}
-//	ptr.obj = list_test();
 	ft_print_data(ptr.obj);
 	rtv(&ptr);
 	return (0);

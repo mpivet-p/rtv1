@@ -10,10 +10,10 @@ plane: premier plan
 	pos(0,0,-0.2)
 	dir(0,0,1)
 }
-cone: conne
+cone: vlc jaune
 {
 	color : YELLOW
-	pos(0,1,0.2)
+	pos(0.5,1,0.2)
 	dir(0,0,1)
 	radius(1)
 	height(3)

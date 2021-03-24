@@ -6,7 +6,7 @@
 /*   By: wahasni <wahasni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 13:23:34 by wahasni           #+#    #+#             */
-/*   Updated: 2019/09/12 02:12:10 by wahasni          ###   ########.fr       */
+/*   Updated: 2021/03/24 14:17:42 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,13 @@
 
 int		ft_parse_name(t_object *obj, char *line)
 {
-	if (ft_strlen(line) > 23)
+	static int	start[] = {10, 6, 7, 8, 7};
+	int			length;
+
+	length = (int)ft_strlen(line);
+	if (length - start[obj->type] > 16)
 		return (1);
-	if (obj->type == RT_CYL)
-		ft_strcat(obj->name, &line[10]);
-	else if (obj->type == RT_CONE)
-		ft_strcat(obj->name, &line[6]);
-	else if (obj->type == RT_PLANE)
-		ft_strcat(obj->name, &line[7]);
-	else if (obj->type == RT_SPHERE)
-		ft_strcat(obj->name, &line[8]);
-	else if (obj->type == RT_LIGHT)
-		ft_strcat(obj->name, &line[7]);
+	ft_strcat(obj->name, &line[start[obj->type]]);
 	return (0);
 }
 
