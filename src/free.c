@@ -6,7 +6,7 @@
 /*   By: wahasni <wahasni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 04:05:32 by wahasni           #+#    #+#             */
-/*   Updated: 2019/09/08 03:31:57 by wahasni          ###   ########.fr       */
+/*   Updated: 2021/03/25 14:38:35 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,18 @@ int		free_last_node(t_object *head)
 	t_object	*second_last;
 
 	if (!head)
-		return (0);
+		return (1);
 	if (!head->next)
 	{
 		free(head);
-		return (0);
+		return (1);
 	}
 	second_last = head;
 	while (second_last->next->next)
 		second_last = second_last->next;
 	free(second_last->next);
 	second_last->next = ((void *)0);
-	return (0);
+	return (1);
 }
 
 int		free_line(char *line, int i)

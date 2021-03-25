@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/22 00:26:11 by mpivet-p          #+#    #+#             */
-/*   Updated: 2021/03/24 14:30:45 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/03/25 13:29:31 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int		main(int argc, char **argv)
 		return (1);
 	}
 	ft_print_data(ptr.obj);
-	rtv(&ptr);
+	//rtv(&ptr);
+	rt_delist(&ptr);
 	return (0);
 }
