@@ -6,7 +6,7 @@
 /*   By: wahasni <wahasni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 04:58:55 by mpivet-p          #+#    #+#             */
-/*   Updated: 2021/03/25 13:29:41 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/03/31 14:18:10 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,10 @@ void		rt_delist(t_fmlx *mlx)
 		free(obj);
 		obj = next;
 	}
-	bzero(mlx, sizeof(t_fmlx));
-//	while (1)
-//		;
 }
 
-void		ft_list_add_last(t_object **save, t_object *elem)
+void		ft_list_add_last(t_object *list, t_object *elem)
 {
-	t_object	*list;
-
-	list = *save;
 	while (list->next)
 		list = list->next;
 	list->next = elem;

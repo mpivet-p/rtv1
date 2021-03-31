@@ -6,7 +6,7 @@
 /*   By: wahasni <wahasni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 13:10:34 by wahasni           #+#    #+#             */
-/*   Updated: 2021/03/25 14:39:08 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/03/31 14:14:48 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static int	ft_handle_objs(t_object *obj, char *line, int fd)
 		return (ft_error("missing object"));
 	else
 		return (free_last_node(ft_get_head_ref(obj)));
-	return (0);
+	return ((error == 0) ? 0 : 2);
 }
 
 int			parser(t_fmlx *rtv, char *file)
@@ -71,13 +71,13 @@ int			parser(t_fmlx *rtv, char *file)
 	{
 		if (i++)
 		{
-			ft_list_add_last(&rtv->obj, ft_create_list());
-			while (obj->next)
-				obj = obj->next;
+			ft_list_add_last(rtv->obj, ft_create_list());
+			if ((obj = obj->next) == NULL)
+				return (1);
 		}
 		x = ft_handle_objs(obj, line, fd);
 		ft_strdel(&line);
 	}
 	close(fd);
-	return (0);
+	return ((x == 2) ? 2 : 0);
 }

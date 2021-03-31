@@ -1,0 +1,12 @@
+sphere: premiere sphere
+{
+	color : RED
+	pos(-0.2,1,0)
+	radius(0.1)
+}
+plane: premier plan
+{
+	color : BLUE
+	posi(0,0,-0.2)
+	dir(0,0,1)
+}

@@ -1,6 +1,0 @@
-sphere: premiere sphere
-{
-	color : RED
-	pos(-0.2, 1, -10)
-	radius(1)
-}

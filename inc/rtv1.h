@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 03:55:16 by mpivet-p          #+#    #+#             */
-/*   Updated: 2021/03/24 13:51:30 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/03/31 13:27:18 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void			free_split(char **tab);
 void			ft_delete_list(t_object **head_ref);
 int				free_last_node(t_object *head);
 t_object		*ft_get_head_ref(t_object *obj);
-void			ft_list_add_last(t_object **save, t_object *elem);
+void			ft_list_add_last(t_object *list, t_object *elem);
 t_object		*ft_create_list(void);
 
 /*

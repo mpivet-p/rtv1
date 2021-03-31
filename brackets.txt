@@ -8,6 +8,7 @@ plane: premier plan
 {
 	color : BLUE
 	pos(0,0,-0.2)
+	dir(0,0,1)
 }
 cone: vlc jaune
 {
