@@ -6,15 +6,15 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 15:41:39 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/04/27 16:09:40 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/29 18:36:05 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_cat_buffer(char *buffer, char *tocopy, int i)
+int	ft_cat_buffer(char *buffer, char *tocopy, int i)
 {
-	int j;
+	int	j;
 
 	j = 0;
 	if (i < 0)

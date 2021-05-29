@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 15:46:03 by mpivet-p          #+#    #+#             */
-/*   Updated: 2018/11/11 21:37:31 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/29 18:57:16 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	int				i;
 	unsigned char	*str;
 
-	str = (unsigned char*)s;
+	str = (unsigned char *)s;
 	i = 0;
 	while (n)
 	{

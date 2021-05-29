@@ -6,9 +6,16 @@
 /*   By: wahasni <wahasni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 18:11:54 by wahasni           #+#    #+#             */
-/*   Updated: 2021/02/14 15:36:27 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/29 18:30:15 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+static int	tern_hack(int cond, int a, int b)
+{
+	if (cond)
+		return (a);
+	return (b);
+}
 
 double	ft_atod(const char *str)
 {
@@ -22,9 +29,9 @@ double	ft_atod(const char *str)
 	result = 0;
 	sign = 1;
 	while (str[i] && (str[i] == '\t' || str[i] == '\n' || str[i] == '\r'
-				|| str[i] == '\v' || str[i] == ' ' || str[i] == '\f'))
+			|| str[i] == '\v' || str[i] == ' ' || str[i] == '\f'))
 		i++;
-	sign = (str[i] == '-') ? -1 : 1;
+	sign = tern_hack((str[i] == '-'), -1, 1);
 	if (sign == -1 || str[i] == '+')
 		i++;
 	while (str[i] && str[i] >= '0' && str[i] <= '9')

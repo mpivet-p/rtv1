@@ -6,13 +6,13 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/16 01:43:52 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/06/16 01:43:54 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/29 19:44:38 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		how_many_lines(const int fd)
+int	how_many_lines(const int fd)
 {
 	char	*line;
 	int		c;

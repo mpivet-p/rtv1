@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 12:45:22 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/07/02 02:57:46 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/29 18:18:08 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "libft.h"
 # define BUFF_SIZE 2000
 
-typedef struct	s_gnl
+typedef struct s_gnl
 {
 	char	buf[BUFF_SIZE + 1];
 	int		fd;

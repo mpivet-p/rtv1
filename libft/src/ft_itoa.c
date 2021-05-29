@@ -6,13 +6,13 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/11 13:34:21 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/04/27 16:10:08 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/29 18:39:45 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	char			*result;
 	unsigned int	nb;
@@ -23,7 +23,7 @@ char		*ft_itoa(int n)
 		nb = n * -1;
 	else
 		nb = n;
-	result = (char*)malloc(sizeof(char) * i + 1);
+	result = (char *)malloc(sizeof(char) * i + 1);
 	result[i--] = 0;
 	while (nb > 0)
 	{

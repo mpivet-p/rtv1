@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 14:11:16 by mpivet-p          #+#    #+#             */
-/*   Updated: 2018/11/17 14:48:10 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/29 19:24:23 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 size_t	ft_strlcat(char *restrict dst, const char *restrict src, size_t size)
 {
-	size_t i;
-	size_t j;
-	size_t result;
+	size_t	i;
+	size_t	j;
+	size_t	result;
 
 	i = 0;
 	j = 0;

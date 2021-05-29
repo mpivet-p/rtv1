@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 19:57:01 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/04/19 19:57:03 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/29 18:40:42 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
 {
-	t_list *ptr;
+	t_list	*ptr;
 
 	ptr = lst;
 	while (ptr)

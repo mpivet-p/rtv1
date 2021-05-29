@@ -6,14 +6,14 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 18:24:15 by mpivet-p          #+#    #+#             */
-/*   Updated: 2021/03/24 14:12:12 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/29 19:15:08 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strcat(char *restrict s1, const char *restrict s2)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;

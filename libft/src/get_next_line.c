@@ -6,13 +6,13 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 15:59:07 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/06/23 01:57:03 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/29 19:55:51 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static char		*ft_strnjoin(char *s1, char *s2, int len, char **line)
+static char	*ft_strnjoin(char *s1, char *s2, int len, char **line)
 {
 	char	*tmp;
 	char	*str;
@@ -26,7 +26,7 @@ static char		*ft_strnjoin(char *s1, char *s2, int len, char **line)
 	return (str);
 }
 
-static int		read_line(t_gnl *buffer, char **line, int i)
+static int	read_line(t_gnl *buffer, char **line, int i)
 {
 	while (++i <= buffer->ret && buffer->buf[i] != 10 && buffer->ret > 0)
 	{
@@ -34,7 +34,8 @@ static int		read_line(t_gnl *buffer, char **line, int i)
 		{
 			*line = ft_strnjoin(*line, buffer->buf, i, line);
 			ft_strclr(buffer->buf);
-			if ((buffer->ret = read(buffer->fd, buffer->buf, BUFF_SIZE)) == -1)
+			buffer->ret = read(buffer->fd, buffer->buf, BUFF_SIZE);
+			if (buffer->ret == -1)
 				return (-1);
 			buffer->buf[BUFF_SIZE] = 0;
 			i = 0;
@@ -51,7 +52,7 @@ static int		read_line(t_gnl *buffer, char **line, int i)
 	return (1);
 }
 
-int				get_next_line(const int fd, char **line)
+int	get_next_line(const int fd, char **line)
 {
 	static t_gnl	buffer;
 	int				ret;
@@ -64,7 +65,8 @@ int				get_next_line(const int fd, char **line)
 	*line = NULL;
 	if (buffer.buf[0] == 0)
 		buffer.ret = BUFF_SIZE;
-	if ((ret = read_line(&buffer, &(*line), -1)) == 0)
+	ret = read_line(&buffer, &(*line), -1);
+	if (ret == 0)
 		ft_strdel(line);
 	return (ret);
 }

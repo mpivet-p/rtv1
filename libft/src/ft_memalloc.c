@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/10 20:38:46 by mpivet-p          #+#    #+#             */
-/*   Updated: 2018/11/11 21:37:15 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/29 18:56:42 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 void	*ft_memalloc(size_t size)
 {
-	void *mem;
+	void	*mem;
 
-	if (!(mem = (unsigned char*)malloc(size)))
+	mem = (unsigned char *)malloc(size);
+	if (!mem)
 		return (NULL);
 	ft_bzero(mem, size);
 	return (mem);

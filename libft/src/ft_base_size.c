@@ -6,13 +6,13 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 14:53:37 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/04/27 16:00:15 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/29 18:34:26 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_base_size(long long int nb, int base)
+int	ft_base_size(long long int nb, int base)
 {
-	int size;
+	int	size;
 
 	size = 0;
 	if (nb == 0)

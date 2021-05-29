@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 13:22:58 by mpivet-p          #+#    #+#             */
-/*   Updated: 2018/11/13 15:05:29 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/29 19:38:11 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ char	*ft_strtrim(char const *s)
 	while (j > i && (s[j] == 32 || s[j] == 10 || s[j] == 9 || s[j] == 0))
 		j--;
 	j++;
-	if (!(str = (char*)malloc(sizeof(char) * (j - i + 1))))
+	str = (char *)malloc(sizeof(char) * (j - i + 1));
+	if (!str)
 		return (NULL);
 	while (s[i] && i < j)
 		str[k++] = s[i++];

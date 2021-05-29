@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/13 16:07:14 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/02/16 19:13:35 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/29 20:00:03 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ void	ft_print_bits(long long unsigned int nbr)
 	i = 0;
 	while (i < 64)
 	{
-		tab[i] = (nbr & 1ULL << i) ? '1' : '0';
+		if (nbr & 1ULL << i)
+			tab[i] = '1';
+		else
+			tab[i] = '0';
 		i++;
 	}
 	while (i >= 0)

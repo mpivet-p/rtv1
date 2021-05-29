@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 14:19:36 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/06/20 05:10:52 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/29 19:17:02 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ char	*ft_strdup(const char *s1)
 		return (NULL);
 	while (s1[i])
 		i++;
-	if (!(dup = (char*)malloc(sizeof(char) * i + 1)))
+	dup = (char *)malloc(sizeof(char) * i + 1);
+	if (!dup)
 		return (0);
 	i = 0;
 	while (s1[i])

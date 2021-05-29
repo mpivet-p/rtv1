@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/10 20:24:52 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/01/05 12:58:32 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/29 19:28:02 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ char	*ft_strnew(size_t size)
 	int		i;
 
 	i = 0;
-	if (!(str = (char*)malloc(sizeof(char) * (size + 1))))
+	str = (char *)malloc(sizeof(char) * (size + 1));
+	if (!str)
 		return (NULL);
 	while (i <= (int)size)
 	{

@@ -6,13 +6,13 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 18:20:28 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/05/05 17:16:20 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/29 19:08:38 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_putchar(int c)
+int	ft_putchar(int c)
 {
 	if (write(1, &c, 1) == -1)
 		return (-1);

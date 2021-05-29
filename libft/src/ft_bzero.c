@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 13:34:10 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/04/27 16:09:57 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/29 18:34:55 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_bzero(void *s, size_t n)
 	unsigned char	*str;
 	int				i;
 
-	str = (unsigned char*)s;
+	str = (unsigned char *)s;
 	i = 0;
 	while (n-- > 0)
 		str[i++] = 0;

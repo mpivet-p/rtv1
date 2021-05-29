@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/16 02:54:19 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/06/19 03:37:29 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/29 19:40:27 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,16 @@
 
 char	**tabdup(char **table, char ***new_tab, int addlines)
 {
-	int i;
-	int len;
+	int	i;
+	int	len;
 
 	i = 0;
 	len = 0;
 	while (table && table[len] != 0)
 		len++;
 	len += addlines;
-	if (!(*new_tab = (char**)malloc(sizeof(char*) * (len + 1))))
+	*new_tab = (char **)malloc(sizeof(char *) * (len + 1));
+	if (!(*new_tab))
 		return (NULL);
 	while (i < len)
 	{

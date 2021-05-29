@@ -6,13 +6,13 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 19:58:42 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/04/19 19:59:04 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/29 19:54:31 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_sqrt(int nb)
 {
-	int racine;
+	int	racine;
 
 	racine = 0;
 	if (nb <= 0)

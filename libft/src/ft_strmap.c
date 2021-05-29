@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 18:19:46 by mpivet-p          #+#    #+#             */
-/*   Updated: 2018/11/13 12:25:51 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/29 19:25:29 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,13 @@ char	*ft_strmap(char const *s, char (*f)(char))
 	int		i;
 
 	i = 0;
-	str = (char*)s;
+	str = (char *)s;
 	if (!s)
 		return (NULL);
 	while (str[i])
 		i++;
-	if (!(result = (char*)malloc(sizeof(char) * (i + 1))))
+	result = (char *)malloc(sizeof(char) * (i + 1));
+	if (!result)
 		return (NULL);
 	i = 0;
 	while (str[i])

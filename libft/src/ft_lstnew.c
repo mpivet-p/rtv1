@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/19 19:57:39 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/04/19 19:57:40 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/29 18:44:51 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 t_list	*ft_lstnew(void const *content, size_t content_size)
 {
-	t_list *tmp;
+	t_list	*tmp;
 
-	if (!(tmp = (t_list*)malloc(sizeof(t_list))))
+	tmp = (t_list *)malloc(sizeof(t_list));
+	if (!tmp)
 		return (NULL);
 	if (content == NULL)
 	{
@@ -25,7 +26,8 @@ t_list	*ft_lstnew(void const *content, size_t content_size)
 	}
 	else
 	{
-		if (!(tmp->content = ft_memdup(content, content_size)))
+		tmp->content = ft_memdup(content, content_size);
+		if (!(tmp->content))
 			return (NULL);
 		tmp->content_size = content_size;
 	}

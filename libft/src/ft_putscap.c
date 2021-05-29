@@ -6,13 +6,13 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 17:30:05 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/05/05 17:33:19 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/29 19:10:25 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_putscap(int c)
+int	ft_putscap(int c)
 {
 	if (write(2, &c, 1) == -1)
 		return (-1);

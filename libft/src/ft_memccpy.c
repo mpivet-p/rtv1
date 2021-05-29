@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 14:58:21 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/04/27 16:14:00 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/29 18:58:24 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 	char	*str;
 	int		i;
 
-	dest = (char*)dst;
-	str = (char*)src;
+	dest = (char *)dst;
+	str = (char *)src;
 	i = 0;
 	while (n)
 	{

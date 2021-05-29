@@ -6,11 +6,13 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 11:11:50 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/15 03:52:40 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/29 19:58:40 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 double	ft_max(double value, double low)
 {
-	return ((value > low) ? low : value);
+	if (value > low)
+		return (low);
+	return (value);
 }

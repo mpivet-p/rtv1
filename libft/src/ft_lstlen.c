@@ -6,15 +6,15 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 13:47:00 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/02/02 19:35:52 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/29 18:41:06 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_lstlen(t_list *lst)
+int	ft_lstlen(t_list *lst)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (lst != 0)

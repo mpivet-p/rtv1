@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 17:08:35 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/05/01 16:47:49 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/29 19:15:26 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (s[i] != c && s[i])
 		i++;
 	if (s[i] == c)
-		return ((char*)s + i);
+		return ((char *)s + i);
 	return (NULL);
 }

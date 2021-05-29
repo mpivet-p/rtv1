@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 13:11:48 by mpivet-p          #+#    #+#             */
-/*   Updated: 2018/11/13 15:15:53 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/29 20:08:08 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	ft_count_words(char const *str, char c)
 {
-	int nb;
+	int	nb;
 
 	nb = 0;
 	while (*str)
@@ -33,7 +33,7 @@ static int	ft_count_words(char const *str, char c)
 
 static int	ft_count_c(char const *str, char c)
 {
-	int nb;
+	int	nb;
 
 	nb = 0;
 	while (*str != c && *str != '\0')
@@ -44,7 +44,7 @@ static int	ft_count_c(char const *str, char c)
 	return (nb);
 }
 
-char		**ft_strsplit(char const *s, char c)
+char	**ft_strsplit(char const *s, char c)
 {
 	int		j;
 	int		k;
@@ -56,13 +56,15 @@ char		**ft_strsplit(char const *s, char c)
 	if (!s || !c)
 		return (NULL);
 	nb = ft_count_words(s, c);
-	if (!(tab = (char**)malloc(sizeof(char*) * (nb + 1))))
+	tab = (char **)malloc(sizeof(char *) * (nb + 1));
+	if (!tab)
 		return (NULL);
 	while (j < nb)
 	{
 		while (*s == c && *s != '\0')
 			s++;
-		if (!(tab[j] = (char*)malloc(sizeof(char) * (ft_count_c(s, c) + 1))))
+		tab[j] = (char *)malloc(sizeof(char) * (ft_count_c(s, c) + 1));
+		if (!(tab[j]))
 			return (NULL);
 		while (*s != '\0' && *s != c)
 			tab[j][k++] = *(s++);

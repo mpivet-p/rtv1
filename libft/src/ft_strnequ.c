@@ -6,15 +6,15 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 16:38:30 by mpivet-p          #+#    #+#             */
-/*   Updated: 2018/11/14 10:31:14 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/29 19:27:38 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strnequ(char const *s1, char const *s2, size_t n)
+int	ft_strnequ(char const *s1, char const *s2, size_t n)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!s1 || !s2)

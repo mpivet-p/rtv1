@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 17:31:29 by mpivet-p          #+#    #+#             */
-/*   Updated: 2018/11/17 14:21:59 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/29 19:28:42 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (s[i])
@@ -22,6 +22,6 @@ char	*ft_strrchr(const char *s, int c)
 	while (s[i] != c && i > 0)
 		i--;
 	if (s[i] == c)
-		return ((char*)&s[i]);
+		return ((char *)&s[i]);
 	return (NULL);
 }
