@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 03:55:16 by mpivet-p          #+#    #+#             */
-/*   Updated: 2021/05/29 15:16:09 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/29 18:17:14 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 # include <stdio.h>
 
-typedef struct	s_fmlx
+typedef struct s_fmlx
 {
 	void		*mlx;
 	void		*win;
@@ -146,7 +146,7 @@ double			dot_product(t_vector a, t_vector b);
 */
 
 t_vector		get_dir(
-	t_viewplane vp, t_camera cam, t_ray ray, t_vector coords);
+					t_viewplane vp, t_camera cam, t_ray ray, t_vector coords);
 t_vector		get_indent(t_viewplane vp, t_vector coords);
 t_vector		init_vector(double x, double y, double z);
 double			ft_solve(double a, double b, double c);

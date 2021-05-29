@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/04 01:19:54 by mpivet-p          #+#    #+#             */
-/*   Updated: 2021/01/30 13:45:33 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/29 18:16:31 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@
 #  define KEY_PLUS	78
 # endif
 
-typedef struct	s_vector
+typedef struct s_vector
 {
 	double	x;
 	double	y;
@@ -78,26 +78,26 @@ typedef struct	s_vector
 ** ============================================================================
 */
 
-typedef struct	s_sphere
+typedef struct s_sphere
 {
 	t_vector	pos;
 	double		radius;
 }				t_sphere;
 
-typedef struct	s_plane
+typedef struct s_plane
 {
 	t_vector	pos;
 	t_vector	dir;
 }				t_plane;
 
-typedef struct	s_cylinder
+typedef struct s_cylinder
 {
 	t_vector	pos;
 	t_vector	dir;
 	double		radius;
 }				t_cylinder;
 
-typedef struct	s_cone
+typedef struct s_cone
 {
 	t_vector	pos;
 	t_vector	dir;
@@ -105,13 +105,13 @@ typedef struct	s_cone
 	double		height;
 }				t_cone;
 
-typedef struct	s_light
+typedef struct s_light
 {
 	t_vector	pos;
 	t_vector	dir;
 }				t_light;
 
-typedef struct	s_camera
+typedef struct s_camera
 {
 	t_vector	pos;
 	t_vector	vecdir;
@@ -125,7 +125,7 @@ typedef struct	s_camera
 ** ============================================================================
 */
 
-typedef union	u_fig
+typedef union u_fig
 {
 	t_plane		plane;
 	t_sphere	sphere;
@@ -135,7 +135,7 @@ typedef union	u_fig
 	t_camera	cam;
 }				t_fig;
 
-typedef struct	s_object
+typedef struct s_object
 {
 	double			color;
 	char			name[17];
@@ -153,17 +153,23 @@ typedef struct	s_object
 
 enum	e_objs
 {
-	RT_CYL, RT_CONE, RT_PLANE, RT_SPHERE, RT_LIGHT, RT_CAM, RT_NUM
+	RT_CYL,
+	RT_CONE,
+	RT_PLANE,
+	RT_SPHERE,
+	RT_LIGHT,
+	RT_CAM,
+	RT_NUM
 };
 
-typedef struct	s_point
+typedef struct s_point
 {
 	double	x;
 	double	y;
 	double	z;
 }				t_point;
 
-typedef struct	s_viewplane
+typedef struct s_viewplane
 {
 	t_vector	upleft;
 	double		dist;
@@ -171,7 +177,7 @@ typedef struct	s_viewplane
 	double		width;
 }				t_viewplane;
 
-typedef struct	s_ray
+typedef struct s_ray
 {
 	t_object	*hit_by;
 	t_vector	origin;
