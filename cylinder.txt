@@ -1,0 +1,13 @@
+cylinder: cylindrique
+{
+	color : BLUE
+	pos(0,1,0)
+	dir(0,0,1)
+	radius(0.1)
+}
+light: lumiiierrrree
+{
+	color : WHITE
+	pos(-0.5,0.8,0.2)
+	dir(8,1223,0)
+}

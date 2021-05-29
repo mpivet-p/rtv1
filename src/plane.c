@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/03 00:49:06 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/18 02:37:45 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/29 15:18:41 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ double		intersect_plane(t_ray ray, t_object *obj)
 	plane = &(obj->u_fig.plane);
 	base = sub_vectors(ray.origin, plane->pos);
 	return (-1.0 * (dot_product(plane->dir, base)
-					/ dot_product(plane->dir, ray.dir)));
+					/ anti_zero(dot_product(plane->dir, ray.dir))));
 }
 
 t_vector	normal_plane(t_ray *ray, t_vector position)

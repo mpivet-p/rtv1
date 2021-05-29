@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 04:49:56 by mpivet-p          #+#    #+#             */
-/*   Updated: 2021/03/24 14:41:26 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/29 15:36:02 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void		fill_img(char *image, int x, int y, t_vector color)
 	i = (((SIMG_X * y) + x) * 4);
 	if (x >= 0 && y >= 0 && x < SIMG_X && y < SIMG_Y)
 	{
-		image[i + 2] = color.x;
-		image[i + 1] = color.y;
-		image[i] = color.z;
+		image[i + 2] = (int)color.x & 0xFF;
+		image[i + 1] = (int)color.y & 0xFF;
+		image[i] = (int)color.z & 0xFF;
 	}
 }
 
@@ -66,4 +66,11 @@ t_vector	mult_color(int color, double mult)
 	ret.y = ft_max(0xFF, col.y * mult);
 	ret.z = ft_max(0xFF, col.z * mult);
 	return (ret);
+}
+
+double		anti_zero(double nbr)
+{
+	if (nbr == 0.0)
+		return (0.00000001);
+	return (nbr);
 }

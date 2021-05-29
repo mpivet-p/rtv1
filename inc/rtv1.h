@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 03:55:16 by mpivet-p          #+#    #+#             */
-/*   Updated: 2021/03/31 13:27:18 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/29 15:16:09 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,5 +171,6 @@ void			rt_delist(t_fmlx *mlx);
 void			disp_vec(t_vector *vec);
 void			ft_print_data(t_object *bip);
 t_object		*list_test(void);
+double			anti_zero(double nbr);
 
 #endif

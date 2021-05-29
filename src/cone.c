@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/03 03:50:53 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/18 04:55:10 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/29 18:10:12 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,15 @@ t_vector	normal_cone(t_ray *ray, t_vector position)
 {
 	t_vector	ret;
 	t_cone		*cone;
+	double		m;
 	double		k;
 
 	cone = &(ray->hit_by->u_fig.cone);
 	k = atan(cone->radius / cone->height);
-	ret = vector_mult(vector_mult(cone->dir, 1 + k * k), cone->height * -1);
-	ret = normalize(sub_vectors(position, sub_vectors(cone->pos, ret)));
+	m = dot_product(ray->dir, cone->dir) * ray->t
+		+ dot_product(sub_vectors(ray->origin, cone->pos), cone->dir);
+	ret = vector_mult(vector_mult(cone->dir, m), (1 + k * k));
+	ret = normalize(sub_vectors(sub_vectors(position, cone->pos), ret));
 	if (dot_product(ray->dir, ret) > 0.0001)
 		ret = vector_mult(ret, -1);
 	return (ret);
