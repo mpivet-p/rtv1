@@ -42,7 +42,7 @@ static int	ft_assign_what(t_object *obj, char *line, int i)
 	return (0);
 }
 
-int			ft_parse_cyl(t_object *obj, int fd)
+int	ft_parse_cyl(t_object *obj, int fd)
 {
 	char	*line;
 	int		i;

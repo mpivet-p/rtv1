@@ -16,9 +16,9 @@
 #include "rtv1.h"
 #include "libft.h"
 
-void		fill_img(char *image, int x, int y, t_vector color)
+void	fill_img(char *image, int x, int y, t_vector color)
 {
-	int i;
+	int	i;
 
 	i = (((SIMG_X * y) + x) * 4);
 	if (x >= 0 && y >= 0 && x < SIMG_X && y < SIMG_Y)
@@ -29,7 +29,7 @@ void		fill_img(char *image, int x, int y, t_vector color)
 	}
 }
 
-int			rtv_exit(t_fmlx *mlx)
+int	rtv_exit(t_fmlx *mlx)
 {
 	if (mlx->mlx && mlx->img)
 		mlx_destroy_image(mlx->mlx, mlx->img);
@@ -43,7 +43,7 @@ int			rtv_exit(t_fmlx *mlx)
 	exit(0);
 }
 
-void		rt_init(t_camera *cam, t_viewplane *vp)
+void	rt_init(t_camera *cam, t_viewplane *vp)
 {
 	vp->width = SIMG_X;
 	vp->height = SIMG_Y;
@@ -68,7 +68,7 @@ t_vector	mult_color(int color, double mult)
 	return (ret);
 }
 
-double		anti_zero(double nbr)
+double	anti_zero(double nbr)
 {
 	if (nbr == 0.0)
 		return (0.00000001);

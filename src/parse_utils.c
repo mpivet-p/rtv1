@@ -15,7 +15,7 @@
 #include "rtdata.h"
 #include <stdio.h>
 
-int		ft_count_word(char *str, char c)
+int	ft_count_word(char *str, char c)
 {
 	int	i;
 	int	w;
@@ -33,7 +33,7 @@ int		ft_count_word(char *str, char c)
 
 void	ft_print_data(t_object *obj)
 {
-	int			i;
+	int	i;
 
 	i = 1;
 	printf("BEFORE\n");
@@ -60,7 +60,7 @@ char	ft_last_word(char *str)
 	return (str[i]);
 }
 
-int		ft_error(char *error)
+int	ft_error(char *error)
 {
 	ft_putendl(error);
 	return (1);

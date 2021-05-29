@@ -18,22 +18,22 @@
 
 void	rtv(t_fmlx *ptr)
 {
-	int			tools[3];
+	int	tools[3];
 
 	if (!(ptr->mlx = mlx_init()))
 		rtv_exit(ptr);
 	if (!(ptr->win = mlx_new_window(ptr->mlx, SWIN_X,
-					SWIN_Y, "RTv1 by mpivet-p and wahasni")))
+				SWIN_Y, "RTv1 by mpivet-p and wahasni")))
 		rtv_exit(ptr);
 	if (!(ptr->img = mlx_new_image(ptr->mlx, SIMG_X, SIMG_Y)))
 		rtv_exit(ptr);
 	if (!(ptr->screen = mlx_get_data_addr(ptr->img, &(tools[0]),
-					&(tools[1]), &(tools[2]))))
+				&(tools[1]), &(tools[2]))))
 		rtv_exit(ptr);
 	if (!(ptr->ui = mlx_new_image(ptr->mlx, SUI_X, SUI_Y)))
 		rtv_exit(ptr);
 	if (!(ptr->ui_img = mlx_get_data_addr(ptr->ui, &(tools[0]),
-					&(tools[1]), &(tools[2]))))
+				&(tools[1]), &(tools[2]))))
 		rtv_exit(ptr);
 	mlx_hook(ptr->win, 17, 1L << 1, &rtv_exit, ptr);
 	mlx_hook(ptr->win, 2, 1L << 0, deal_key, ptr);
@@ -45,9 +45,9 @@ void	rtv(t_fmlx *ptr)
 	mlx_loop(ptr->mlx);
 }
 
-int		main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_fmlx		ptr;
+	t_fmlx	ptr;
 
 	if (argc != 2)
 	{

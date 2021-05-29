@@ -14,7 +14,7 @@
 #include "rtdata.h"
 #include "libft.h"
 
-int		ft_parse_name(t_object *obj, char *line)
+int	ft_parse_name(t_object *obj, char *line)
 {
 	static int	start[] = {10, 6, 7, 8, 7};
 	int			length;
@@ -26,7 +26,7 @@ int		ft_parse_name(t_object *obj, char *line)
 	return (0);
 }
 
-int		ft_parse_data(t_object *obj, int fd)
+int	ft_parse_data(t_object *obj, int fd)
 {
 	if (obj->type == RT_CYL)
 		return (ft_parse_cyl(obj, fd));
@@ -42,9 +42,9 @@ int		ft_parse_data(t_object *obj, int fd)
 		return (1);
 }
 
-int		ft_parse_color(t_object *obj, int fd)
+int	ft_parse_color(t_object *obj, int fd)
 {
-	char *line;
+	char	*line;
 
 	if (get_next_line(fd, &line) <= 0)
 		return (1);
@@ -65,9 +65,9 @@ int		ft_parse_color(t_object *obj, int fd)
 	return (free_line(line, 0));
 }
 
-int		ft_parse_bracket(int fd, int i)
+int	ft_parse_bracket(int fd, int i)
 {
-	char *line;
+	char	*line;
 
 	if (get_next_line(fd, &line) <= 0)
 		return (1);
@@ -84,7 +84,7 @@ int		ft_parse_bracket(int fd, int i)
 	return (free_line(line, 0));
 }
 
-int		ft_parse_objs(t_object *obj, int fd, int type, char *name)
+int	ft_parse_objs(t_object *obj, int fd, int type, char *name)
 {
 	obj->type = type;
 	if (ft_parse_name(obj, name))

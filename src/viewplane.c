@@ -13,7 +13,7 @@
 #include "rtdata.h"
 #include "rtv1.h"
 
-void		get_viewplane(t_viewplane *vp, t_camera cam)
+void	get_viewplane(t_viewplane *vp, t_camera cam)
 {
 	t_vector	x;
 	t_vector	y;

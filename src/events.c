@@ -31,7 +31,7 @@ t_vector	*get_vec(t_object *obj, int v)
 	return (NULL);
 }
 
-int			deal_key(int key, t_fmlx *mlx)
+int	deal_key(int key, t_fmlx *mlx)
 {
 	if (key == KEY_ESC)
 		rtv_exit(mlx);
@@ -60,7 +60,7 @@ int			deal_key(int key, t_fmlx *mlx)
 	return (key);
 }
 
-int			mouse_press(int button, int x, int y, t_fmlx *mlx)
+int	mouse_press(int button, int x, int y, t_fmlx *mlx)
 {
 	(void)x;
 	(void)y;
@@ -68,7 +68,7 @@ int			mouse_press(int button, int x, int y, t_fmlx *mlx)
 	return (button);
 }
 
-int			mouse_move(int x, int y, t_fmlx *mlx)
+int	mouse_move(int x, int y, t_fmlx *mlx)
 {
 	(void)x;
 	(void)y;

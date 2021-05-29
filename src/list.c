@@ -28,7 +28,7 @@ t_object	*get_prevlink(t_fmlx *mlx)
 	return (obj);
 }
 
-void		rt_delist(t_fmlx *mlx)
+void	rt_delist(t_fmlx *mlx)
 {
 	t_object	*obj;
 	t_object	*next;
@@ -46,7 +46,7 @@ void		rt_delist(t_fmlx *mlx)
 	}
 }
 
-void		ft_list_add_last(t_object *list, t_object *elem)
+void	ft_list_add_last(t_object *list, t_object *elem)
 {
 	while (list->next)
 		list = list->next;
@@ -56,9 +56,10 @@ void		ft_list_add_last(t_object *list, t_object *elem)
 
 t_object	*ft_create_list(void)
 {
-	t_object *list;
+	t_object	*list;
 
-	if (!(list = ft_memalloc(sizeof(t_object))))
+	list = ft_memalloc(sizeof(t_object));
+	if (!list)
 		return (NULL);
 	return (list);
 }

@@ -13,7 +13,7 @@
 #include <math.h>
 #include "rtv1.h"
 
-double		intersect_sphere(t_ray ray, t_object *obj)
+double	intersect_sphere(t_ray ray, t_object *obj)
 {
 	t_sphere	*sphere;
 	t_vector	base;

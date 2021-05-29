@@ -12,7 +12,7 @@
 
 #include "rtv1.h"
 
-double		intersect_plane(t_ray ray, t_object *obj)
+double	intersect_plane(t_ray ray, t_object *obj)
 {
 	t_plane		*plane;
 	t_vector	base;
@@ -20,7 +20,7 @@ double		intersect_plane(t_ray ray, t_object *obj)
 	plane = &(obj->u_fig.plane);
 	base = sub_vectors(ray.origin, plane->pos);
 	return (-1.0 * (dot_product(plane->dir, base)
-					/ anti_zero(dot_product(plane->dir, ray.dir))));
+			/ anti_zero(dot_product(plane->dir, ray.dir))));
 }
 
 t_vector	normal_plane(t_ray *ray, t_vector position)

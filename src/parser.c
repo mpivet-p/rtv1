@@ -17,7 +17,7 @@
 
 static int	ft_check_node(t_object *chill)
 {
-	t_object *obj;
+	t_object	*obj;
 
 	obj = chill;
 	while (obj->prev)
@@ -25,7 +25,7 @@ static int	ft_check_node(t_object *chill)
 	while (obj->next)
 	{
 		if (obj->type == RT_CYL || obj->type == RT_CONE
-				|| obj->type == RT_PLANE || obj->type == RT_SPHERE)
+			|| obj->type == RT_PLANE || obj->type == RT_SPHERE)
 			return (0);
 		obj = obj->next;
 	}
@@ -34,7 +34,7 @@ static int	ft_check_node(t_object *chill)
 
 static int	ft_handle_objs(t_object *obj, char *line, int fd)
 {
-	int error;
+	int	error;
 
 	if (ft_strnequ(line, "plane: ", 7))
 		error = ft_parse_objs(obj, fd, RT_PLANE, line);
@@ -53,7 +53,7 @@ static int	ft_handle_objs(t_object *obj, char *line, int fd)
 	return ((error == 0) ? 0 : 2);
 }
 
-int			parser(t_fmlx *rtv, char *file)
+int	parser(t_fmlx *rtv, char *file)
 {
 	int			fd;
 	int			x;

@@ -17,7 +17,7 @@
 
 void	init_ui(t_fmlx *mlx)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < SUI_Y * SUI_X)
@@ -40,10 +40,10 @@ void	disp_ui(t_fmlx *mlx)
 	ft_strcat(name, mlx->current->name);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->ui, 0, SIMG_Y);
 	mlx_string_put(mlx->mlx, mlx->win, 45, SIMG_Y + 10 + IF_SHIFT, 0, name);
-	mlx_string_put(mlx->mlx, mlx->win, 650, SIMG_Y + IF_SHIFT, 0
-			, "                  ^                              w");
-	mlx_string_put(mlx->mlx, mlx->win, 650, SIMG_Y + 10 + IF_SHIFT, 0
-			, "translations: + <   > -           rotations: q a   d e");
-	mlx_string_put(mlx->mlx, mlx->win, 650, SIMG_Y + 20 + IF_SHIFT, 0
-			, "                  v                              s");
+	mlx_string_put(mlx->mlx, mlx->win, 650, SIMG_Y + IF_SHIFT, 0,
+		"                  ^                              w");
+	mlx_string_put(mlx->mlx, mlx->win, 650, SIMG_Y + 10 + IF_SHIFT, 0,
+		"translations: + <   > -           rotations: q a   d e");
+	mlx_string_put(mlx->mlx, mlx->win, 650, SIMG_Y + 20 + IF_SHIFT, 0,
+		"                  v                              s");
 }

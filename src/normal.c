@@ -13,9 +13,9 @@
 #include "math.h"
 #include "rtv1.h"
 
-double		norm_vector(t_vector vector)
+double	norm_vector(t_vector vector)
 {
-	double ret;
+	double	ret;
 
 	ret = pow(vector.x, 2) + pow(vector.y, 2) + pow(vector.z, 2);
 	return (sqrt(ret));
@@ -35,7 +35,7 @@ t_vector	normalize(t_vector vector)
 
 t_vector	get_normal(t_ray *ray, t_vector position)
 {
-	static t_vector	(*normals[4])(t_ray *ray, t_vector position) = {
+	static	t_vector	(*normals[4])(t_ray *ray, t_vector position) = {
 		normal_cylinder, normal_cone, normal_plane, normal_sphere};
 
 	return (normalize(normals[ray->hit_by->type](ray, position)));

@@ -89,7 +89,7 @@ static int	ft_get_data(t_object *obj, int fd)
 	return (0);
 }
 
-void		ft_parse_cam(t_object *obj, int fd, int type, char *name)
+void	ft_parse_cam(t_object *obj, int fd, int type, char *name)
 {
 	obj->type = type;
 	if (ft_parse_name(obj, name))

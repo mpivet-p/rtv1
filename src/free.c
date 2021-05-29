@@ -29,7 +29,7 @@ void	ft_delete_list(t_object **head_ref)
 	*head_ref = (t_object *)0;
 }
 
-int		free_last_node(t_object *head)
+int	free_last_node(t_object *head)
 {
 	t_object	*second_last;
 
@@ -48,7 +48,7 @@ int		free_last_node(t_object *head)
 	return (1);
 }
 
-int		free_line(char *line, int i)
+int	free_line(char *line, int i)
 {
 	if (line)
 		ft_strdel(&line);

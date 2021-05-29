@@ -52,7 +52,7 @@ static int	ft_assign_what(t_object *obj, char *line, int i)
 	return (ft_assign_what2(obj, line, i));
 }
 
-int			ft_parse_cone(t_object *obj, int fd)
+int	ft_parse_cone(t_object *obj, int fd)
 {
 	char	*line;
 	int		i;
@@ -61,7 +61,7 @@ int			ft_parse_cone(t_object *obj, int fd)
 	while (i < 4 && get_next_line(fd, &line) > 0)
 	{
 		if ((ft_count_word(line, ',') == 2 || ft_strnequ(line, "\tradius(", 8)
-			|| ft_strnequ(line, "\theight(", 8))
+				|| ft_strnequ(line, "\theight(", 8))
 			&& ft_last_word(line) == ')')
 		{
 			if (ft_assign_what(obj, line, i))

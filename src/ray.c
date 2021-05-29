@@ -13,13 +13,13 @@
 #include "rtv1.h"
 #include <stddef.h>
 
-void		reset_ray(t_ray *ray, t_fmlx *mlx, int x, int y)
+void	reset_ray(t_ray *ray, t_fmlx *mlx, int x, int y)
 {
 	ray->hit_by = NULL;
 	ray->t = 0;
 	ray->color = 0;
-	ray->dir = get_dir(mlx->vp, mlx->cam, *ray
-			, get_indent(mlx->vp, init_vector(x, y, 0)));
+	ray->dir = get_dir(mlx->vp, mlx->cam, *ray,
+			get_indent(mlx->vp, init_vector(x, y, 0)));
 }
 
 t_vector	ray_to_point(t_ray *ray)

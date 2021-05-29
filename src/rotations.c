@@ -47,7 +47,7 @@ static void	rot_z(t_vector *vec, double theta)
 	*vec = normalize(*vec);
 }
 
-void		object_translate(t_vector *pos, int key, int modif)
+void	object_translate(t_vector *pos, int key, int modif)
 {
 	if (pos != NULL)
 	{
@@ -66,7 +66,7 @@ void		object_translate(t_vector *pos, int key, int modif)
 	}
 }
 
-void		object_rotate(t_vector *pos, int key, int modif)
+void	object_rotate(t_vector *pos, int key, int modif)
 {
 	if (pos != NULL)
 	{

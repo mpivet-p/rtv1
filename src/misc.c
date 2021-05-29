@@ -15,14 +15,14 @@
 
 t_vector	reflect(t_vector incident, t_vector normal)
 {
-	t_vector ret;
+	t_vector	ret;
 
 	ret = vector_mult(normal, dot_product(normal, incident) * 2.0);
 	ret = sub_vectors(incident, ret);
 	return (ret);
 }
 
-double		get_dist(t_vector *a, t_vector *b)
+double	get_dist(t_vector *a, t_vector *b)
 {
 	double	ret;
 

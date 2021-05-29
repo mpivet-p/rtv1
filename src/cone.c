@@ -19,7 +19,7 @@
 ** then we get send a, b and c to the solving function to get `t` value
 */
 
-double		intersect_cone(t_ray ray, t_object *obj)
+double	intersect_cone(t_ray ray, t_object *obj)
 {
 	t_cone		*cone;
 	t_vector	base;
@@ -34,7 +34,7 @@ double		intersect_cone(t_ray ray, t_object *obj)
 		* pow(dot_product(ray.dir, cone->dir), 2);
 	vars[1] = 2 * (dot_product(ray.dir, base) - (1 + k * k)
 			* (dot_product(ray.dir, cone->dir)
-			* dot_product(base, cone->dir)));
+				* dot_product(base, cone->dir)));
 	c = dot_product(base, base) - (1 + k * k)
 		* pow(dot_product(base, cone->dir), 2);
 	return (ft_solve(vars[0], vars[1], c));

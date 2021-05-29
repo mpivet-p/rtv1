@@ -18,25 +18,28 @@
 
 void	get_intersection(t_ray *ray, t_object *obj)
 {
-	static double	(*figures[4])(t_ray ray, t_object *obj) = {
+	static	double	(*figures[4])(t_ray ray, t_object *obj) = {
 		intersect_cylinder, intersect_cone, intersect_plane, intersect_sphere};
 	double			ret;
 
 	ret = 0;
 	while (obj != NULL)
 	{
-		if (obj->type != RT_LIGHT
-				&& ((ret = figures[obj->type](*ray, obj)) < ray->t
-					|| ray->t == 0) && ret > 0)
+		if (obj->type != RT_LIGHT)
 		{
-			ray->t = ret;
-			ray->hit_by = obj;
+			ret = figures[obj->type](*ray, obj);
+			if ((ret < ray->t
+					|| ray->t == 0) && ret > 0)
+			{
+				ray->t = ret;
+				ray->hit_by = obj;
+			}
 		}
 		obj = obj->next;
 	}
 }
 
-int		rt_render(t_fmlx *mlx)
+int	rt_render(t_fmlx *mlx)
 {
 	t_vector	color;
 	t_ray		ray;
