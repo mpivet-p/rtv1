@@ -6,7 +6,7 @@
 /*   By: wahasni <wahasni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 13:10:34 by wahasni           #+#    #+#             */
-/*   Updated: 2021/03/31 14:14:48 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/30 18:41:02 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,11 @@ static int	ft_handle_objs(t_object *obj, char *line, int fd)
 	else if (ft_check_node(obj))
 		return (ft_error("missing object"));
 	else
-		return (free_last_node(ft_get_head_ref(obj)));
-	if (error == 0)
-		return (0);
-	return (2);
+	{
+		free_last_node(ft_get_head_ref(obj));
+		error = 2;
+	}
+	return (error);
 }
 
 static t_object	*hack_norm(t_object **ptr, t_object *assign)
@@ -73,8 +74,7 @@ int	parser(t_fmlx *rtv, char *file)
 	x = 0;
 	if (ft_open(file, O_RDONLY, &fd) < 0)
 		return (ft_error("Opening file failed."));
-	rtv->obj = ft_create_list();
-	obj = rtv->obj;
+	obj = (rtv->obj = ft_create_list());
 	while (x == 0 && get_next_line(fd, &line) >= 0)
 	{
 		if (i++)
@@ -86,6 +86,7 @@ int	parser(t_fmlx *rtv, char *file)
 		x = ft_handle_objs(obj, line, fd);
 		ft_strdel(&line);
 	}
+	ft_strdel(&line);
 	close(fd);
-	return ((x == 2) * 2);
+	return ((x != 2));
 }

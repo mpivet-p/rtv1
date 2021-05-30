@@ -1,28 +1,17 @@
-sphere: premiere sphere
-{
-	color : RED
-	pos(-0.2,1,0)
-	radius(0.1)
-}
 plane: premier plan
 {
-	color : BLUE
+	colour : BLUE
 	pos(0,0,-0.2)
 	dir(0,0,1)
+}
 cone: vlc jaune
 {
 	color : YELLOW
 	pos(0.5,1,0.2)
+	bhgsa(0.5,1,0.2)
 	dir(0,0,1)
 	radius(1)
 	height(3)
-}
-cylinder: cylindrique
-{
-	color : PURPLE
-	pos(0,1,0)
-	dir(0,0,1)
-	radius(0.1)
 }
 light: lumiiierrrree
 {

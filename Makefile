@@ -6,13 +6,13 @@
 #    By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/22 02:45:47 by mpivet-p          #+#    #+#              #
-#    Updated: 2021/05/29 14:52:03 by mpivet-p         ###   ########.fr        #
+#    Updated: 2021/05/30 16:48:01 by mpivet-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME= rtv1
-CC= gcc
-CFLAGS= -Wall -Wextra -Werror -g -fsanitize=address -fsanitize=undefined -fstack-protector
+CC= clang
+CFLAGS= -Wall -Wextra -Werror -g# -fsanitize=address -fsanitize=undefined -fstack-protector
 
 INC_PATH= inc/
 SRC_PATH= src/

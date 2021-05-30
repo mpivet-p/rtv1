@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/22 00:26:11 by mpivet-p          #+#    #+#             */
-/*   Updated: 2021/05/29 15:02:04 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/30 18:17:31 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ int	main(int argc, char **argv)
 	{
 		ft_putstr_fd("Exit from parser..\n", 2);
 		ft_delete_list(&(ptr.obj));
+		ft_bzero(&ptr, sizeof(t_fmlx));
+		while (1) ;
 		return (1);
 	}
 	ft_print_data(ptr.obj);

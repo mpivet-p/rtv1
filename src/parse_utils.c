@@ -6,7 +6,7 @@
 /*   By: wahasni <wahasni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/01 23:32:33 by wahasni           #+#    #+#             */
-/*   Updated: 2021/03/31 13:32:01 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/30 16:16:08 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	ft_print_data(t_object *obj)
 	int	i;
 
 	i = 1;
-	printf("BEFORE\n");
 	while (obj)
 	{
 		printf("Maillon %d :", i);
