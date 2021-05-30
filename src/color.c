@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/08 23:35:01 by mpivet-p          #+#    #+#             */
-/*   Updated: 2021/01/31 16:49:21 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/30 20:16:19 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,9 @@ t_vector	get_color(t_ray *ray, t_object *obj, t_object *obj_lights)
 	position = add_vectors(position,
 			vector_mult(get_normal(ray, position), 0.00000000001));
 	normal = get_normal(ray, position);
-	if (get_next_light(&light, &position, &obj_lights) == 0
+	while (get_next_light(&light, &position, &obj_lights) == 0
 		&& is_lighted(&position, &light, obj) == 1)
-		coeff += diffuse_light(&light, &normal)
+		coeff += diffuse_light(&light, &normal) / 2
 			+ specular_light(ray, &light, &normal);
 	color = mult_color(ray->hit_by->color, coeff);
 	return (color);

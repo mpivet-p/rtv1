@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 06:54:43 by mpivet-p          #+#    #+#             */
-/*   Updated: 2021/01/31 14:39:21 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/30 19:19:14 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ static t_vector	*get_vec(t_object *obj, int v)
 		return (hack_norm(v, &(ptr->sphere.pos), NULL));
 	else if (obj->type == RT_LIGHT)
 		return (hack_norm(v, &(ptr->light.pos), &(ptr->cyl.dir)));
-	else if (obj->type == RT_CAM)
-		return (hack_norm(v, &(ptr->cam.pos), NULL));
 	return (NULL);
 }
 

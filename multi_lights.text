@@ -1,0 +1,39 @@
+sphere: premiere sphere
+{
+	color : RED
+	pos(-0.2,1,0)
+	radius(0.1)
+}
+plane: premier plan
+{
+	color : BLUE
+	pos(0,0,-0.2)
+	dir(0,0,1)
+}
+cone: vlc jaune
+{
+	color : YELLOW
+	pos(0.5,1,0.2)
+	dir(0,0,1)
+	radius(1)
+	height(3)
+}
+cylinder: cylindrique
+{
+	color : PURPLE
+	pos(0,1,0)
+	dir(0,0,1)
+	radius(0.1)
+}
+light: lumiiierrrree
+{
+	color : WHITE
+	pos(-0.5,0.8,0.2)
+	dir(8,1223,0)
+}
+light: multilight
+{
+	color : WHITE
+	pos(0.5,0.8,0.2)
+	dir(8,1223,0)
+}
