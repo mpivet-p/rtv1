@@ -109,5 +109,6 @@ void			ft_print_bits(long long unsigned int nbr);
 int				ft_sqrt(int nb);
 int				ft_open(char *path, int flags, int *fd);
 t_opts			get_options(int argc, char **argv, char *allowed);
+int				ft_isspace(char c);
 
 #endif

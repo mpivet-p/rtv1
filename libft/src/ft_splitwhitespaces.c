@@ -47,6 +47,12 @@ static int	ft_count_c(char const *str)
 	return (nb);
 }
 
+char	**hack_norm(char ***ptr, void *assign)
+{
+	*ptr = (char **)assign;
+	return (*ptr);
+}
+
 char	**ft_splitwhitespaces(char const *s)
 {
 	int		j;
@@ -57,18 +63,16 @@ char	**ft_splitwhitespaces(char const *s)
 	j = 0;
 	k = 0;
 	nb = ft_count_words(s);
-	if (!s || !(tab = (char **)malloc(sizeof(char *) * (nb + 1))))
+	if (!s || hack_norm(&tab, malloc(sizeof(char *) * (nb + 1))))
 		return (NULL);
 	while (j < nb)
 	{
-		while (!(*s != '\t' && *s != '\n' && *s != '\r'
-				&& *s != '\v' && *s != ' ' && *s != '\0'))
+		while (!ft_isspace(*s) && *s != 0)
 			s++;
-		tab[j] = (char *)malloc(sizeof(char) * (ft_count_c(s) + 1));
+		tab[j] = malloc(sizeof(char) * (ft_count_c(s) + 1));
 		if (!tab[j])
 			return (NULL);
-		while (*s != '\t' && *s != '\n' && *s != '\r'
-			&& *s != '\v' && *s != ' ' && *s != '\0')
+		while (!ft_isspace(*s) && *s != '\0')
 			tab[j][k++] = *(s++);
 		tab[j++][k] = '\0';
 		k = 0;

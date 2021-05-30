@@ -44,6 +44,12 @@ static int	ft_count_c(char const *str, char c)
 	return (nb);
 }
 
+static void	*hack_norm(void **ptr, void *assign)
+{
+	*ptr = assign;
+	return (*ptr);
+}
+
 char	**ft_strsplit(char const *s, char c)
 {
 	int		j;
@@ -52,24 +58,22 @@ char	**ft_strsplit(char const *s, char c)
 	char	**tab;
 
 	j = 0;
-	k = 0;
 	if (!s || !c)
 		return (NULL);
 	nb = ft_count_words(s, c);
-	tab = (char **)malloc(sizeof(char *) * (nb + 1));
-	if (!tab)
+	if (!hack_norm((void **)&tab, malloc(sizeof(char *) * (nb + 1))))
 		return (NULL);
 	while (j < nb)
 	{
+		k = 0;
 		while (*s == c && *s != '\0')
 			s++;
-		tab[j] = (char *)malloc(sizeof(char) * (ft_count_c(s, c) + 1));
-		if (!(tab[j]))
+		if (!hack_norm((void **)&(tab[j]), malloc(sizeof(char)
+					* (ft_count_c(s, c) + 1))))
 			return (NULL);
 		while (*s != '\0' && *s != c)
 			tab[j][k++] = *(s++);
 		tab[j++][k] = '\0';
-		k = 0;
 	}
 	tab[j] = 0;
 	return (tab);

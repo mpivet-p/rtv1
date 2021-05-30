@@ -34,7 +34,7 @@ SRC_NAME = ft_atoi.c ft_base_size.c ft_bzero.c ft_isalnum.c \
 	ft_tolower.c ft_toupper.c ft_sqrt.c get_next_line.c print_bits.c \
 	get_options.c ft_cat_buffer.c ft_sort_params.c ft_splitwhitespaces.c \
 	ft_strreplace.c ft_strbchr.c ft_putscap.c free_tab.c how_many_lines.c \
-	tabdup.c tab_realloc.c ft_clamp.c ft_max.c ft_atod.c ft_open.c
+	tabdup.c tab_realloc.c ft_clamp.c ft_max.c ft_atod.c ft_open.c ft_isspace.c
 OBJ_NAME= $(SRC_NAME:.c=.o)
 
 INC= -I inc/
