@@ -13,6 +13,13 @@
 #include "rtv1.h"
 #include <math.h>
 
+double	hack_norm(int cond, double a, double b)
+{
+	if (cond)
+		return (a);
+	return (b);
+}
+
 double	ft_solve(double a, double b, double c)
 {
 	double	ret;
@@ -29,13 +36,13 @@ double	ft_solve(double a, double b, double c)
 	if (det == 0)
 	{
 		ret = -(b / anti_zero(2 * a));
-		return ((ret > 0.0) ? ret : -1);
+		return (hack_norm((ret > 0.0), ret, -1));
 	}
 	t1 = (-b + sqrt(det)) / (2 * a);
 	t2 = (-b - sqrt(det)) / (2 * a);
 	if (t2 > 0.0 && t1 > 0.0)
-		return ((t1 < t2) ? t1 : t2);
+		return (hack_norm((t1 < t2), t1, t2));
 	if (t1 > 0.0 || t2 > 0.0)
-		return ((t1 > t2) ? t1 : t2);
+		return (hack_norm((t1 > t2), t1, t2));
 	return (-1);
 }

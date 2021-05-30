@@ -107,6 +107,7 @@ void			ft_striter(char *s, void (*f)(char*));
 void			ft_striteri(char *s, void (*f)(unsigned int, char*));
 void			ft_print_bits(long long unsigned int nbr);
 int				ft_sqrt(int nb);
+int				ft_open(char *path, int flags, int *fd);
 t_opts			get_options(int argc, char **argv, char *allowed);
 
 #endif

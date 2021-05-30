@@ -16,25 +16,35 @@
 #include "rtdata.h"
 #include "libft.h"
 
-void	rtv(t_fmlx *ptr)
+void	init_mlx_ptr(t_fmlx *ptr)
 {
 	int	tools[3];
 
-	if (!(ptr->mlx = mlx_init()))
+	ptr->mlx = mlx_init();
+	if (!(ptr->mlx))
 		rtv_exit(ptr);
-	if (!(ptr->win = mlx_new_window(ptr->mlx, SWIN_X,
-				SWIN_Y, "RTv1 by mpivet-p and wahasni")))
+	ptr->win = mlx_new_window(ptr->mlx, SWIN_X, SWIN_Y, "RTv1");
+	if (!(ptr->win))
 		rtv_exit(ptr);
-	if (!(ptr->img = mlx_new_image(ptr->mlx, SIMG_X, SIMG_Y)))
+	ptr->img = mlx_new_image(ptr->mlx, SIMG_X, SIMG_Y);
+	if (!(ptr->img))
 		rtv_exit(ptr);
-	if (!(ptr->screen = mlx_get_data_addr(ptr->img, &(tools[0]),
-				&(tools[1]), &(tools[2]))))
+	ptr->screen = mlx_get_data_addr(ptr->img, &(tools[0]),
+			&(tools[1]), &(tools[2]));
+	if (!(ptr->screen))
 		rtv_exit(ptr);
-	if (!(ptr->ui = mlx_new_image(ptr->mlx, SUI_X, SUI_Y)))
+	ptr->ui = mlx_new_image(ptr->mlx, SUI_X, SUI_Y);
+	if (!(ptr->ui))
 		rtv_exit(ptr);
-	if (!(ptr->ui_img = mlx_get_data_addr(ptr->ui, &(tools[0]),
-				&(tools[1]), &(tools[2]))))
+	ptr->ui_img = mlx_get_data_addr(ptr->ui, &(tools[0]),
+			&(tools[1]), &(tools[2]));
+	if (!(ptr->ui_img))
 		rtv_exit(ptr);
+}
+
+void	rtv(t_fmlx *ptr)
+{
+	init_mlx_ptr(ptr);
 	mlx_hook(ptr->win, 17, 1L << 1, &rtv_exit, ptr);
 	mlx_hook(ptr->win, 2, 1L << 0, deal_key, ptr);
 	mlx_hook(ptr->win, 4, 1L << 1, mouse_press, ptr);

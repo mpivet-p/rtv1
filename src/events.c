@@ -14,20 +14,30 @@
 #include <mlx.h>
 #include <string.h>
 
-t_vector	*get_vec(t_object *obj, int v)
+static t_vector	*hack_norm(int cond, t_vector *a, t_vector *b)
 {
+	if (cond)
+		return (a);
+	return (b);
+}
+
+static t_vector	*get_vec(t_object *obj, int v)
+{
+	t_fig	*ptr;
+
+	ptr = &(obj->u_fig);
 	if (obj->type == RT_CYL)
-		return ((v == 'p') ? &(obj->u_fig.cyl.pos) : &(obj->u_fig.cyl.dir));
+		return (hack_norm(v, &(ptr->cyl.pos), &(ptr->cyl.dir)));
 	else if (obj->type == RT_CONE)
-		return ((v == 'p') ? &(obj->u_fig.cone.pos) : &(obj->u_fig.cone.dir));
+		return (hack_norm(v, &(ptr->cone.pos), &(ptr->cone.dir)));
 	else if (obj->type == RT_PLANE)
-		return ((v == 'p') ? &(obj->u_fig.plane.pos) : &(obj->u_fig.cyl.dir));
+		return (hack_norm(v, &(ptr->plane.pos), &(ptr->cyl.dir)));
 	else if (obj->type == RT_SPHERE)
-		return ((v == 'p') ? &(obj->u_fig.sphere.pos) : NULL);
+		return (hack_norm(v, &(ptr->sphere.pos), NULL));
 	else if (obj->type == RT_LIGHT)
-		return ((v == 'p') ? &(obj->u_fig.light.pos) : &(obj->u_fig.cyl.dir));
+		return (hack_norm(v, &(ptr->light.pos), &(ptr->cyl.dir)));
 	else if (obj->type == RT_CAM)
-		return ((v == 'p') ? &(obj->u_fig.cam.pos) : NULL);
+		return (hack_norm(v, &(ptr->cam.pos), NULL));
 	return (NULL);
 }
 
@@ -37,22 +47,22 @@ int	deal_key(int key, t_fmlx *mlx)
 		rtv_exit(mlx);
 	else if (key == KEY_LEFT || key == KEY_RIGHT || key == KEY_DOWN
 		|| key == KEY_UP || key == KEY_PLUS || key == KEY_LESS)
-	{
-		object_translate(get_vec(mlx->current, 'p'), key, mlx->intensity);
-	}
+		object_translate(get_vec(mlx->current, 1), key, mlx->intensity);
 	else if ((key >= KEY_Q && key <= KEY_E) || (key >= KEY_A && key <= KEY_D))
-		object_rotate(get_vec(mlx->current, 'd'), key, mlx->intensity);
+		object_rotate(get_vec(mlx->current, 0), key, mlx->intensity);
 	else if (key == KEY_PGUP || key == KEY_PGDWN)
 	{
 		if (key == KEY_PGUP)
 			mlx->current = get_prevlink(mlx);
-		if (key == KEY_PGDWN)
-			mlx->current = (mlx->current->next) ? mlx->current->next : mlx->obj;
+		else if (key == KEY_PGDWN && mlx->current->next)
+			mlx->current = mlx->current->next;
+		else
+			mlx->current = mlx->obj;
 		disp_ui(mlx);
 		return (0);
 	}
 	else if (key == KEY_PLUS)
-		mlx->vp.dist *= (key == KEY_PLUS) ? 1.3 : 0.7;
+		mlx->vp.dist *= 1.3;
 	else
 		return (key);
 	get_viewplane(&(mlx->vp), mlx->cam);

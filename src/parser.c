@@ -12,8 +12,8 @@
 
 #include "rtv1.h"
 #include "rtdata.h"
-#include <fcntl.h>
 #include "libft.h"
+#include <fcntl.h>
 
 static int	ft_check_node(t_object *chill)
 {
@@ -50,20 +50,28 @@ static int	ft_handle_objs(t_object *obj, char *line, int fd)
 		return (ft_error("missing object"));
 	else
 		return (free_last_node(ft_get_head_ref(obj)));
-	return ((error == 0) ? 0 : 2);
+	if (error == 0)
+		return (0);
+	return (2);
+}
+
+static t_object	*hack_norm(t_object **ptr, t_object *assign)
+{
+	*ptr = assign;
+	return (*ptr);
 }
 
 int	parser(t_fmlx *rtv, char *file)
 {
+	t_object	*obj;
+	char		*line;
 	int			fd;
 	int			x;
-	char		*line;
-	t_object	*obj;
 	int			i;
 
 	i = 0;
 	x = 0;
-	if ((fd = open(file, 0)) < 0)
+	if (ft_open(file, O_RDONLY, &fd) < 0)
 		return (ft_error("Opening file failed."));
 	rtv->obj = ft_create_list();
 	obj = rtv->obj;
@@ -72,12 +80,12 @@ int	parser(t_fmlx *rtv, char *file)
 		if (i++)
 		{
 			ft_list_add_last(rtv->obj, ft_create_list());
-			if ((obj = obj->next) == NULL)
+			if (hack_norm(&obj, obj->next) == NULL)
 				return (1);
 		}
 		x = ft_handle_objs(obj, line, fd);
 		ft_strdel(&line);
 	}
 	close(fd);
-	return ((x == 2) ? 2 : 0);
+	return ((x == 2) * 2);
 }
