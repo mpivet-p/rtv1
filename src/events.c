@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 06:54:43 by mpivet-p          #+#    #+#             */
-/*   Updated: 2021/05/30 19:19:14 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/31 16:05:49 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int	deal_key(int key, t_fmlx *mlx)
 {
 	if (key == KEY_ESC)
 		rtv_exit(mlx);
+	else if (camera_event(key))
+		camera_move(key, mlx);
 	else if (key == KEY_LEFT || key == KEY_RIGHT || key == KEY_DOWN
 		|| key == KEY_UP || key == KEY_PLUS || key == KEY_LESS)
 		object_translate(get_vec(mlx->current, 1), key, mlx->intensity);
@@ -59,8 +61,6 @@ int	deal_key(int key, t_fmlx *mlx)
 		disp_ui(mlx);
 		return (0);
 	}
-	else if (key == KEY_PLUS)
-		mlx->vp.dist *= 1.3;
 	else
 		return (key);
 	get_viewplane(&(mlx->vp), mlx->cam);

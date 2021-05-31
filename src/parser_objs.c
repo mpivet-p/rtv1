@@ -6,7 +6,7 @@
 /*   By: wahasni <wahasni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 13:23:34 by wahasni           #+#    #+#             */
-/*   Updated: 2021/03/24 14:17:42 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/31 15:26:41 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int	ft_parse_objs(t_object *obj, int fd, int type, char *name)
 {
 	obj->type = type;
 	if (ft_parse_name(obj, name))
-		return (ft_error("False name"));
+		return (ft_error("Wrong name"));
 	if (ft_parse_bracket(fd, 0))
 		return (ft_error("Not a bracket"));
 	if (ft_parse_color(obj, fd))

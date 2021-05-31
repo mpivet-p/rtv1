@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 03:55:16 by mpivet-p          #+#    #+#             */
-/*   Updated: 2021/05/29 18:17:14 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/31 16:13:30 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ t_object		*ft_create_list(void);
 int				mouse_press(int button, int x, int y, t_fmlx *mlx);
 int				mouse_move(int x, int y, t_fmlx *mlx);
 int				deal_key(int key, t_fmlx *mlx);
+int				camera_event(int key);
+void			camera_move(int key, t_fmlx *mlx);
 
 /*
 ** ============================================================================

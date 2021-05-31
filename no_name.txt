@@ -1,4 +1,4 @@
-sphere: premiere sphere
+sphere:
 {
 	color : RED
 	pos(-0.2,1,0)

@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/04 01:19:54 by mpivet-p          #+#    #+#             */
-/*   Updated: 2021/05/29 18:16:31 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/31 16:59:16 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,15 @@
 #  define KEY_D		2
 #  define KEY_Q		12
 #  define KEY_E		14
+
+#  define KEY_I		34
+#  define KEY_J		38
+#  define KEY_K		40
+#  define KEY_L		37
+#  define KEY_U		32
+#  define KEY_O		31
+#  define KEY_Y		16
+#  define KEY_H		4
 
 #  define KEY_ESC	53
 #  define KEY_PGUP	116

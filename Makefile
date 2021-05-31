@@ -6,13 +6,13 @@
 #    By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/22 02:45:47 by mpivet-p          #+#    #+#              #
-#    Updated: 2021/05/30 16:48:01 by mpivet-p         ###   ########.fr        #
+#    Updated: 2021/05/31 16:16:23 by mpivet-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME= rtv1
 CC= gcc
-CFLAGS= -Wall -Wextra -Werror -g -fsanitize=address# -fsanitize=undefined -fstack-protector
+CFLAGS= -Wall -Wextra -Werror -g# -fsanitize=address# -fsanitize=undefined -fstack-protector
 
 INC_PATH= inc/
 SRC_PATH= src/
@@ -23,8 +23,7 @@ SRC_NAME= main.c events.c tools.c vectors.c viewplane.c render.c sphere.c\
 		  solve.c plane.c cylinder.c cone.c normal.c misc.c color.c\
 		  rotations.c user_interface.c vecops.c ray.c list.c parser.c\
 		  parser_objs.c parse_light.c parse_cyl.c parse_cone.c parse_sphere.c\
-		  parse_plane.c parse_assign.c parse_utils.c free.c
-		  #test.c
+		  parse_plane.c parse_assign.c parse_utils.c free.c camera.c
 OBJ_NAME= $(SRC_NAME:.c=.o)
 
 INC= -I inc/ -I libft/inc/ -I mlx_linux/

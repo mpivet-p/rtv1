@@ -6,7 +6,7 @@
 /*   By: wahasni <wahasni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 13:10:34 by wahasni           #+#    #+#             */
-/*   Updated: 2021/05/30 18:41:02 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/31 15:44:15 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ static int	ft_handle_objs(t_object *obj, char *line, int fd)
 		free_last_node(ft_get_head_ref(obj));
 		error = 2;
 	}
+	printf("%d\n", error);
 	return (error);
 }
 
