@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 01:01:34 by mpivet-p          #+#    #+#             */
-/*   Updated: 2021/05/29 15:18:06 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/31 18:38:11 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ double	ft_solve(double a, double b, double c)
 		ret = -(b / anti_zero(2 * a));
 		return (hack_norm((ret > 0.0), ret, -1));
 	}
+	if (a == 0.0)
+		a = 0.000001;
 	t1 = (-b + sqrt(det)) / (2 * a);
 	t2 = (-b - sqrt(det)) / (2 * a);
 	if (t2 > 0.0 && t1 > 0.0)

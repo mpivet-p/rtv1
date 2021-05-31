@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/05 04:21:18 by mpivet-p          #+#    #+#             */
-/*   Updated: 2019/08/13 02:46:34 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/31 18:39:50 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ t_vector	normalize(t_vector vector)
 	t_vector	ret;
 
 	norm = norm_vector(vector);
+	if (norm == 0)
+		norm = 0.0001;
 	ret.x = vector.x / norm;
 	ret.y = vector.y / norm;
 	ret.z = vector.z / norm;

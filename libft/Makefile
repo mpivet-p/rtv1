@@ -6,13 +6,13 @@
 #    By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/02 22:00:41 by mpivet-p          #+#    #+#              #
-#    Updated: 2021/05/31 15:21:55 by mpivet-p         ###   ########.fr        #
+#    Updated: 2021/05/31 18:35:30 by mpivet-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME= libft.a
 CC= gcc
-CFLAGS= -Wall -Wextra -Werror -g# -fsanitize=address #-fsanitize=undefined -fstack-protector
+CFLAGS= -Wall -Wextra -Werror -g -fsanitize=address -fsanitize=undefined -fstack-protector
 
 INC_PATH= inc/
 SRC_PATH= src/
