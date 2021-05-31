@@ -1,0 +1,24 @@
+plane: sol
+{
+	color : BLUE
+	pos(0,0,-0.2)
+	dir(0,0,1)
+}
+plane: mur gauche
+{
+	color : YELLOW
+	pos(-0.5,2,0)
+	dir(1,0,0)
+}
+light: light out
+{
+	color : WHITE
+	pos(-0.8,1.5,0.2)
+	dir(8,1223,0)
+}
+light: light in
+{
+	color : WHITE
+	pos(0,1.5,0.2)
+	dir(8,1223,0)
+}

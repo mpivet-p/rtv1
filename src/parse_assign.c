@@ -34,6 +34,7 @@ void	ft_assign_dir(t_object *obj, char *str)
 		obj->u_fig.plane.dir.x = ft_atod(tab[0]);
 		obj->u_fig.plane.dir.y = ft_atod(tab[1]);
 		obj->u_fig.plane.dir.z = ft_atod(tab[2]);
+		obj->u_fig.plane.dir = normalize(obj->u_fig.plane.dir);
 	}
 	free_split(tab);
 }

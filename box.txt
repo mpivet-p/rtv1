@@ -1,0 +1,65 @@
+plane: sol
+{
+	color : BLUE
+	pos(0,0,-0.2)
+	dir(0,0,1)
+}
+plane: mur droit
+{
+	color : GREEN
+	pos(0.5,0,0)
+	dir(1,0,0)
+}
+plane: mur fond
+{
+	color : RED
+	pos(0.5,2,0)
+	dir(0,1,0)
+}
+plane: mur gauche
+{
+	color : YELLOW
+	pos(-0.5,2,0)
+	dir(1,0,0)
+}
+cylinder: cylindrique
+{
+	color : PURPLE
+	pos(-0.5,2,0)
+	dir(0,0,1)
+	radius(0.1)
+}
+cylinder: cylindrique
+{
+	color : PURPLE
+	pos(0.5,2,0)
+	dir(0,0,1)
+	radius(0.1)
+}
+cylinder: cylindrique
+{
+	color : PURPLE
+	pos(-0.5,2,-0.2)
+	dir(0,1,0)
+	radius(0.1)
+}
+cylinder: cylindrique
+{
+	color : PURPLE
+	pos(0.5,2,-0.2)
+	dir(0,1,0)
+	radius(0.1)
+}
+cylinder: cylindrique
+{
+	color : PURPLE
+	pos(0,2,-0.2)
+	dir(1,0,0)
+	radius(0.1)
+}
+light: lumiiierrrree
+{
+	color : WHITE
+	pos(0,1.5,0.2)
+	dir(8,1223,0)
+}

@@ -11,8 +11,8 @@
 # **************************************************************************** #
 
 NAME= libft.a
-CC= clang
-CFLAGS= -Wall -Wextra -Werror -g# -fsanitize=address -fsanitize=undefined -fstack-protector
+CC= gcc
+CFLAGS= -Wall -Wextra -Werror -g -fsanitize=address #-fsanitize=undefined -fstack-protector
 
 INC_PATH= inc/
 SRC_PATH= src/

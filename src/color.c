@@ -85,10 +85,10 @@ t_vector	get_color(t_ray *ray, t_object *obj, t_object *obj_lights)
 	position = add_vectors(position,
 			vector_mult(get_normal(ray, position), 0.00000000001));
 	normal = get_normal(ray, position);
-	while (get_next_light(&light, &position, &obj_lights) == 0
-		&& is_lighted(&position, &light, obj) == 1)
-		coeff += diffuse_light(&light, &normal) / 2
-			+ specular_light(ray, &light, &normal);
+	while (get_next_light(&light, &position, &obj_lights) == 0)
+		if (is_lighted(&position, &light, obj) == 1)
+			coeff += diffuse_light(&light, &normal)
+				+ specular_light(ray, &light, &normal);
 	color = mult_color(ray->hit_by->color, coeff);
 	return (color);
 }

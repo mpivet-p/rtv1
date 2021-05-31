@@ -59,6 +59,7 @@ int	main(int argc, char **argv)
 {
 	t_fmlx	ptr;
 
+	ft_bzero(&ptr, sizeof(t_fmlx));
 	if (argc != 2)
 	{
 		ft_putstr_fd("usage: rtv1 <file>\n", 2);
@@ -68,8 +69,6 @@ int	main(int argc, char **argv)
 	{
 		ft_putstr_fd("Exit from parser..\n", 2);
 		ft_delete_list(&(ptr.obj));
-		ft_bzero(&ptr, sizeof(t_fmlx));
-		while (1) ;
 		return (1);
 	}
 	ft_print_data(ptr.obj);
