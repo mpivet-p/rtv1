@@ -6,7 +6,7 @@
 /*   By: wahasni <wahasni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/01 23:32:33 by wahasni           #+#    #+#             */
-/*   Updated: 2021/05/30 16:16:08 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/31 17:33:09 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,27 +29,6 @@ int	ft_count_word(char *str, char c)
 		i++;
 	}
 	return (w);
-}
-
-/*
-**			printf("Maillon %d :", i);
-**		printf("color : %lf ", obj->color);
-**		printf("x : %lf ", obj->u_fig.plane.pos.x);
-**		printf("y : %lf ", obj->u_fig.plane.pos.y);
-**		printf("z : %lf ", obj->u_fig.plane.pos.z);
-**		printf("type : %d\n", obj->type);
-*/
-
-void	ft_print_data(t_object *obj)
-{
-	int	i;
-
-	i = 1;
-	while (obj)
-	{
-		i++;
-		obj = obj->next;
-	}
 }
 
 char	ft_last_word(char *str)

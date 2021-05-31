@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 15:47:35 by mpivet-p          #+#    #+#             */
-/*   Updated: 2021/05/31 17:00:19 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/31 17:31:43 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 int	camera_event(int key)
 {
 	if (key == KEY_I || key == KEY_J || key == KEY_K || key == KEY_L
-			|| key == KEY_U || key == KEY_O || key == KEY_Y || key == KEY_H)
+		|| key == KEY_U || key == KEY_O || key == KEY_Y || key == KEY_H)
 		return (1);
-	return(0);
+	return (0);
 }
 
 void	camera_move(int key, t_fmlx *mlx)

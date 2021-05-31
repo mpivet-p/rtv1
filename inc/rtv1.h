@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 03:55:16 by mpivet-p          #+#    #+#             */
-/*   Updated: 2021/05/31 16:13:30 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/31 17:33:52 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,11 +168,6 @@ void			object_translate(t_vector *pos, int key, int modif);
 void			object_rotate(t_vector *pos, int key, int modif);
 t_object		*get_prevlink(t_fmlx *mlx);
 void			rt_delist(t_fmlx *mlx);
-
-//A SUPPR
-void			disp_vec(t_vector *vec);
-void			ft_print_data(t_object *bip);
-t_object		*list_test(void);
 double			anti_zero(double nbr);
 
 #endif

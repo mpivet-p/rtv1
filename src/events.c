@@ -6,7 +6,7 @@
 /*   By: mpivet-p <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 06:54:43 by mpivet-p          #+#    #+#             */
-/*   Updated: 2021/05/31 16:05:49 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/31 17:24:53 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,14 @@ int	deal_key(int key, t_fmlx *mlx)
 int	mouse_press(int button, int x, int y, t_fmlx *mlx)
 {
 	(void)x;
-	(void)y;
-	(void)mlx;
+	if (y < (SIMG_Y / 2))
+		object_rotate(&(mlx->cam.vecdir), KEY_W, mlx->intensity);
+	else if (y >= (SIMG_Y / 2))
+		object_rotate(&(mlx->cam.vecdir), KEY_S, mlx->intensity);
+	else
+		return (button);
+	get_viewplane(&(mlx->vp), mlx->cam);
+	rt_render(mlx);
 	return (button);
 }
 
