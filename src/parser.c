@@ -6,7 +6,7 @@
 /*   By: wahasni <wahasni@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 13:10:34 by wahasni           #+#    #+#             */
-/*   Updated: 2021/05/31 15:44:15 by mpivet-p         ###   ########.fr       */
+/*   Updated: 2021/05/31 18:18:33 by mpivet-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,13 @@ static int	ft_handle_objs(t_object *obj, char *line, int fd)
 		error = ft_parse_objs(obj, fd, RT_CONE, line);
 	else if (ft_strnequ(line, "light: ", 7))
 		error = ft_parse_objs(obj, fd, RT_LIGHT, line);
-	else if (ft_check_node(obj))
+	else if (ft_check_node(obj) || line != NULL)
 		return (ft_error("missing object"));
 	else
 	{
 		free_last_node(ft_get_head_ref(obj));
 		error = 2;
 	}
-	printf("%d\n", error);
 	return (error);
 }
 
